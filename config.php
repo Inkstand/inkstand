@@ -11,7 +11,7 @@ $CONFIG->db_user = 'lms';
 $CONFIG->db_pass = 'c7C4bpWLqyGKmeJs';
 $CONFIG->db_enco = 'utf8';
 $CONFIG->db_port = null;
-$CONFIG->db_prfx = 'lms_'; // database prefix, no underscore!
+$CONFIG->db_prfx = 'coco_'; // database prefix, no underscore!
 $CONFIG->dir = 'C:/xampp/htdocs/lms'; // NO TRAILING SLASH!
 $CONFIG->www = 'http://localhost/lms'; // NO TRAILING SLASH!
 

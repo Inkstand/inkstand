@@ -97,6 +97,8 @@ class Core
 	}
 
 	public function printModule($name, $id) {
+		global $CONFIG, $CORE;
+
 		echo "<div id='$name$id'>";
 		require_once DIR . "/plugin/module/" . $name . "/template.php";
 		echo "</div>";
