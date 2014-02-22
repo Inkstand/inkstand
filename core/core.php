@@ -95,6 +95,12 @@ class Core
 
 		return eval($plugin . "_strings[$name]");
 	}
+
+	public function printModule($name, $id) {
+		echo "<div id='$name$id'>";
+		require_once DIR . "/plugin/module/" . $name . "/template.php";
+		echo "</div>";
+	}
 }
 
 ?>

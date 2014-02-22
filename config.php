@@ -5,10 +5,10 @@ error_reporting(E_ALL ^ E_NOTICE);
 $CONFIG = new stdClass();
 
 // database config etc
-$CONFIG->db_host = 'localhost';
+$CONFIG->db_host = 'elighteninstance.ci1ni4buyjcn.us-west-2.rds.amazonaws.com';
 $CONFIG->db_name = 'lms';
-$CONFIG->db_user = 'root';
-$CONFIG->db_pass = '';
+$CONFIG->db_user = 'lms';
+$CONFIG->db_pass = 'c7C4bpWLqyGKmeJs';
 $CONFIG->db_enco = 'utf8';
 $CONFIG->db_port = null;
 $CONFIG->db_prfx = 'lms_'; // database prefix, no underscore!
