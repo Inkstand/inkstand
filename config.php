@@ -37,6 +37,13 @@ DB::$password = $CONFIG->db_pass;
 DB::$encoding = $CONFIG->db_enco;
 DB::$port = $CONFIG->db_port;
 
+// import the core 
 require_once 'core/core.php';
+
+// core instance to use through system
+$CORE = new Core();
+
+// import user class
+require_once 'core/user.class.php';
 
 ?>
