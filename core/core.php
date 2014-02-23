@@ -96,12 +96,14 @@ class Core
 		return eval($plugin . "_strings[$name]");
 	}
 
-	public function printModule($name, $id) {
+	public function printModule($type, $id) {
 		global $CONFIG, $CORE;
 
-		echo "<div id='$name$id'>";
-		require_once DIR . "/plugin/module/" . $name . "/template.php";
-		echo "</div>";
+		$MODULE = new stdClass();
+		$MODULE->id = $id;
+		$MODULE->type = $type;
+		
+		require DIR . "/plugin/module/" . $type . "/module.php";
 	}
 }
 

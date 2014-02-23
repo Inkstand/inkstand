@@ -2,6 +2,7 @@
 
 require_once 'config.php';
 
+/*
 $user = new User();
 $user->populate(1);
 $user->set("firstname", "Cuds");
@@ -17,5 +18,8 @@ $user2->create();
 echo '<pre>';
 print_r($user->getInfo());
 echo '</pre>';
+*/
+$array = array(array('name' => 'course'));
+echo json_encode($array);
 
 ?>

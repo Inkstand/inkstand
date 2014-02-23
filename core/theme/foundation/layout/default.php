@@ -8,8 +8,8 @@ require_once 'header.php';
 	
 <?php
 
-foreach ($variable as $key => $value) {
-		# code...
+	foreach($VIEW->modules as $module) {
+		$CORE->printModule($module['type'], $module['id']);
 	}	
 
 ?>
