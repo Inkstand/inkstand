@@ -22,3 +22,7 @@ $VIEW->modules = $modules;
 require_once DIR . "/plugin/theme/$currenttheme/layout/" . $VIEW->layout . ".php";
 
 ?>
+
+<script type="text/javascript" src="<?php echo WWW ?>/core/lib/jquery/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="<?php echo WWW ?>/core/lib/jqueryflip/jquery.flippy.min.js"></script>
+<script type="text/javascript" src="<?php echo WWW ?>/plugin/module/module.js"></script>

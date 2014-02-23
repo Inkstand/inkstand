@@ -3,7 +3,7 @@
 $id = $MODULE->id;
 
 ?>
-<div id='<?php echo $MODULE->type . $MODULE->id ?>' class="module module1 module-<?php echo $MODULE->type; ?>">
+<div id='<?php echo $MODULE->type . $MODULE->id ?>' module="<?php echo $MODULE->id; ?>" class="module module1 module-<?php echo $MODULE->type; ?>">
 	<div id="course_header" class="module_header">
 		
 	</div>
