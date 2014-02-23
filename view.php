@@ -19,6 +19,6 @@ $VIEW->id = $view['id'];
 $VIEW->layout = $view['layout'];
 $VIEW->modules = $modules;
 
-require_once DIR . "/core/theme/$currenttheme/layout/" . $VIEW->layout . ".php";
+require_once DIR . "/plugin/theme/$currenttheme/layout/" . $VIEW->layout . ".php";
 
 ?>
