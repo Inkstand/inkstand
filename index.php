@@ -1,25 +1,14 @@
 <?php
 
 require_once 'config.php';
+require_once DIR . '/core/route/route.class.php';
 
-/*
-$user = new User();
-$user->populate(1);
-$user->set("firstname", "Cuds");
-$user->update();
+// *** route ***
 
-$user2 = new User();
-$user2->set('email', 'tester@gmail.com');
-$user2->set('username', 'tester');
-$user2->set('firstname', 'Test');
-$user2->set('lastname', 'Er');
-$user2->create();
+$routepath = $_SERVER['PATH_INFO'];
 
-echo '<pre>';
-print_r($user->getInfo());
-echo '</pre>';
-*/
-$array = array(array('name' => 'course'));
-echo json_encode($array);
+$route = new Route();
+$route->directRoute($routepath);
+
 
 ?>
