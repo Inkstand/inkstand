@@ -5,9 +5,9 @@ require_once DIR . '/components/controller.php';
 class CourseController extends Controller
 {
 
-	public function __construct()
+	public function __construct($args = null)
     {
-        parent::__construct();
+        parent::__construct($args);
     }
     
 	public function index() {

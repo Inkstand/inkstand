@@ -4,14 +4,17 @@ class Controller
 {
 	public $component;
 	public $viewdata;
+	public $args;
 
-	protected function __construct() {
+	protected function __construct($args) {
 		$this->viewdata = new stdClass();
+		$this->args = $args;
 	}
 
 	protected function view($name = null) {
 
 		$component = $this->component;
+		$viewdata = $this->viewdata;
 
 		// IF name is not specified:
 		// find the method name that called this method
@@ -22,11 +25,6 @@ class Controller
 			// name is not the default (the method that called this one)
 			$name = $backtrace[1]['function'];
 
-		}
-
-		function require_view($component, $name) {
-
-			require_once DIR . "/components/$component/$name.view.php";
 		}
 
 		// TODO: get current theme and layout

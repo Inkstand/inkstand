@@ -18,8 +18,15 @@ class Route
 		// make sure the controller bit is present 
 		if(!empty($bits[0])) {
 
+			// arguments. Example: domain.com/course/index/3 
+			// --------------------------------------------^
+			$args = array_values($bits);
+			unset($args[0]);
+			unset($args[1]);
+			$args = array_values($args);
+
 			// get the controller 
-			$controller = $this->getController($bits[0]);
+			$controller = $this->getController($bits[0], $args);
 			$controller->component = $bits[0];
 
 			// invoke the action if it exists, if not, invoke the index method
@@ -35,7 +42,7 @@ class Route
 		} 
 	}
 
-	protected function getController($name) {
+	protected function getController($name, $args = null) {
 
 		// get the controller
 		require_once DIR . "/components/$name/$name.controller.php";
@@ -43,7 +50,7 @@ class Route
 		// create controller instance from string
 		$class = ucwords(strtolower($name)) . "Controller";
 
-		$controller = new $class();
+		$controller = new $class($args);
 
 		return $controller;
 	}
