@@ -8,9 +8,7 @@ require_once 'header.php';
 	
 <?php
 
-	foreach($VIEW->modules as $module) {
-		$CORE->printModule($module['type'], $module['id']);
-	}	
+require_view($component, $name);
 
 ?>
 

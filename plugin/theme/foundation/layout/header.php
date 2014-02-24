@@ -11,3 +11,5 @@
 	<div id="view-header">
 
 	</div>
+
+	<div id="view-content">
