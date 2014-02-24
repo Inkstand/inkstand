@@ -12,7 +12,10 @@ class CourseController extends Controller
     
 	public function index() {
 
-		$this->viewdata->heading = "Hello!";
+		require_once 'course.lib.php';
+
+		$this->viewdata->courses = getCourseList();
+		$this->viewdata->heading = "Course list";
 
 		return parent::view();
 	}
