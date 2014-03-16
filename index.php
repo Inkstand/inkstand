@@ -10,5 +10,4 @@ $routepath = $_SERVER['PATH_INFO'];
 $route = new Route();
 $route->directRoute($routepath);
 
-
 ?>

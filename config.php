@@ -1,19 +1,20 @@
 <?php
 
-error_reporting(E_ALL ^ E_NOTICE);
+error_reporting(E_ALL);
+ini_set('display_errors', true);
 
 $CONFIG = new stdClass();
 
 // database config etc
-$CONFIG->db_host = 'elighteninstance.ci1ni4buyjcn.us-west-2.rds.amazonaws.com';
-$CONFIG->db_name = 'lms';
-$CONFIG->db_user = 'lms';
+$CONFIG->db_host = 'localhost';
+$CONFIG->db_name = 'portfolio';
+$CONFIG->db_user = 'portfolio';
 $CONFIG->db_pass = 'c7C4bpWLqyGKmeJs';
 $CONFIG->db_enco = 'utf8';
 $CONFIG->db_port = null;
 $CONFIG->db_prfx = 'coco_'; // database prefix, no underscore!
-$CONFIG->dir = 'C:/xampp/htdocs/lms'; // NO TRAILING SLASH!
-$CONFIG->www = 'http://localhost/lms'; // NO TRAILING SLASH!
+$CONFIG->dir = '/var/www'; // NO TRAILING SLASH!
+$CONFIG->www = 'http://joeconradt.com'; // NO TRAILING SLASH!
 
 
 
