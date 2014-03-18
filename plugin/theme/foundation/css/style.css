@@ -1,13 +1,70 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,600,700,300);
+@import url(http://fonts.googleapis.com/css?family=Dancing+Script:400,700);
+
 *
 {
 	font-family:"Open Sans", Sans-serif;
 	color:#333;
 }
+a
+{
+	color:#297EB6;
+}
 body
 {
 	margin:0;
+	min-height:100%;
+	background-image:url(../image/background.png);
 }
+i
+{
+	color:#333;
+}
+
+.profile
+{
+	width:80%;
+	border-radius:150px;
+	-webkit-border-radius:150px;
+	-moz-border-radius:150px;
+	display:block;
+	margin:auto;
+	margin-top:15px;
+	margin-bottom:15px;
+}
+
+.center
+{
+	text-align:center;
+}
+.width33
+{
+	width:33.33%;
+	float:left;
+}
+.width50
+{
+	width:50%;
+	float:left;
+}
+.fa-container
+{
+	text-align:center;
+}
+
+/* ---- h1 ---- */
+
+h1.big
+{
+	font-size:50px;
+}
+h1.big span
+{
+	font-family:'Dancing Script', cursive !important;
+
+}
+
+/* ------------ */
 
 #view-content
 {
@@ -23,10 +80,38 @@ body
 	border-radius:3px;
 	box-shadow:0px 0px 3px rgba(33,33,33,0.5);
 	float:left;
-	margin:1.5%;
-	padding:0% 1%;
+	margin:2.5%;
+	overflow:hidden;
+	background-color:#fff;
 }
-
+.module .content
+{
+	padding:0% 5%;
+}
+.module footer .width33,
+.module footer .width50
+{
+	padding-top:15px;
+	padding-bottom:15px;
+}
+.module footer .width50:first-child,
+.module footer .width33:first-child
+{
+	background-color:#297EB6;
+}
+.module footer .width50:nth-child(2),
+.module footer .width33:nth-child(2)
+{
+	background-color:#29B661;
+}
+.module footer .width33:nth-child(3)
+{
+	background-color:#333;
+}
+.module footer i
+{
+	color:white;
+}
 
 @media all and (min-width:0px) {
 	.module1
@@ -69,6 +154,15 @@ body
 	{
 		width:95%;
 	}
+}
+
+/* header */
+
+#view-header
+{
+	height:75px;
+	background-color:#333;
+	overflow:hidden;
 }
 
 .display-gallery
