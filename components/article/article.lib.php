@@ -1,7 +1,8 @@
 <?php
 
 function getArticleList() {
-	$table = getTableFormat("article");
+	global $CORE;
+	$table = $CORE->getTableFormat("article");
 	return DB::query("SELECT * FROM $table");
 }
 

@@ -70,3 +70,18 @@ body
 		width:95%;
 	}
 }
+
+.display-gallery
+{
+
+}
+.display-gallery img
+{
+	width:100%;
+}
+.display-gallery .display-item3
+{
+	float:left;
+	width:30%;
+	padding:1.5%;
+}

@@ -37,6 +37,9 @@ class Controller
 		require_once DIR . "/plugin/theme/$currenttheme/layout/$currentlayout.php";
 
 	}
+	protected function link($rel) {
+		return WWW . $rel;
+	}
 }
 
 ?>

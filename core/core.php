@@ -105,6 +105,13 @@ class Core
 		
 		require DIR . "/plugin/module/" . $type . "/module.php";
 	}
+	public function shortenString($string, $length) {
+		if(strlen($string) <= $length) {
+			return $string;
+		} else {
+			return substr($string, 0, $length) . '...';
+		}
+	}
 }
 
 ?>
