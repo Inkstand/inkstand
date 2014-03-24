@@ -1,12 +1,19 @@
 <?php
 
-$id = $_GET['id'];
+
 
 ?>
 
 <form method="post" action="edit.php">
 	<span>
-		<p>Title</p>
-		<input type="text" 
+		<p>Global title</p>
+		<input type="text" value="">
+	</span>
+	<span>
+		<p>Testing</p>
+		<select>
+			<option>Yes</option>
+			<option>No</option>
+		</select>
 	</span>
 </form>
