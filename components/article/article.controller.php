@@ -18,6 +18,22 @@ class ArticleController extends Controller
 
 		return parent::view();
 	}
+
+	public function read() {
+
+		require_once 'article.lib.php';
+
+		$articleid = $this->args[0];
+
+		if(empty($articleid)) {
+			header("Location: " . WWW . "/index.php/article");
+			die();
+		}
+
+		$this->viewdata->article = getArticle($articleid); 
+
+		return parent::view();
+	}
 }
 
 ?>
