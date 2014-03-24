@@ -13,7 +13,7 @@ $CONFIG->db_pass = 'c7C4bpWLqyGKmeJs';
 $CONFIG->db_enco = 'utf8';
 $CONFIG->db_port = null;
 $CONFIG->db_prfx = 'coco_'; // database prefix, no underscore!
-$CONFIG->dir = '/var/www'; // NO TRAILING SLASH!
+$CONFIG->dir = 'c:/xampp/htdocs/moduler'; // NO TRAILING SLASH!
 $CONFIG->www = 'http://joeconradt.com'; // NO TRAILING SLASH!
 
 
@@ -29,7 +29,6 @@ require_once 'core/lib/password.php';
 
 // import MeekroDB for database querying
 require_once 'core/lib/meekrodb.2.2.class.php';
-
 
 DB::$host = $CONFIG->db_host;
 DB::$dbName = $CONFIG->db_name;
