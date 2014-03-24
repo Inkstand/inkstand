@@ -13,8 +13,8 @@ $CONFIG->db_pass = 'c7C4bpWLqyGKmeJs';
 $CONFIG->db_enco = 'utf8';
 $CONFIG->db_port = null;
 $CONFIG->db_prfx = 'coco_'; // database prefix, no underscore!
-$CONFIG->dir = '/var/www'; // NO TRAILING SLASH!
-$CONFIG->www = 'http://joeconradt.com'; // NO TRAILING SLASH!
+$CONFIG->dir = ''; // NO TRAILING SLASH!
+$CONFIG->www = 'http://localhost/modular'; // NO TRAILING SLASH!
 
 
 
