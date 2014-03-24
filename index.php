@@ -20,7 +20,22 @@ if(isset($_SERVER['PATH_INFO'])) {
 require_once DIR . '/plugin/theme/foundation/layout/header.php';
 
 ?>
+	<div class="textarea-container">
+	    <textarea></textarea>
+	</div><br/>
+<?php
+	require_once 'core/lib/addTinymce.php';
+	//addEdit();
 
+?>
+
+<script type="text/javascript">
+		
+	jQuery('#my-tab a').click(function (e) {
+  e.preventDefault();
+  jQuery(this).tab('show');
+})
+</script>
 <div id="view-content">
 
 	<div class="module module2"> 

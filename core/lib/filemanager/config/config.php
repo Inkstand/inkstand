@@ -1,6 +1,7 @@
 <?php
 session_start();
 mb_internal_encoding('UTF-8');
+
 //------------------------------------------------------------------------------
 // DON'T COPY THIS VARIABLES IN FOLDERS config.php FILES
 //------------------------------------------------------------------------------
@@ -20,10 +21,10 @@ mb_internal_encoding('UTF-8');
 //    |   |   |   |   |- plugin.min.js
 
 $base_url="http://".$_SERVER['HTTP_HOST'];  // DON'T TOUCH (base url (only domain) of site (without final /)).
-$upload_dir = '/source/'; // path from base_url to base of upload folder (with start and final /)
-$current_path = '../source/'; // relative path from filemanager folder to upload folder (with final /)
+$upload_dir = "/modular/repository/"; // path from base_url to base of upload folder (with start and final /)
+$current_path = '../../../repository/'; // relative path from filemanager folder to upload folder (with final /)
 //thumbs folder can't put inside upload folder
-$thumbs_base_path = '../thumbs/'; // relative path from filemanager folder to thumbs folder (with final /)
+$thumbs_base_path = '../../../thumbs/'; // relative path from filemanager folder to thumbs folder (with final /)
 
 //--------------------------------------------------------------------------------------------------------
 // YOU CAN COPY AND CHANGE THESE VARIABLES INTO FOLDERS config.php FILES TO CUSTOMIZE EACH FOLDER OPTIONS
