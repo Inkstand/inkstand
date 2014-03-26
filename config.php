@@ -51,4 +51,7 @@ $CORE = new Core();
 // import user class
 require_once 'core/user.class.php';
 
+//import login library
+require_once 'core/lib/login_lib.php';
+
 ?>
