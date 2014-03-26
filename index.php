@@ -28,7 +28,7 @@ require_once DIR . '/plugin/theme/foundation/layout/header.php';
 </form>
 <?php
 	//add to the textarea to make it a tinymce editor
-	addEdit();
+	$CORE->tinymce();
 ?>
 
 <script type="text/javascript">
