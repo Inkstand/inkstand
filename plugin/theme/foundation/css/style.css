@@ -139,6 +139,7 @@ h1.big span
 .module > .content
 {
 	padding:0% 5%;
+	padding-bottom:15px;
 }
 .module > footer .width33,
 .module > footer .width50,
