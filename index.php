@@ -2,6 +2,7 @@
 
 require_once 'config.php';
 require_once DIR . '/core/route/route.class.php';
+require_once 'core/lib/addTinymce.php';
 
 // *** route ***
 
@@ -20,13 +21,14 @@ if(isset($_SERVER['PATH_INFO'])) {
 require_once DIR . '/plugin/theme/foundation/layout/header.php';
 
 ?>
+<form method="post" action="<?=$_SERVER['REQUEST_URI']?>">
 	<div class="textarea-container">
-	    <textarea></textarea>
+	    <textarea id="elm1" name="elm1"><?php echo $sContent; ?></textarea>
 	</div><br/>
+</form>
 <?php
-	require_once 'core/lib/addTinymce.php';
-	//addEdit();
-
+	//add to the textarea to make it a tinymce editor
+	addEdit();
 ?>
 
 <script type="text/javascript">

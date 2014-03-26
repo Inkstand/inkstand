@@ -6,7 +6,7 @@ ini_set('display_errors', true);
 $CONFIG = new stdClass();
 
 // database config etc
-$CONFIG->db_host = 'localhost';
+$CONFIG->db_host = 'joeconradt.com';
 $CONFIG->db_name = 'portfolio';
 $CONFIG->db_user = 'portfolio';
 $CONFIG->db_pass = 'c7C4bpWLqyGKmeJs';

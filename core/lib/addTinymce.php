@@ -10,6 +10,22 @@
 
 ?>
 */
+$allowedTags='<p><strong><em><u><h1><h2><h3><h4><h5><h6><img>';
+$allowedTags.='<li><ol><ul><span><div><br><ins><del>'; 
+$sContent = "";
+if(isset($_POST['elm1'])) {
+    $sContent = strip_tags(stripslashes($_POST['elm1']),$allowedTags);
+
+    //here is where we would add to the database
+
+
+} else {
+    //if it is not submitted, then we must set variable equal to whatever it is in the database.
+  $sContent = "To be from the database";
+}
+
+
+
 
 function addEdit() {
 ?>
