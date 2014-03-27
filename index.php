@@ -21,15 +21,7 @@ if(isset($_SERVER['PATH_INFO'])) {
 require_once DIR . '/plugin/theme/foundation/layout/header.php';
 
 ?>
-<form method="post" action="<?=$_SERVER['REQUEST_URI']?>">
-	<div class="textarea-container">
-	    <textarea id="elm1" name="elm1"><?php echo $sContent; ?></textarea>
-	</div><br/>
-</form>
-<?php
-	//add to the textarea to make it a tinymce editor
-	$CORE->tinymce();
-?>
+
 
 <script type="text/javascript">
 		

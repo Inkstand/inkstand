@@ -4,6 +4,8 @@ $id = $editinstance;
 
 $article = DB::queryFirstRow("SELECT * FROM coco_article WHERE id=%i", $id);
 
+$CORE->tinymce('#article1');
+
 ?>
 
 <form method="post" action="edit.php">
@@ -13,7 +15,7 @@ $article = DB::queryFirstRow("SELECT * FROM coco_article WHERE id=%i", $id);
 	</span>
 	<span>
 		<p>Content</p>
-		<textarea>
+		<textarea id="article1">
 			<?php echo $article['content'] ?>
 		</textarea>
 	</span>
