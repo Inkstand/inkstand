@@ -1,5 +1,8 @@
 <?php
-session_start();
+if(!isset($_COOKIE["PHPSESSID"]))
+{
+  session_start();
+}
 mb_internal_encoding('UTF-8');
 
 //------------------------------------------------------------------------------

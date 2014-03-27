@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 error_reporting(E_ALL);
 ini_set('display_errors', true);
@@ -14,8 +15,8 @@ $CONFIG->db_enco = 'utf8';
 $CONFIG->db_port = null;
 $CONFIG->db_prfx = 'coco_'; // database prefix, no underscore!
 
-$CONFIG->dir = 'C:/xampp/htdocs/moduler'; // NO TRAILING SLASH!
-$CONFIG->www = 'http://localhost/moduler'; // NO TRAILING SLASH!
+$CONFIG->dir = 'C:/xampp/htdocs/modular'; // NO TRAILING SLASH!
+$CONFIG->www = 'http://localhost/modular'; // NO TRAILING SLASH!
 /*
 $CONFIG->dir = 'c:/xampp/htdocs/moduler'; // NO TRAILING SLASH!
 $CONFIG->www = 'http://joeconradt.com'; // NO TRAILING SLASH!
@@ -51,7 +52,11 @@ $CORE = new Core();
 // import user class
 require_once 'core/user.class.php';
 
-//import login library
-require_once 'core/lib/login_lib.php';
+if (isset($_POST['submit']))
+{
+	$CORE->handle_submit($_POST['submit']);
+} 
+
+$logged_in = $CORE->check_if_logged_in();
 
 ?>
