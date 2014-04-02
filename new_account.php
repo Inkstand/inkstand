@@ -135,21 +135,14 @@ require_once DIR . '/plugin/theme/foundation/layout/header.php';
 	<div class="module module2"> 
 		<div class="content">
 			<h2>New Account</h2>
-			<?php
-				if ($CORE->check_if_logged_in()) {
-					echo "you are logged in";
-				} else {
-					echo "not logged in";
-				}
-			?>
 			<form action = "new_account.php" method = "post">
-				First Name: <input type = "text" name = "firstname" value = "<?php echo htmlspecialchars($firstname); ?>"/> <br>
-				Last Name: <input type = "text" name = "lastname" value = "<?php echo htmlspecialchars($lastname); ?>"/> <br>
-				Email: <input type = "text" name = "email" value = "<?php echo htmlspecialchars($email); ?>"/> <br><br>
+				First Name:       <input type = "text" name = "firstname" value = "<?php echo htmlspecialchars($firstname); ?>"/> <br><br>
+				Last Name:        <input type = "text" name = "lastname" value = "<?php echo htmlspecialchars($lastname); ?>"/> <br><br>
+				Email:            <input type = "text" name = "email" value = "<?php echo htmlspecialchars($email); ?>"/> <br><br><br>
 
-				Create Username: <input type = "text" name = "username" value = "<?php echo htmlspecialchars($username); ?>"/> <br>
-				Create Password: <input type = "password" name = "password" /> <br>
-				Re_Type Password: <input type = "password" name = "re_password" /> <br><br>
+				Create Username:  <input type = "text" name = "username" value = "<?php echo htmlspecialchars($username); ?>"/> <br><br>
+				Create Password:  <input type = "password" name = "password" /> <br><br>
+				Re_Type Password: <input type = "password" name = "re_password" /> <br><br><br>
 
 				<input type = "submit" name = "submit" value = "Create Account" />
 

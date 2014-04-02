@@ -17,7 +17,7 @@ if(isset($_SERVER['PATH_INFO'])) {
 } else { ?>
 
 <?php
-$CORE->require_login();
+
 require_once DIR . '/plugin/theme/foundation/layout/header.php';
 
 ?>

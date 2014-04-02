@@ -33,11 +33,23 @@ require_once DIR . '/plugin/theme/foundation/layout/header.php';
 					echo "not logged in";
 				}
 			?>
-			<form action = "login.php" method = "post">
+			<form id = "new_account_form" action = "login.php" method = "post">
 				<label>Username:</label> <input type = "text" class = "login_text" name = "username" value = ""/> <br><br>
 				<label>Password:</label> <input type = "password" class = "login_text" name = "password" /> <br><br>
-				<input type = "submit" name = "submit" value = "Login" />
-				<input type = "submit" name = "submit" value = "Logout" />
+				<?php
+					if ($CORE->check_if_logged_in()) {
+						?>
+						<input type = "submit" name = "submit" value = "Logout" />
+						<?php
+
+					} else {
+						?>
+						<input type = "submit" name = "submit" value = "Login" />
+						<?php
+
+					}
+				?>
+				
 			</form>
 		</div>
 	</div> 
