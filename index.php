@@ -17,7 +17,11 @@ if(isset($_SERVER['PATH_INFO'])) {
 } else { ?>
 
 <?php
-
+if ($CORE->is_admin()) {
+	echo "is admin";
+} else {
+	echo "not admin";
+}
 require_once DIR . '/plugin/theme/foundation/layout/header.php';
 
 ?>

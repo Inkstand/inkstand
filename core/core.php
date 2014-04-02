@@ -317,6 +317,74 @@ class Core
 			exit;
 		}
 	}
+
+	public function is_admin() {
+		if (isset($_SESSION['user'])) {
+			//user is logged in (lets check all the credentials)
+			//echo $_SESSION['user'];
+
+			//lets verify the login user with the login table
+			$login_results = DB::query("Select id, userid, user_ip, user_ip_2, last_action FROM logins");
+			$verified_login = false;
+			foreach ($login_results as $i)
+			{
+				if ($_SESSION['user'] == hash('ripemd160', $i['id'])) {
+					//found the record we are looking for based on the id. Now, we must verify the ip, and then update the last action column
+					if ($_SERVER['REMOTE_ADDR'] == $i['user_ip']) {
+						//first ip is correct. check if 2nd is set. Then verify it.
+						if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+							if ($_SERVER['HTTP_X_FORWARDED_FOR'] == $i['user_ip_2']) {
+								$verified_login = true;
+							}
+						} else {
+							if ($_SERVER['REMOTE_ADDR'] == $i['user_ip_2']) {
+								$verified_login = true;
+							}
+						}
+					}
+				}
+				if ($verified_login) { //lets update the last action column
+					/*DB::replace('logins', array(
+					  'id' => $i["id"],
+					  'last_action' => time()
+					));*/
+					DB::update('logins', array(
+					'last_action' => time()
+					), "id=%s", $i["id"]);
+					//echo "You are logged in";
+
+					//checking if user is admin
+					$users = DB::query("SELECT id, admin FROM users");
+					foreach ($users as $row) {
+						if ($row['id'] == $i['userid'])
+						{
+							//Now, lets check if user is admin, if the login is verified
+							if ($row['admin'] == 1) {
+								return true;
+							} else {
+								return false;
+							}
+						}
+					}
+
+				}
+			}
+
+			if (!$verified_login) {
+				//account is not verified correctly. We must unset the session
+				
+				if(session_id() != '') {
+				    session_destroy();
+				}
+			}
+
+			
+
+
+			return $verified_login;
+		}
+		return false;
+	}
 }
 
 ?>
