@@ -147,7 +147,7 @@ class Core
 
 
 	//login functions
-	function check_if_logged_in(){
+	public function check_if_logged_in(){
 		if (isset($_SESSION['user'])) {
 			//user is logged in (lets check all the credentials)
 			//echo $_SESSION['user'];
@@ -198,7 +198,7 @@ class Core
 		return false;
 	}
 
-	function handle_submit($submit_value) 
+	public function handle_submit($submit_value) 
 	{
 		if ($submit_value == "Login") {
 			$this->login_user();
@@ -207,7 +207,7 @@ class Core
 		}
 	}
 
-	function login_user()
+	public function login_user()
 	{
 		//echo "form was submitted";
 		$form_filled = true;
@@ -284,7 +284,7 @@ class Core
 		}
 	}
 
-	function logout_user()
+	public function logout_user()
 	{
 		$logged_in = $this->check_if_logged_in();
 		$userid;
@@ -308,6 +308,14 @@ class Core
 		}
 
 		
+	}
+
+	public function require_login() 
+	{
+		if (!($this->check_if_logged_in())) {
+			header("Location: " . WWW ."/login.php");
+			exit;
+		}
 	}
 }
 
