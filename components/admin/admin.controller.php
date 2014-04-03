@@ -19,9 +19,23 @@ class AdminController extends Controller
 	
 	public function edit() {
 		
-		$arg1 = $this->args[0];
-		$arg2 = $this->args[1];
-		$arg3 = $this->args[2];
+		if(!empty($this->args[0])) {
+			$arg1 = $this->args[0];
+		} else {
+			$arg1 = null;
+		}
+		
+		if(!empty($this->args[1])) {
+			$arg2 = $this->args[1];
+		} else {
+			$arg2 = null;
+		}
+
+		if(!empty($this->args[2])) {
+			$arg3 = $this->args[2];
+		} else {
+			$arg3 = null;
+		}
 
 		// check if we're editing a component plugin
 		if($arg1 == 'plugin') {
@@ -36,11 +50,17 @@ class AdminController extends Controller
 
 		} else {
 			// editing component at this point
-			$this->viewdata->editfilepath = DIR . "/components/$arg1/edit.php";
+			if(empty($arg2)) {
+				$this->viewdata->editfilepath = DIR . "/components/$arg1/edit.php";
+			} else {
+				$this->viewdata->editfilepath = DIR . "/components/$arg1/editinstance.php";
+				$this->viewdata->instanceid = $arg2;
+			}
 		}
 
 		return parent::view();
 	}
+
 }
 
 ?>

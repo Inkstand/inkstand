@@ -2,19 +2,7 @@
 
 global $CORE;
 
+require_once $viewdata->editfilepath;
+
 ?>
 
-<header>
-
-</header>
-
-<div class="content">
-	
-	<?php
-
-	require_once $viewdata->editfilepath;
-	
-
-	?>
-
-</div>

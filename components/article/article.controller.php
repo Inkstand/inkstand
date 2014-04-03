@@ -14,7 +14,9 @@ class ArticleController extends Controller
 
 		require_once 'article.lib.php';
 
-		$this->viewdata->articles = getArticleList();
+		$lib = new ArticleLibrary();
+
+		$this->viewdata->articles = $lib->getArticleList();
 
 		return parent::view();
 	}
@@ -23,6 +25,8 @@ class ArticleController extends Controller
 
 		require_once 'article.lib.php';
 
+		$lib = new ArticleLibrary();
+
 		$articleid = $this->args[0];
 
 		if(empty($articleid)) {
@@ -30,7 +34,7 @@ class ArticleController extends Controller
 			die();
 		}
 
-		$this->viewdata->article = getArticle($articleid); 
+		$this->viewdata->article = $lib->getArticle($articleid); 
 
 		return parent::view();
 	}
