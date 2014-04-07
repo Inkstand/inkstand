@@ -22,8 +22,6 @@ $CONFIG->dir = 'c:/xampp/htdocs/moduler'; // NO TRAILING SLASH!
 $CONFIG->www = 'http://joeconradt.com'; // NO TRAILING SLASH!
 */
 
-
-
 define('DIR', $CONFIG->dir);
 define('WWW', $CONFIG->www);
 
@@ -44,7 +42,7 @@ DB::$encoding = $CONFIG->db_enco;
 DB::$port = $CONFIG->db_port;
 
 // import the core 
-require_once 'core/core.php';
+require_once DIR . '/core/core.php';
 
 // core instance to use through system
 $CORE = new Core();

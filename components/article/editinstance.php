@@ -1,5 +1,7 @@
 <?php
 
+$CORE->require_capability("Admin");
+
 if($_SERVER['REQUEST_METHOD'] == "POST") {
 
 	require_once DIR . '/components/article/article.lib.php';

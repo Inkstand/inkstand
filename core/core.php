@@ -4,7 +4,6 @@ if(!isset($_COOKIE["PHPSESSID"]))
 {
   session_start();
 }*/
-
 class Core
 {
 
@@ -378,12 +377,26 @@ class Core
 				}
 			}
 
-			
-
-
 			return $verified_login;
 		}
 		return false;
+	}
+
+	/*Function to be used for pages that require a certain capability. If no login type is specified in the call, then it will just require a login*/
+	public function require_capability($login_type = NULL) {
+		$has_capability = false;
+		if ($login_type == NULL) {
+			//just reqire login
+			$this->require_login();
+		} else if ($login_type == "Admin") {
+			//require admin
+			if ($this->is_admin()) {
+				$has_capability = true;
+			} else {
+				echo "You are not admin, so you can't do this";
+				exit;
+			}
+		}
 	}
 }
 
