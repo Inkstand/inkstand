@@ -34,6 +34,8 @@ class ArticleLibrary
 			'content' => $post['content']
 		));
 
+		header("Location: " . WWW . "/index.php/article");
+ 		exit;
 	}
 }
 

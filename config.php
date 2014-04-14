@@ -57,4 +57,15 @@ if (isset($_POST['submit']))
 
 $logged_in = $CORE->check_if_logged_in();
 
+if ($logged_in == true) {
+	echo "<div id = \"logged_in_bar\">";
+		if ($CORE->is_admin()) {
+			echo "is admin";
+		} else {
+			echo "not admin";
+		}	
+	echo "</div>";
+}
+
+
 ?>

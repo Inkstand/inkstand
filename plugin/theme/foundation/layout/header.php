@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Joe Conradt</title>
+	<meta charset=utf-8 />
 	<link rel="stylesheet" type="text/css" href="<?php echo WWW . '/plugin/theme/foundation/css/style.css'; ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo WWW . '/core/lib/fontawesome/css/font-awesome.css'; ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
