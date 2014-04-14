@@ -135,6 +135,7 @@ class Core
 			toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
 			image_advtab: true ,
 
+			relative_urls:false,
 			external_filemanager_path:"<?php echo WWW; ?>/core/lib/filemanager/",
 			filemanager_title:"Responsive Filemanager" ,
 			external_plugins: { "filemanager" : "<?php echo WWW; ?>/core/lib/filemanager/plugin.min.js"}
