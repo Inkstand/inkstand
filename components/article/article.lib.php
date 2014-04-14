@@ -24,6 +24,17 @@ class ArticleLibrary
 		), "id=%i", $post['id']);
 
 	}
+
+	function addArticle($post) {
+		global $CORE;
+		$table = $CORE->getTableFormat("article");
+
+		DB::insert($table, array(
+			'title' => $post['title'],
+			'content' => $post['content']
+		));
+
+	}
 }
 
 ?>

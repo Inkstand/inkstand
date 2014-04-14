@@ -6,6 +6,13 @@ global $CORE;
 
 <header>
 	<h2>Articles</h2>
+	<?php if ($CORE->is_admin() == true) { ?>
+		<div class="header-menu">
+			<ul>
+				<li><a href="<?php echo WWW . '/components/article/add.php' ?>">+</a></li>
+			</ul>
+		</div>
+	<?php } ?>
 </header>
 
 <div class="content">
