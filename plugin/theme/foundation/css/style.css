@@ -124,6 +124,11 @@ h1.big span
 
 /* ------------ */
 
+#view-header > .navbar .container-fluid 
+{
+	max-width:1200px;
+}
+
 #view-content
 {
 	overflow:hidden;
@@ -140,7 +145,7 @@ h1.big span
 	border-radius:3px;
 	box-shadow:0px 0px 3px rgba(33,33,33,0.5);
 	float:left;
-	margin:2.5%;
+	margin:0.5%;
 	overflow:hidden;
 	background-color:#fff;
 }
@@ -195,43 +200,54 @@ h1.big span
 @media all and (min-width:0px) {
 	.module1
 	{
-		width:95%;
+		width:100%;
 	}
 	.module2
 	{
-		width:95%;
+		width:100%;
 	}
 	.module3
 	{
-		width:95%;
+		width:100%;
 	}
 }
 @media all and (min-width:500px) {
 	.module1
 	{
-		width:45%;
+		width:49%;
 	}
 	.module2
 	{
-		width:95%;
+		width:99%;
 	}
 	.module3
 	{
-		width:95%;
+		width:99%;
 	}
 }
 @media all and (min-width:750px) {
 	.module1
 	{
-		width:28.3%;
+		width:32.3%;
 	}
 	.module2
 	{
-		width:61.6%;
+		width:65.6%;
 	}
 	.module3
 	{
-		width:95%;
+		width:99%;
+	}
+}
+
+/* to snap modules when screen is small */
+
+@media all and (max-width:500px) {
+	.module
+	{
+		border-radius:0;
+		margin-left:0;
+		margin-right:0;
 	}
 }
 

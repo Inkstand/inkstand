@@ -31,6 +31,8 @@ if(isset($_SERVER['PATH_INFO'])) {
 
 		$controller->component = $content;
 
+		$controller->viewdata->layout = "homepage";
+
 		$controller->index();
 
 	} else {
