@@ -436,6 +436,17 @@ class Core
 			$data = unserialize($menuitem['data']);
 
 			if($menuitem['type'] == "link") {
+
+				if(empty($data['url'])) {
+					$data['url'] = "#";
+				}
+				if(empty($data['target'])) {
+					$data['target'] = "_self";
+				}
+				if(empty($data['text'])) {
+					$data['text'] = "[[text]]";
+				}
+
 				echo "<li><a href='$data[url]' target='$data[target]'>$data[text]</a></li>";
 			}
 
