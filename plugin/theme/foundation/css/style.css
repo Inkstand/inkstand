@@ -67,6 +67,18 @@ img
 	background-image:url(../image/social/email.png);
 }
 
+#logged_in_bar
+{
+	color:#fff;
+	padding-left:10px;
+	padding-right:10px;
+}
+#logged_in_bar a
+{
+	color:#BBE0FF;
+	text-decoration:underline;
+}
+
 .profile
 {
 	width:80%;

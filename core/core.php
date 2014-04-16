@@ -428,10 +428,20 @@ class Core
 
 		echo 	'<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">';
 
+		echo 		'<ul class="nav navbar-nav">';
+
 		// loop through all the menu elements 
 		foreach ($menuitems as $menuitem) {
-			
+
+			$data = unserialize($menuitem['data']);
+
+			if($menuitem['type'] == "link") {
+				echo "<li><a href='$data[url]' target='$data[target]'>$data[text]</a></li>";
+			}
+
 		}
+
+		echo 		'</ul>';
 
 		echo	'</div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->

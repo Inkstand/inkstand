@@ -33,6 +33,15 @@ require_once DIR . '/plugin/theme/foundation/layout/header.php';
 <div id="view-content">
 
 	<div class="module module2"> 
+		<div class="content">
+			<h1 class="big center"><span></span>ModularCMS</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna sem, scelerisque eget facilisis et, ultricies non dolor. Ut pharetra lacus quis magna convallis egestas. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris placerat, ante a facilisis ullamcorper, orci orci ornare lectus, id vestibulum metus diam quis justo. </p>
+		</div>
+	</div>
+
+<!--
+
+	<div class="module module2"> 
 		<h1 class="big center"><span>portfolio of</span> Joe Conradt</h1>
 		<div class="content">
 			<hr>
@@ -82,6 +91,8 @@ require_once DIR . '/plugin/theme/foundation/layout/header.php';
 			</div>
 		</footer>
 	</div>
+
+	-->
 
 </div>
 
