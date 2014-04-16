@@ -13,6 +13,9 @@ class Controller
 
 	protected function view($name = null) {
 
+		require_once 'config.php';
+		global $CORE;
+
 		$component = $this->component;
 		$viewdata = $this->viewdata;
 
