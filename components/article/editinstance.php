@@ -36,6 +36,7 @@ $CORE->tinymce('#article1');
 			</textarea>
 		</span>
 		<input type="hidden" name="id" value="<?php echo $article['id'] ?>">
+		<input type = "submit" name = "submit1" value = "Delete Article">
 	</form>
 </div>
 <footer>

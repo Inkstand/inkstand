@@ -18,6 +18,10 @@ class ArticleLibrary
 		global $CORE;
 		$table = $CORE->getTableFormat("article");
 
+		if (isset($post['submit1']) && $post['submit1'] == "Delete Article") {
+			$this->deleteArticle($post);
+		}
+
 		DB::update($table, array(
 			'title' => $post['title'],
 			'content' => $post['content']
@@ -33,6 +37,15 @@ class ArticleLibrary
 			'title' => $post['title'],
 			'content' => $post['content']
 		));
+
+		header("Location: " . WWW . "/index.php/article");
+ 		exit;
+	}
+
+	function deleteArticle($post) {
+		global $CORE;
+		$table = $CORE->getTableFormat("article");
+		DB::delete($table, "id=%i", $post['id']);
 
 		header("Location: " . WWW . "/index.php/article");
  		exit;

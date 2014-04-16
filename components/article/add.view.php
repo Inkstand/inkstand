@@ -36,9 +36,3 @@ $CORE->tinymce('#article1');
 	<a class="width50" href="#" onclick="document.getElementById('articleform').submit();">Create</a>
 	<a class="width50" href="<?php echo WWW . "/index.php/article"; ?>">Cancel</a>
 </footer>
-
-<?php
-
-
-
-?>
