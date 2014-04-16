@@ -18,9 +18,6 @@ $article = DB::queryFirstRow("SELECT * FROM coco_article WHERE id=%i", $id);
 
 $CORE->tinymce('#article1');
 
-//import theme settings file (will need to make it good for whichever theme is in use)
-require_once (DIR . "/plugin/theme/foundation/config.php");
-
 ?>
 
 <header>

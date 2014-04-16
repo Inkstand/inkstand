@@ -1,6 +1,6 @@
 <?php
 
 //layouts
-$theme_layouts = array('default', 'newLayout');
+$theme_layouts = array('default', 'Wide_Content');
 
 ?>

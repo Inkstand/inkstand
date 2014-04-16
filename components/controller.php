@@ -32,10 +32,15 @@ class Controller
 
 		// TODO: get current theme and layout
 		$currenttheme = "foundation";
+		//import theme settings file (will need to make it good for whichever theme is in use)
+		require_once (DIR . "/plugin/theme/foundation/config.php");
+		$currentlayout = "default";
 		if (isset($this->viewdata->layout) && $this->viewdata->layout != "") {
-			$currentlayout = $this->viewdata->layout;
-		} else {
-			$currentlayout = "default";
+			if (in_array($this->viewdata->layout, $theme_layouts))
+			{
+				$currentlayout = $this->viewdata->layout;
+			}
+			
 		}
 		
 		// stuff here will be accessable to layout file...
