@@ -11,7 +11,7 @@ class Core
 	public $userid = "";
 
 	public function getSetting($name, $description = false) {
-		$table = getTableFormat("config");
+		$table = $this->getTableFormat("config");
 		$result = DB::queryFirstRow("SELECT value, description FROM $table WHERE name=%s", $name);
 
 		if($result === NULL) {
@@ -26,7 +26,7 @@ class Core
 	}
 
 	public function setSetting($name, $value, $description = NULL) {
-		$table = getTableFormat("config");
+		$table = $this->getTableFormat("config");
 
 		if($description === NULL) {
 			DB::insertUpdate($table, array(
@@ -43,7 +43,7 @@ class Core
 	}
 
 	public function getPluginSetting($name, $plugin, $description = false) {
-		$table = getTableFormat("config_plugin");
+		$table = $this->getTableFormat("config_plugin");
 		$result = DB::queryFirstRow("SELECT value, description FROM $table WHERE name=%s0 AND plugin=%s1", $name, $plugin);
 
 		if($result === NULL) {
@@ -58,7 +58,7 @@ class Core
 	}
 
 	public function setPluginSetting($name, $plugin, $value, $description = NULL) {
-		$table = getTableFormat("config_plugin");
+		$table = $this->getTableFormat("config_plugin");
 
 		if($description === NULL) {
 			DB::insertUpdate($table, array(
@@ -77,11 +77,11 @@ class Core
 	}
 
 	public function clearSetting($name) {
-		setSetting($name, '', '');
+		$this->setSetting($name, '', '');
 	}
 
 	public function clearPluginSetting($name, $plugin) {
-		setPluginSetting($name, $plugin, '', '');
+		$this->setPluginSetting($name, $plugin, '', '');
 	}
 
 	public function getTableFormat($tableName) {
@@ -95,7 +95,7 @@ class Core
 	}
 
 	public function getPluginString($name, $plugin) {
-		$table = getTableFormat("plugin");
+		$table = $this->getTableFormat("plugin");
 		$result = queryFirstRow("SELECT type FROM $table WHERE name=%s", $plugin);
 
 		require_once DIR . "/plugin/" . $result['type'] . "/" . $plugin . "/lang/en/strings.php";
