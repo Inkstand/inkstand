@@ -27,10 +27,5 @@
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 	<div id="view-header">
-		<div class="nav">
-			<ul>
-				<li><a href='<?php echo WWW ?>'><i class="fa fa-home fa-2x"></i><br>HOME</a></li>
-				<li><a href='<?php echo WWW ?>/index.php/article'><i class="fa fa-code fa-2x"></i><br>PROJECTS</a></li>
-			</ul>
-		</div>
+		<?php $CORE->menu(1) ?>
 	</div>
