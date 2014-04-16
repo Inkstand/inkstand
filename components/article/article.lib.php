@@ -50,6 +50,13 @@ class ArticleLibrary
 		header("Location: " . WWW . "/index.php/article");
  		exit;
 	}
+
+	function getArticleLayout($articleid) {
+		global $CORE;
+		$table = $CORE->getTableFormat("article");
+		$result = DB::queryFirstRow("SELECT layout FROM $table WHERE id = %i", $articleid);
+		return $result['layout'];
+	}
 }
 
 ?>

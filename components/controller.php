@@ -32,8 +32,12 @@ class Controller
 
 		// TODO: get current theme and layout
 		$currenttheme = "foundation";
-		$currentlayout = "default";
-
+		if (isset($this->viewdata->layout) && $this->viewdata->layout != "") {
+			$currentlayout = $this->viewdata->layout;
+		} else {
+			$currentlayout = "default";
+		}
+		
 		// stuff here will be accessable to layout file...
 		// make anything here available for layouts on default
 

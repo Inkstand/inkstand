@@ -36,6 +36,8 @@ class ArticleController extends Controller
 
 		$this->viewdata->article = $lib->getArticle($articleid); 
 
+		$this->viewdata->layout = $lib->getArticleLayout($articleid);
+
 		return parent::view();
 	}
 
