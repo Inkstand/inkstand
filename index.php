@@ -32,6 +32,8 @@ require_once DIR . '/plugin/theme/foundation/layout/header.php';
 </script>
 <div id="view-content">
 
+<!--
+
 	<div class="module module2"> 
 		<h1 class="big center"><span>portfolio of</span> Joe Conradt</h1>
 		<div class="content">
@@ -82,6 +84,8 @@ require_once DIR . '/plugin/theme/foundation/layout/header.php';
 			</div>
 		</footer>
 	</div>
+
+	-->
 
 </div>
 
