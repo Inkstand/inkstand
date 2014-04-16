@@ -24,7 +24,8 @@ class ArticleLibrary
 
 		DB::update($table, array(
 			'title' => $post['title'],
-			'content' => $post['content']
+			'content' => $post['content'],
+			'layout' => $post['layout']
 		), "id=%i", $post['id']);
 
 	}

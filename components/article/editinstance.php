@@ -2,11 +2,11 @@
 
 $CORE->require_capability("Admin");
 
+require_once DIR . '/components/article/article.lib.php';
+
+$lib = new ArticleLibrary();
+
 if($_SERVER['REQUEST_METHOD'] == "POST") {
-
-	require_once DIR . '/components/article/article.lib.php';
-
-	$lib = new ArticleLibrary();
 
 	$lib->editArticle($_POST);
 
@@ -17,6 +17,9 @@ $id = $viewdata->instanceid;
 $article = DB::queryFirstRow("SELECT * FROM coco_article WHERE id=%i", $id);
 
 $CORE->tinymce('#article1');
+
+//import theme settings file (will need to make it good for whichever theme is in use)
+require_once (DIR . "/plugin/theme/foundation/config.php");
 
 ?>
 
@@ -35,6 +38,23 @@ $CORE->tinymce('#article1');
 				<?php echo $article['content'] ?>
 			</textarea>
 		</span>
+		<span>
+		Select a Layout: 
+		<select name = "layout">
+		<?php
+			$currentLayout = $lib->getArticleLayout($id);
+			foreach ($theme_layouts as $layout) {
+				if ($layout == $currentLayout) {
+					echo "<option selected = 'selected' value = '$layout'>$layout</option>";
+				} else {
+					echo "<option value = '$layout'>$layout</option>";
+				}
+			}
+		?>
+		</select>
+		</span>
+		<br>
+		<br>
 		<input type="hidden" name="id" value="<?php echo $article['id'] ?>">
 		<input type = "submit" name = "submit1" value = "Delete Article">
 	</form>
