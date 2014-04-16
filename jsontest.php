@@ -1,6 +1,6 @@
 <?php
 
-$json = array("text" => "Download", "url" => "https://www.google.com/", "target" => "_blank");
+$json = array("text" => "Blog", "url" => "http://localhost/modular/index.php/article");
 
 echo serialize($json);
 
