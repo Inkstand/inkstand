@@ -9,7 +9,7 @@ global $CORE;
 	<?php if ($CORE->is_admin() == true) { ?>
 		<div class="header-menu">
 			<ul>
-				<li><a href="<?php echo WWW . '/components/article/add.php' ?>">+</a></li>
+				<li><a href="<?php echo WWW . '/index.php/article/add' ?>">+</a></li>
 			</ul>
 		</div>
 	<?php } ?>

@@ -38,6 +38,13 @@ class ArticleController extends Controller
 
 		return parent::view();
 	}
+
+	public function add() {
+		require_once 'article.lib.php';
+
+		$lib = new ArticleLibrary();
+		return parent::view();
+	}
 }
 
 ?>
