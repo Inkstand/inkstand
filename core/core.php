@@ -7,6 +7,9 @@ if(!isset($_COOKIE["PHPSESSID"]))
 class Core
 {
 
+	public $username = "";
+	public $userid = "";
+
 	public function getSetting($name, $description = false) {
 		$table = getTableFormat("config");
 		$result = DB::queryFirstRow("SELECT value, description FROM $table WHERE name=%s", $name);
@@ -135,6 +138,7 @@ class Core
 			toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
 			image_advtab: true ,
 
+			relative_urls:false,
 			external_filemanager_path:"<?php echo WWW; ?>/core/lib/filemanager/",
 			filemanager_title:"Responsive Filemanager" ,
 			external_plugins: { "filemanager" : "<?php echo WWW; ?>/core/lib/filemanager/plugin.min.js"}
@@ -180,7 +184,7 @@ class Core
 					'last_action' => time()
 					), "id=%s", $i["id"]);
 					//echo "You are logged in";
-
+					$userid = $i['userid'];
 				}
 			}
 
@@ -397,6 +401,50 @@ class Core
 				exit;
 			}
 		}
+	}
+
+	/* function to print a menu */
+	public function menu($menuid) {
+
+		// this will be a very versatile function, allowing the echoing of links, search boxes, dropdowns, etc. 
+		// Bootstrap!
+
+		$table = $this->getTableFormat("menu_items");
+		$menuitems = DB::query("SELECT * FROM $table WHERE menuid = %i", $menuid);
+
+		// echo some HTML
+
+		echo '<nav class="navbar navbar-default" role="navigation">';
+		echo 	'<div class="container-fluid">';
+		echo 		'<div class="navbar-header">
+				      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+				      <a class="navbar-brand" href="' . WWW . '">Home</a>
+				    </div>';
+
+		echo 	'<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">';
+
+		// loop through all the menu elements 
+		foreach ($menuitems as $menuitem) {
+			
+		}
+
+		echo	'</div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>';
+	}
+
+
+	/*Gets logged in username*/
+	public function get_username() {
+		//$login_results = DB::query("Select id, userid, user_ip, user_ip_2, last_action FROM logins");
+		$username = DB::queryFirstField("SELECT username FROM users WHERE username=%i", $this->userid);
+		return $username;
+
 	}
 }
 
