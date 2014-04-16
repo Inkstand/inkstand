@@ -299,3 +299,10 @@ h1.big span
 {
 	text-decoration:none;
 }
+
+
+/* Custom logged in menu */
+#logged_in_bar {
+	background-color: gray;
+	text-align: right;
+}

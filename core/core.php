@@ -7,6 +7,9 @@ if(!isset($_COOKIE["PHPSESSID"]))
 class Core
 {
 
+	public $username = "";
+	public $userid = "";
+
 	public function getSetting($name, $description = false) {
 		$table = getTableFormat("config");
 		$result = DB::queryFirstRow("SELECT value, description FROM $table WHERE name=%s", $name);
@@ -181,7 +184,7 @@ class Core
 					'last_action' => time()
 					), "id=%s", $i["id"]);
 					//echo "You are logged in";
-
+					$userid = $i['userid'];
 				}
 			}
 
@@ -433,6 +436,14 @@ class Core
 		echo	'</div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->
 			</nav>';
+	}
+
+
+	/*Gets logged in username*/
+	public function get_username() {
+		//$login_results = DB::query("Select id, userid, user_ip, user_ip_2, last_action FROM logins");
+		$username = DB::queryFirstField("SELECT username FROM users WHERE username=%i", $this->userid);
+		return $username;
 
 	}
 }

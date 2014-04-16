@@ -53,16 +53,22 @@ require_once 'core/user.class.php';
 if (isset($_POST['submit']))
 {
 	$CORE->handle_submit($_POST['submit']);
-} 
+} else if (isset($_GET['submit']))
+{
+	if ($_GET['submit'] == "Logout")
+	{
+		$CORE->handle_submit($_GET['submit']);
+	}
+}
 
 $logged_in = $CORE->check_if_logged_in();
 
 if ($logged_in == true) {
 	echo "<div id = \"logged_in_bar\">";
+		echo "Well hello there, " . $CORE->get_username();
 		if ($CORE->is_admin()) {
-			echo "is admin";
+			echo " (Admin)   <a href = " . WWW . "/login.php?submit=Logout>Logout</a>";
 		} else {
-			echo "not admin";
 		}	
 	echo "</div>";
 }
