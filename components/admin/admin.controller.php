@@ -7,12 +7,24 @@ class AdminController extends Controller
 
 	public function __construct($args = null)
     {
+    	// require admin permissions
+    	require_once '/../../config.php';
+    	global $CORE;
+    	$CORE->require_capability('Admin');
+
         parent::__construct($args);
     }
     
 	public function index() {
 
-		
+		require_once 'admin.lib.php';
+
+		$lib = new AdminLibrary();
+
+		$this->viewdata->layout = "admin";
+		$this->viewdata->theme = "admin";
+
+		$this->viewdata->modules = $lib->getSettingModules();
 
 		return parent::view();
 	}

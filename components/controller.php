@@ -32,6 +32,11 @@ class Controller
 
 		// TODO: get current theme and layout
 		$currenttheme = "foundation";
+
+		if(!empty($viewdata->theme)) {
+			$currenttheme = $viewdata->theme;
+		}
+
 		//import theme settings file (will need to make it good for whichever theme is in use)
 		require_once (DIR . "/plugin/theme/foundation/config.php");
 		$currentlayout = "default";
