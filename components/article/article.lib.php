@@ -36,7 +36,8 @@ class ArticleLibrary
 
 		DB::insert($table, array(
 			'title' => $post['title'],
-			'content' => $post['content']
+			'content' => $post['content'],
+			'layout' => $post['layout']
 		));
 
 		header("Location: " . WWW . "/index.php/article");
