@@ -467,6 +467,15 @@ class Core
 		return $username;
 
 	}
+
+	public function link($rel) {
+		if ($this->getSetting("Mod_Rewrite") == 0) {
+			return WWW . $rel;
+		} 
+		return WWW . str_replace('index.php/', '', $rel);
+
+		
+	}
 }
 
 ?>

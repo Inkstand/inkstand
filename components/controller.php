@@ -108,10 +108,6 @@ class Controller
 
 		$plugincontroller->$pluginaction();
 	}
-
-	protected function link($rel) {
-		return WWW . $rel;
-	}
 }
 
 ?>
