@@ -1,12 +1,12 @@
 <?php 
 
-require_once DIR . "/components/page/page.lib.php";
-require_once DIR . "/core/module.class.php";
-
+require_once DIR . '/core/module.class.php';
 
 class PageEditModule extends Module {
 
 	public function __construct($type) {
+
+		require_once DIR . '/components/page/page.lib.php';
 
 		$this->html = "
 
@@ -15,8 +15,13 @@ class PageEditModule extends Module {
 		</header>
 
 		<div class='content'>
-			<ul>
-				
+			<ul>";
+
+		foreach ($variable as $key => $value) {
+			# code...
+		}
+
+		$this->html .= "
 			</ul>
 		</div>
 
