@@ -30,15 +30,16 @@ class Controller
 
 		}
 
-		// TODO: get current theme and layout
-		$currenttheme = "foundation";
-
+		// if theme has already been chosen (e.g. admin page hijacking to use different theme)
 		if(!empty($viewdata->theme)) {
 			$currenttheme = $viewdata->theme;
+		} else {
+			// get desired theme in settings
+			$currenttheme = $CORE->getSetting("currenttheme");
 		}
 
 		//import theme settings file (will need to make it good for whichever theme is in use)
-		require_once (DIR . "/plugin/theme/foundation/config.php");
+		require_once (DIR . "/plugin/theme/$currenttheme/config.php");
 		$currentlayout = "default";
 		if (isset($this->viewdata->layout) && $this->viewdata->layout != "") {
 			if (in_array($this->viewdata->layout, $theme_layouts))

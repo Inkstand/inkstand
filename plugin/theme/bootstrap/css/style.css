@@ -15,6 +15,7 @@ body
 	margin:0;
 	min-height:100%;
 	background-image:url(../image/background.png);
+
 }
 i
 {
@@ -124,7 +125,8 @@ h1.big span
 
 /* ------------ */
 
-#view-header > .navbar .container-fluid 
+
+#header > .navbar .container-fluid 
 {
 	max-width:1200px;
 }
@@ -151,12 +153,12 @@ h1.big span
 }
 .module > header
 {
-	padding:0% 5%;
+	padding:0 15px;
 	position:relative;
 }
 .module > .content
 {
-	padding:0% 5%;
+	padding:0 15px;
 	padding-bottom:15px;
 }
 .module > footer .width33,
@@ -302,7 +304,7 @@ h1.big span
 }
 #view-footer
 {
-	background-color:#297EB6;
+	background-color:#575757;
 	border-bottom:7px solid #333;
 	overflow:hidden;
 }

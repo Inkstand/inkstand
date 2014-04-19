@@ -14,7 +14,7 @@ body
 {
 	margin:0;
 	min-height:100%;
-	background-image:url(../image/background.png);
+	background-color:#333 !important;
 }
 i
 {
@@ -22,7 +22,7 @@ i
 }
 img
 {
-	max-width:100%;
+	width:100%;
 }
 
 .fb-share-button span
