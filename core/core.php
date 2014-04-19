@@ -415,7 +415,7 @@ class Core
 		// echo some HTML
 
 		echo '<nav class="navbar navbar-default" role="navigation">';
-		echo 	'<div class="container-fluid">';
+		echo 	'<div class="container">';
 		echo 		'<div class="navbar-header">
 				      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 				        <span class="sr-only">Toggle navigation</span>
@@ -453,6 +453,13 @@ class Core
 		}
 
 		echo 		'</ul>';
+
+		echo 		'<form class="navbar-form navbar-right" role="search">
+				        <div class="form-group">
+				          <input type="text" class="form-control" placeholder="Search">
+				        </div>
+				        <button type="submit" class="btn btn-default">Submit</button>
+				    </form>';
 
 		echo	'</div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->
