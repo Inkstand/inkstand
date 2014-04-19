@@ -414,7 +414,7 @@ class Core
 
 		// echo some HTML
 
-		echo '<nav class="navbar navbar-default" role="navigation">';
+		echo '<nav style="border-radius:0px" class="navbar navbar-default" role="navigation">';
 		echo 	'<div class="container">';
 		echo 		'<div class="navbar-header">
 				      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">

@@ -4,7 +4,7 @@ require_once 'header.php';
 
 ?>
 
-<div id="view-content">
+<div class="container">
 
 	<div class="module module3">
 		<header>
