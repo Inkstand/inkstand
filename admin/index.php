@@ -41,7 +41,7 @@ $CORE->require_capability("Admin");
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Administration</a>
+          <a class="navbar-brand" href="index.php">Administration</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -61,6 +61,7 @@ $CORE->require_capability("Admin");
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
+          <li class="active"><a href="index.php">Dashboard</a></li>
             <li class="active"><a href="#" class="navtoggle" data-toggle="componentnav">Components</a></li>
             <li>
             	<ul class="nav collapse" id="componentnav">
@@ -100,7 +101,49 @@ $CORE->require_capability("Admin");
 
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
+
+        	<?php
+
+        	// h1 header
+
+        	$header = "Dashboard";
+
+        	if(empty($_GET['edit'])) {
+        		
+        		echo "<h1 class='page-header'>Dashboard</h1>";
+
+        		echo "<p>This is the administration dashboard where you'll see a bunch of shit.</p>";
+
+        	} else {
+
+        		$header = ucfirst($_GET['edit']) . " Administration";
+
+        		echo "<h1 class='page-header'>$header</h1>";
+
+        		if($_GET['type'] = 'component') {
+
+        			$component = $_GET['type'];
+
+        			if(file_exists(DIR . "/components/$component/edit.php")) {
+
+        				// require edit page from component
+        				require_once DIR . "/components/$component/edit.php";
+        			} else {
+        				echo "<p>It appears this component does not have any settings.</p>";
+        			}
+
+        		}
+        		
+        	}
+
+        	
+
+        	?>
+
+        <!--
+
+
+          <h1 class="page-header"></h1>
 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
@@ -253,6 +296,8 @@ $CORE->require_capability("Admin");
               </tbody>
             </table>
           </div>
+          -->
+
         </div>
       </div>
     </div>
