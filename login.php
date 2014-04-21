@@ -17,7 +17,9 @@ if(isset($_SERVER['PATH_INFO'])) {
 
 <?php
 
-require_once DIR . '/plugin/theme/foundation/layout/header.php';
+$currenttheme = $CORE->getSetting("currenttheme");
+
+require_once DIR . "/plugin/theme/$currenttheme/layout/header.php";
 
 ?>
 
@@ -57,7 +59,7 @@ require_once DIR . '/plugin/theme/foundation/layout/header.php';
 
 <?php
 
-require_once DIR . '/plugin/theme/foundation/layout/footer.php';
+require_once DIR . "/plugin/theme/$currenttheme/layout/footer.php";
 
 ?>
 
