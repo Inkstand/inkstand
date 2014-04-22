@@ -1,6 +1,8 @@
 <?php
 
-require_once '/../config.php';
+require_once '../config.php';
+
+$CORE->require_capability("Admin");
 
 ?>
 
@@ -59,23 +61,40 @@ require_once '/../config.php';
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#" class="navtoggle" data-toggle="articlenav">Articles</a></li>
+            <li class="active"><a href="#" class="navtoggle" data-toggle="componentnav">Components</a></li>
             <li>
-            	<ul class="nav collapse" id="articlenav">
-		            <li class="active"><a href="#">Overview</a></li>
-		            <li><a href="#">Reports</a></li>
-		            <li><a href="#">Analytics</a></li>
-		            <li><a href="#">Export</a></li>
+            	<ul class="nav collapse" id="componentnav">
+
+            	<?php
+
+            	// get all components to see if they have editing functionality
+
+            	$files = scandir(DIR . '/components');
+
+            	// loop through all the files and folders
+
+            	foreach ($files as $file) {
+            		
+            		// if file, skip
+            		if(!is_dir(DIR . '/components/' . $file) || $file == '.' || $file == '..') {
+            			continue;
+            		}
+
+            		// echo menu item
+
+            		echo "<li><a href='index.php?type=component&edit=$file'>" . ucfirst($file) . "</a></li>";
+
+            	}
+
+            	?>
+
 		        </ul>
           	</li>
-          	<li class="active"><a href="#" class="navtoggle" data-toggle="articlenav2">Articles</a></li>
-            <li>
-            	<ul class="nav collapse" id="articlenav2">
-		            <li class="active"><a href="#">Overview</a></li>
-		            <li><a href="#">Reports</a></li>
-		            <li><a href="#">Analytics</a></li>
-		            <li><a href="#">Export</a></li>
-		        </ul>
+          	<li class="active"><a href="#" class="navtoggle" data-toggle="settingsnav">Setttings</a></li>
+          	<li>
+          		<ul>
+          			
+          		</ul>
           	</li>
           </ul>
 
