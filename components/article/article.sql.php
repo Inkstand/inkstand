@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../config.php';
+require_once 'config.php';
 
 $table = $CORE->getTableFormat("article");
 DB::query("CREATE TABLE IF NOT EXISTS $table (
