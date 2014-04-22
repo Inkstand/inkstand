@@ -105,7 +105,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Install Now') {
 	if (isset($_POST['dbpref'])) {
 		$pref = $_POST['dbpref'];
 	}
-	$newtable = $pref . "users";
+	$newtable = "users";
 	DB::query("CREATE TABLE $newtable(
 		id int(11) NOT NULL AUTO_INCREMENT,
 		username varchar(25),
@@ -117,12 +117,103 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Install Now') {
 		PRIMARY KEY (id)
 		); ");
 
+	$newtable = "logins";
+	DB::query("CREATE TABLE $newtable(
+		id int(11) NOT NULL AUTO_INCREMENT,
+		userid int(11),
+		user_ip text,
+		user_ip_2 text,
+		last_action text,
+		PRIMARY KEY (id)
+		); ");
+
+	$newtable = $pref . "menu_items";
+	DB::query("CREATE TABLE $newtable(
+		id int(11) NOT NULL AUTO_INCREMENT,
+		menuid int(11),
+		type varchar(255),
+		data text,
+		PRIMARY KEY (id)
+		); ");
+
+	$newtable = $pref . "menu";
+	DB::query("CREATE TABLE $newtable(
+		id int(11) NOT NULL AUTO_INCREMENT,
+		name varchar(255),
+		PRIMARY KEY (id)
+		); ");
+
+	$newtable = $pref . "config";
+	DB::query("CREATE TABLE $newtable(
+		id int(11) NOT NULL AUTO_INCREMENT,
+		name varchar(255),
+		description text,
+		value text,
+		PRIMARY KEY (id)
+		); ");
+
 
 
 	//populate tables
 
+	DB::insert('users', array(
+	  'username' => $_POST['cmsadmin'],
+	  'password' => password_hash($_POST['cmsadminpass'], PASSWORD_DEFAULT),
+	  'f_name' => $_POST['cmsadminfirst'],
+	  'l_name' => $_POST['cmsadminlast'],
+	  'useremail' => $_POST['cmsadminemail'],
+	  'admin' => 1
+	));
+
+	$newtable = $pref . "menu";
+	DB::insert($newtable, array(
+	  'name' => 'Main menu'
+	));
+
+	$newtable = $pref . "config";
+	DB::insert($newtable, array(
+	  'name' => 'currenttheme',
+	  'description' => 'The current theme.',
+	  'value' => 'bootstrap'
+	));
+
+	$newtable = $pref . "config";
+	DB::insert($newtable, array(
+	  'name' => 'homepage',
+	  'description' => 'The contents of the homepage.',
+	  'value' => 'article'
+	));
+
+	$newtable = $pref . "config";
+	DB::insert($newtable, array(
+	  'name' => 'Mod_Rewrite',
+	  'description' => 'Takes out index.php from url',
+	  'value' => 1
+	));
+
+	$newtable = $pref . "menu_items";
+	DB::insert($newtable, array(
+	  'menuid' => 1,
+	  'data' => 'a:2:{s:4:"text";s:4:"Blog";s:3:"url";s:42:"http://localhost/modular/index.php/article";}',
+	  'type' => 'link'
+	));
+	$newtable = $pref . "menu_items";
+	DB::insert($newtable, array(
+	  'menuid' => 1,
+	  'data' => 'a:3:{s:4:"text";s:5:"About";s:3:"url";s:23:"https://www.google.com/";s:6:"target";s:6:"_blank";}',
+	  'type' => 'link'
+	));
+	$newtable = $pref . "menu_items";
+	DB::insert($newtable, array(
+	  'menuid' => 1,
+	  'data' => 'a:3:{s:4:"text";s:8:"Download";s:3:"url";s:23:"https://www.google.com/";s:6:"target";s:6:"_blank";}',
+	  'type' => 'link'
+	));
+
 
 	//use sql from components to create and populate tables
+	require_once('components/article/article.sql.php');
+	require_once('components/page/page.sql.php');
 
 }
 
@@ -148,7 +239,10 @@ if (file_exists('config.php')) {
 
 		Admin Credentials<br>
 		Admin Username <input type = "text" name = "cmsadmin" /> <br>
-		Admin Password <input type = "password" name = "cmsadminpass" /> <br><br>
+		Admin Password <input type = "password" name = "cmsadminpass" /> <br>
+		First Name <input type = "text" name = "cmsadminfirst" /> <br>
+		Last Name <input type = "text" name = "cmsadminlast" /> <br>
+		Email <input type = "text" name = "cmsadminemail" /> <br><br>
 		<input type = "submit" name = "submit" value = "Install Now" />
 	</form>
 	<?php
