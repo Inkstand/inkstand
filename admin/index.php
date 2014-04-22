@@ -15,7 +15,7 @@ $CORE->require_capability("Admin");
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Administration</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -83,7 +83,7 @@ $CORE->require_capability("Admin");
 
             		// echo menu item
 
-            		echo "<li><a href='index.php?type=component&edit=$file'>" . ucfirst($file) . "</a></li>";
+            		echo "<li><a href='index.php?type=component&path=/components/$file/edit'>" . ucfirst($file) . "</a></li>";
 
             	}
 
@@ -108,31 +108,24 @@ $CORE->require_capability("Admin");
 
         	$header = "Dashboard";
 
-        	if(empty($_GET['edit'])) {
+        	if(empty($_GET['type'])) {
         		
         		echo "<h1 class='page-header'>Dashboard</h1>";
 
         		echo "<p>This is the administration dashboard where you'll see a bunch of shit.</p>";
 
-        	} else {
+        	} else if($_GET['type'] == 'component') {
 
-        		$header = ucfirst($_GET['edit']) . " Administration";
+        		$path = $_GET['path'];
 
-        		echo "<h1 class='page-header'>$header</h1>";
+    			if(file_exists(DIR . $path)) {
 
-        		if($_GET['type'] = 'component') {
-
-        			$component = $_GET['type'];
-
-        			if(file_exists(DIR . "/components/$component/edit.php")) {
-
-        				// require edit page from component
-        				require_once DIR . "/components/$component/edit.php";
-        			} else {
-        				echo "<p>It appears this component does not have any settings.</p>";
-        			}
-
-        		}
+    				// require edit page from component
+    				require_once DIR . $path;
+    			} else {
+    				echo "<h1 class='header'>404!</h1>";
+    				echo "<p>It appears the link you tried is broken. Nothing found here.</p>";
+    			}
         		
         	}
 
