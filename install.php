@@ -188,7 +188,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Install Now') {
 	DB::insert($newtable, array(
 	  'name' => 'Mod_Rewrite',
 	  'description' => 'Takes out index.php from url',
-	  'value' => 1
+	  'value' => 0
 	));
 
 	$newtable = $pref . "menu_items";
