@@ -483,6 +483,15 @@ class Core
 
 		
 	}
+
+	public function editlink($component, $file) {
+
+		if(!strpos($file, '.php')) {
+			$file .= '.php';
+		}
+
+		return "index.php?type=component&path=/components/$component/$file";
+	}
 }
 
 ?>

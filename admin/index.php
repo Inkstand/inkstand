@@ -15,7 +15,7 @@ $CORE->require_capability("Admin");
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Administration</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -41,7 +41,7 @@ $CORE->require_capability("Admin");
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Administration</a>
+          <a class="navbar-brand" href="index.php">Administration</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -61,6 +61,7 @@ $CORE->require_capability("Admin");
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
+          <li class="active"><a href="index.php">Dashboard</a></li>
             <li class="active"><a href="#" class="navtoggle" data-toggle="componentnav">Components</a></li>
             <li>
             	<ul class="nav collapse" id="componentnav">
@@ -82,7 +83,7 @@ $CORE->require_capability("Admin");
 
             		// echo menu item
 
-            		echo "<li><a href='index.php?type=component&edit=$file'>" . ucfirst($file) . "</a></li>";
+            		echo "<li><a href='index.php?type=component&path=/components/$file/edit'>" . ucfirst($file) . "</a></li>";
 
             	}
 
@@ -100,7 +101,42 @@ $CORE->require_capability("Admin");
 
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
+
+        	<?php
+
+        	// h1 header
+
+        	$header = "Dashboard";
+
+        	if(empty($_GET['type'])) {
+        		
+        		echo "<h1 class='page-header'>Dashboard</h1>";
+
+        		echo "<p>This is the administration dashboard where you'll see a bunch of shit.</p>";
+
+        	} else if($_GET['type'] == 'component') {
+
+        		$path = $_GET['path'];
+
+    			if(file_exists(DIR . $path)) {
+
+    				// require edit page from component
+    				require_once DIR . $path;
+    			} else {
+    				echo "<h1 class='header'>404!</h1>";
+    				echo "<p>It appears the link you tried is broken. Nothing found here.</p>";
+    			}
+        		
+        	}
+
+        	
+
+        	?>
+
+        <!--
+
+
+          <h1 class="page-header"></h1>
 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
@@ -253,6 +289,8 @@ $CORE->require_capability("Admin");
               </tbody>
             </table>
           </div>
+          -->
+
         </div>
       </div>
     </div>
