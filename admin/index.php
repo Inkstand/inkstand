@@ -30,6 +30,10 @@ $CORE->require_capability("Admin");
     <![endif]-->
   <style type="text/css"></style><style id="holderjs-style" type="text/css"></style></head>
 
+  <style type="text/css">
+  #logged_in_bar { display:none; }
+  </style>
+
   <body>
 
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -83,7 +87,7 @@ $CORE->require_capability("Admin");
 
             		// echo menu item
 
-            		echo "<li><a href='index.php?type=component&path=/components/$file/edit'>" . ucfirst($file) . "</a></li>";
+            		echo "<li><a href='" . $CORE->editlink($file, "edit") . "'>" . ucfirst($file) . "</a></li>";
 
             	}
 

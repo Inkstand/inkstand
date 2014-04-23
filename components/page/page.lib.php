@@ -12,6 +12,19 @@ class PageLibrary
 		$table = $CORE->getTableFormat("page");
 		return DB::query("SELECT * FROM $table");
 	}
+	function addPage($page) {
+
+		// insert new page into the database
+
+		global $CORE;
+		$table = $CORE->getTableFormat("page");
+
+		DB::insert($table, array(
+			'title' => $page['title'],
+			'description' => $page['description'],
+			'content' => $page['content'],
+		));
+	}
 }
 
 ?>
