@@ -8,7 +8,9 @@ DB::query("CREATE TABLE IF NOT EXISTS $table (
   `title` TINYTEXT,
   `description` TEXT,
   `content` TEXT,
+  `image` TEXT,
   `authorid` INT,
+  `layout` TEXT,
   PRIMARY KEY  (`id`)
 );");
 
