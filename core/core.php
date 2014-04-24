@@ -499,6 +499,12 @@ class Core
 
 		return "index.php?type=component&path=/components/$component/$file";
 	}
+
+	public function getTime($unixtimestamp, $format) {
+
+		return gmdate($format, $unixtimestamp);
+
+	}
 }
 
 ?>
