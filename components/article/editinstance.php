@@ -13,8 +13,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 
 $id = $viewdata->instanceid;
-
-$article = DB::queryFirstRow("SELECT * FROM coco_article WHERE id=%i", $id);
+$table = $CORE->getTableFormat("article");
+$article = DB::queryFirstRow("SELECT * FROM $table WHERE id=%i", $id);
 
 $CORE->tinymce('#article1');
 

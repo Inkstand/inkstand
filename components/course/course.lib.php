@@ -1,8 +1,8 @@
 <?php
 
 function getCourseList() {
-
-	return DB::query("SELECT * FROM coco_course");
+	$table = $CORE->getTableFormat("course");
+	return DB::query("SELECT * FROM $table");
 }
 
 ?>
