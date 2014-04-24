@@ -14,7 +14,7 @@ echo "
 				</a>
 			</div>
 
-			<table class='table'>
+			<table class='table' style='border-bottom:1px solid #ddd;'>
 				<thead>
 					<tr>
 						<th style='width:5px'><input type='checkbox'></th>
@@ -43,6 +43,21 @@ foreach ($pages as $page) {
 
 echo "			</tbody>
 			</table>
+
+			<div class='panel-body'>
+				<div class='btn-group'>
+					<button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'>
+						With selected... <span class='caret'></span>
+					</button>
+					<ul class='dropdown-menu' role='menu'>
+					    <li><a href='#'>Delete</a></li>
+					    <li class='divider'></li>
+					    <li><a href='#'>Unpublish (hide)</a></li>
+					    <li><a href='#'>Publish (unhide)</a></li>
+					</ul>
+				</div>
+			</div>
+
 		</div>";
 
 ?>

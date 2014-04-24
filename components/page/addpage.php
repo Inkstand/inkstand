@@ -38,7 +38,7 @@ $CORE->tinymce("#content");
 
 				<div class="form-group">
 					<label for='content'>Content</label>
-					<textarea id='content' name='content' required></textarea>
+					<textarea id='content' name='content'></textarea>
 				</div>
 
 				<input type='submit' class='btn btn-primary' value='Create page'>

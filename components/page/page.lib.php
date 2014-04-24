@@ -23,6 +23,10 @@ class PageLibrary
 			'title' => $page['title'],
 			'description' => $page['description'],
 			'content' => $page['content'],
+			'datecreated' => time(),
+			'datemodified' => time(),
+			'usercreatedid' => $CORE->userid,
+			'usermodifiedid' => $CORE->userid
 		));
 	}
 }
