@@ -156,7 +156,8 @@ class Core
 			//echo $_SESSION['user'];
 
 			//lets verify the login user with the login table
-			$login_results = DB::query("Select id, userid, user_ip, user_ip_2, last_action FROM logins");
+			$table = $this->getTableFormat("logins");
+			$login_results = DB::query("Select id, userid, user_ip, user_ip_2, last_action FROM $table");
 			$verified_login = false;
 			foreach ($login_results as $i)
 			{
@@ -180,7 +181,8 @@ class Core
 					  'id' => $i["id"],
 					  'last_action' => time()
 					));*/
-					DB::update('logins', array(
+					$table = $this->getTableFormat("logins");
+					DB::update($table, array(
 					'last_action' => time()
 					), "id=%s", $i["id"]);
 					//echo "You are logged in";
@@ -235,7 +237,8 @@ class Core
 
 		if ($form_filled)
 		{
-			$results = DB::query("SELECT id, username, password FROM users");
+			$table = $this->getTableFormat("users");
+			$results = DB::query("SELECT id, username, password FROM $table");
 			foreach ($results as $row) {
 				if ($row['username'] == $username)
 				{
@@ -255,8 +258,8 @@ class Core
 						}
 						
 						$current_time = time();
-
-						DB::insert('logins', array(
+						$table = $this->getTableFormat("logins");
+						DB::insert($table, array(
 						  'userid' => $userid,
 						  'user_ip' => $userip,
 						  'user_ip_2' => $userip2,
@@ -264,7 +267,7 @@ class Core
 						));
 
 						//now, lets get the id of the session, hash it, and save it in the session variable
-						$login_results = DB::query("Select * FROM logins");
+						$login_results = DB::query("Select * FROM $table");
 						foreach ($login_results as $i)
 						{
 							if ($i['userid'] == $userid && $i['user_ip'] == $userip && $i['user_ip_2'] == $userip2 && $i['last_action'] == $current_time) {
@@ -289,11 +292,12 @@ class Core
 
 	public function logout_user()
 	{
+		$table = $this->getTableFormat("logins");
 		$logged_in = $this->check_if_logged_in();
 		$userid;
 		if ($logged_in)
 		{
-			$current_logs = DB::query("Select id, userid, user_ip, user_ip_2, last_action FROM logins");
+			$current_logs = DB::query("Select id, userid, user_ip, user_ip_2, last_action FROM $table");
 			foreach ($current_logs as $i)
 			{
 				if ($_SESSION['user'] == hash('ripemd160', $i['id'])) {
@@ -302,7 +306,7 @@ class Core
 				}
 			}
 			if ($userid != "") {
-				DB::delete('logins', "userid=%i", "$userid");
+				DB::delete($table, "userid=%i", "$userid");
 			}
 			session_destroy();
 		} else
@@ -322,12 +326,13 @@ class Core
 	}
 
 	public function is_admin() {
+		$table = $this->getTableFormat("logins");
 		if (isset($_SESSION['user'])) {
 			//user is logged in (lets check all the credentials)
 			//echo $_SESSION['user'];
 
 			//lets verify the login user with the login table
-			$login_results = DB::query("Select id, userid, user_ip, user_ip_2, last_action FROM logins");
+			$login_results = DB::query("Select id, userid, user_ip, user_ip_2, last_action FROM $table");
 			$verified_login = false;
 			foreach ($login_results as $i)
 			{
@@ -351,13 +356,14 @@ class Core
 					  'id' => $i["id"],
 					  'last_action' => time()
 					));*/
-					DB::update('logins', array(
+					DB::update($table, array(
 					'last_action' => time()
 					), "id=%s", $i["id"]);
 					//echo "You are logged in";
 
 					//checking if user is admin
-					$users = DB::query("SELECT id, admin FROM users");
+					$table = $this->getTableFormat("users");
+					$users = DB::query("SELECT id, admin FROM $table");
 					foreach ($users as $row) {
 						if ($row['id'] == $i['userid'])
 						{
@@ -470,7 +476,8 @@ class Core
 	/*Gets logged in username*/
 	public function get_username() {
 		//$login_results = DB::query("Select id, userid, user_ip, user_ip_2, last_action FROM logins");
-		$username = DB::queryFirstField("SELECT username FROM users WHERE username=%i", $this->userid);
+		$table = $this->getTableFormat("users");
+		$username = DB::queryFirstField("SELECT username FROM $table WHERE username=%i", $this->userid);
 		return $username;
 
 	}

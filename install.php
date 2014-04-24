@@ -105,7 +105,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Install Now') {
 	if (isset($_POST['dbpref'])) {
 		$pref = $_POST['dbpref'];
 	}
-	$newtable = "users";
+	$newtable = $pref . "users";
 	DB::query("CREATE TABLE $newtable(
 		id int(11) NOT NULL AUTO_INCREMENT,
 		username varchar(25),
@@ -117,7 +117,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Install Now') {
 		PRIMARY KEY (id)
 		); ");
 
-	$newtable = "logins";
+	$newtable = $pref . "logins";
 	DB::query("CREATE TABLE $newtable(
 		id int(11) NOT NULL AUTO_INCREMENT,
 		userid int(11),
@@ -155,8 +155,8 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Install Now') {
 
 
 	//populate tables
-
-	DB::insert('users', array(
+	$newtable = $pref . "users";
+	DB::insert($newtable, array(
 	  'username' => $_POST['cmsadmin'],
 	  'password' => password_hash($_POST['cmsadminpass'], PASSWORD_DEFAULT),
 	  'f_name' => $_POST['cmsadminfirst'],

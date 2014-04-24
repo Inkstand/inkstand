@@ -89,7 +89,8 @@ if(isset($_SERVER['PATH_INFO'])) {
 			$password = password_hash($password, PASSWORD_DEFAULT);
 
 			// Perform database query
-			$query = "INSERT INTO users (username, password, f_name, l_name, useremail) VALUES ('{$username}', '{$password}', '{$firstname}', '{$lastname}', '{$email}')";
+			$table = $CORE->getTableFormat("users");
+			$query = "INSERT INTO $table (username, password, f_name, l_name, useremail) VALUES ('{$username}', '{$password}', '{$firstname}', '{$lastname}', '{$email}')";
 
 			//testing password verify
 			/*if (password_verify("Jack", $password)) {
