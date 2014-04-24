@@ -491,13 +491,13 @@ class Core
 		
 	}
 
-	public function editlink($component, $file) {
+	public function editlink($component, $file, $urlstring = '') {
 
 		if(!strpos($file, '.php')) {
 			$file .= '.php';
 		}
 
-		return "index.php?type=component&path=/components/$component/$file";
+		return "index.php?path=/components/$component/$file&$urlstring";
 	}
 
 	public function getTime($unixtimestamp, $format) {

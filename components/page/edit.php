@@ -6,6 +6,8 @@ $lib = new PageLibrary();
 
 $pages = $lib->getListOfPages();
 
+echo "<h1>Page administration</h1>";
+
 echo "
 		<div class='panel panel-default'>
 			<div class='panel-body'>

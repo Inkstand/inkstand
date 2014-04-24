@@ -66,6 +66,7 @@ $CORE->require_capability("Admin");
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
           <li class="active"><a href="index.php">Dashboard</a></li>
+          <li class="active"><a href="index.php?path=/admin/edit/edithomepage.php">Homepage</a></li>
             <li class="active"><a href="#" class="navtoggle" data-toggle="componentnav">Components</a></li>
             <li>
             	<ul class="nav collapse" id="componentnav">
@@ -110,30 +111,25 @@ $CORE->require_capability("Admin");
 
         	// h1 header
 
-        	$header = "Dashboard";
-
-        	if(empty($_GET['type'])) {
+        	if(empty($_GET['path'])) {
         		
         		echo "<h1 class='page-header'>Dashboard</h1>";
 
         		echo "<p>This is the administration dashboard where you'll see a bunch of shit.</p>";
 
-        	} else if($_GET['type'] == 'component') {
+          } else {
 
         		$path = $_GET['path'];
 
-    			if(file_exists(DIR . $path)) {
+      			if(file_exists(DIR . $path)) {
 
-    				// require edit page from component
-    				require_once DIR . $path;
-    			} else {
-    				echo "<h1 class='header'>404!</h1>";
-    				echo "<p>It appears the link you tried is broken. Nothing found here.</p>";
-    			}
-        		
-        	}
-
-        	
+      				// require edit page from component
+      				require_once DIR . $path;
+      			} else {
+      				echo "<h1 class='header'>404!</h1>";
+      				echo "<p>It appears the link you tried is broken. Nothing found here.</p>";
+      			}
+          }
 
         	?>
 
