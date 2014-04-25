@@ -42,7 +42,7 @@ foreach ($pages as $page) {
 	echo "<td><a href='" . $CORE->link("/index.php/page/viewpage/" . $page['id']) . "'>$page[title]</a></td>";
 	
 	// edit buttons
-	echo "<td><a class='' href='" . $CORE->editlink('page', 'editpage.php?id=' . $page['id']) . "'><span class='glyphicon glyphicon-pencil'></span> Edit</a></td>";
+	echo "<td><a class='' href='" . $CORE->editlink('page', 'editpage.php', 'id=' . $page['id']) . "'><span class='glyphicon glyphicon-pencil'></span> Edit</a></td>";
 
 	// get user created
 	$table = $CORE->getTableFormat("users");
