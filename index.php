@@ -45,6 +45,26 @@ if(isset($_SERVER['PATH_INFO'])) {
 	$content = $CORE->getSetting("homepage");
 
 	if($content == "custom") {
+		//lets get content from the database
+		$content = $CORE->getSetting('custom_homepage_content');
+		$currenttheme = $CORE->getSetting("currenttheme");
+
+		require_once DIR . "/plugin/theme/$currenttheme/layout/header.php";
+
+		?>
+		<header>
+			<h2><?php echo 'Homepage' ?></h2>
+		</header>
+
+		<div class="content">
+			<?php echo $CORE->getSetting('custom_homepage_content'); ?>
+		</div>
+
+		<footer>
+
+		</footer>
+		<?php
+		require_once DIR . "/plugin/theme/$currenttheme/layout/footer.php";
 
 	} else if(file_exists(DIR . "/components/$content/index.view.php")) {
 

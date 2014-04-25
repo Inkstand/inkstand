@@ -36,7 +36,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Install Now') {
 		$CONFIG->db_user = \'' . $_POST['dbuser'] . '\';
 		$CONFIG->db_pass = \'' . $_POST['dbpass'] . '\';
 		$CONFIG->db_enco = \'utf8\';
-		$CONFIG->db_port = \'' . $_POST['dbport'] . '\';
+		$CONFIG->db_port = ' $_POST['dbport'] ';
 		$CONFIG->db_prfx = \'' . $_POST['dbpref'] . '\'; // database prefix, no underscore!
 
 		$CONFIG->dir = __dir__; // NO TRAILING SLASH!
