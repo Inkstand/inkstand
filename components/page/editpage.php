@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		'content' => $_POST['content']
 	);
 
-	$lib->addPage($page);
+	$lib->editPage($page);
 
 }
 
@@ -41,20 +41,20 @@ foreach ($page as &$pagedata) {
 			<form method='post'>
 				<div class="form-group">
 					<label for='title'>Title</label>
-					<input type='text' name='title' class='form-control' placeholder='Joe&#39;s coding services' required>
+					<input type='text' name='title' class='form-control' placeholder='<?php echo $page["title"] ?>' value='<?php echo $page["title"] ?>' required>
 				</div>
 
 				<div class="form-group">
 					<label for='description'>Description (SEO)</label>
-					<textarea name='description' class='form-control' placeholder='Check out our services! ...'></textarea>
+					<textarea name='description' class='form-control' placeholder='<?php echo $page["description"] ?>'><?php echo $page["description"] ?></textarea>
 				</div>
 
 				<div class="form-group">
 					<label for='content'>Content</label>
-					<textarea id='content' name='content'></textarea>
+					<textarea id='content' name='content'><?php echo $page["content"] ?></textarea>
 				</div>
 
-				<input type='submit' class='btn btn-primary' value='Create page'>
+				<input type='submit' class='btn btn-primary' value='Update page'>
 
 			</form>
 		</div>
