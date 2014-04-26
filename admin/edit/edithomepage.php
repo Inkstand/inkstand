@@ -1,15 +1,10 @@
 <?php
 
+$CORE->require_capability("Admin");
+
 if($_SERVER['REQUEST_METHOD'] == "POST") {
-
-	
-
+	$CORE->editHomepage($_POST);
 }
-
-
-
-
-
 	$CORE->tinymce('#homepagecontent');
 ?>
 <header>

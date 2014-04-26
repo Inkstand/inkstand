@@ -505,6 +505,13 @@ class Core
 		return gmdate($format, $unixtimestamp);
 
 	}
+
+	public function editHomepage($post) {
+		$table = $this->getTableFormat('config');
+		DB::update($table, array(
+			'value' => $post['content']
+		), "name=%s", 'custom_homepage_content');
+	}
 }
 
 ?>
