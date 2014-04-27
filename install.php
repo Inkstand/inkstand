@@ -36,7 +36,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Install Now') {
 		$CONFIG->db_user = \'' . $_POST['dbuser'] . '\';
 		$CONFIG->db_pass = \'' . $_POST['dbpass'] . '\';
 		$CONFIG->db_enco = \'utf8\';
-		$CONFIG->db_port = ' $_POST['dbport'] ';
+		$CONFIG->db_port = \'' . $_POST['dbport'] . '\';
 		$CONFIG->db_prfx = \'' . $_POST['dbpref'] . '\'; // database prefix, no underscore!
 
 		$CONFIG->dir = __dir__; // NO TRAILING SLASH!
@@ -225,25 +225,33 @@ if (file_exists('config.php')) {
 } else {
 	//config has not been created, so we must install the cms
 	?>
-	<h1>Lets install your cms</h1>
+	<link rel="stylesheet" href="plugin/theme/bootstrap/css/bootstrap.min.css">
+	<style>
+		form {
+			max-width: 800px;
+			width: 80%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
+	<h1>Lets install your Inkstand</h1>
 	<form action = "install.php" method = "post">
-		Database Host <input type = "text" name = "dbhost" /> <br>
-		Database Name <input type = "text" name = "dbname" /> <br>
-		Database User <input type = "text" name = "dbuser" /> <br>
-		Database Password <input type = "text" name = "dbpass" /> <br>
-		Database Port <input type = "text" name = "dbport" /> <br>
-		Database Prefix <input type = "text" name = "dbpref" /> <br>
+		<h2>Server Credentials</h2>
+		<span class="input-group-addon">Database Host</span> <input class="form-control" type = "text" name = "dbhost" /> <br>
+		<span class="input-group-addon">Database Name</span> <input class="form-control" type = "text" name = "dbname" /> <br>
+		<span class="input-group-addon">Database User</span> <input class="form-control" type = "text" name = "dbuser" /> <br>
+		<span class="input-group-addon">Database Password</span> <input class="form-control" type = "text" name = "dbpass" /> <br>
+		<span class="input-group-addon">Database Port</span> <input class="form-control" type = "text" name = "dbport" /> <br>
+		<span class="input-group-addon">Database Prefix</span> <input class="form-control" type = "text" name = "dbpref" /> <br>
+		<span class="input-group-addon">Web Root (NO TRAILING SLASH)</span> <input class="form-control" type = "text" name = "webroot" /> <br><br>
 
-		Web Root (NO TRAILING SLASH) <input type = "text" name = "webroot" /> <br><br>
-
-
-		Admin Credentials<br>
-		Admin Username <input type = "text" name = "cmsadmin" /> <br>
-		Admin Password <input type = "password" name = "cmsadminpass" /> <br>
-		First Name <input type = "text" name = "cmsadminfirst" /> <br>
-		Last Name <input type = "text" name = "cmsadminlast" /> <br>
-		Email <input type = "text" name = "cmsadminemail" /> <br><br>
-		<input type = "submit" name = "submit" value = "Install Now" />
+		<h2>Admin Credentials</h2>
+		<span class="input-group-addon">Admin Username</span> <input class="form-control" type = "text" name = "cmsadmin" /> <br>
+		<span class="input-group-addon">Admin Password</span> <input class="form-control" type = "password" name = "cmsadminpass" /> <br>
+		<span class="input-group-addon">First Name</span> <input class="form-control" type = "text" name = "cmsadminfirst" /> <br>
+		<span class="input-group-addon">Last Name</span> <input class="form-control" type = "text" name = "cmsadminlast" /> <br>
+		<span class="input-group-addon">Email</span> <input class="form-control" type = "text" name = "cmsadminemail" /> <br><br>
+		<input class="form-control" type = "submit" name = "submit" value = "Install Now" />
 	</form>
 	<?php
 }
