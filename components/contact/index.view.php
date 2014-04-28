@@ -9,15 +9,15 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Send Email') {
 ?>
 
 <header>
-	<h2><?php echo $CORE->getSetting('site_title');?></h2>
+	<h2>Contact Us</h2>
 </header>
 
 <div class="content">
 	<form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
-		Your Name: <input type="text" name="name"><br>
-		Your Email: <input type="text" name="from_email"><br>
-		Subject: <input type="text" name="subject"><br>
-		Message: <textarea rows="10" cols="40" name="message"></textarea><br>
-		<input type="submit" name="submit" value="Send Email">
+		<span class="input-group-addon">Your Name:</span> <input class="form-control" type="text" name="name"><br>
+		<span class="input-group-addon">Your Email:</span> <input class="form-control" type="text" name="from_email"><br>
+		<span class="input-group-addon">Subject:</span> <input class="form-control" type="text" name="subject"><br>
+		<span class="input-group-addon">Message:</span> <textarea style = "min-width: 100%; max-width: 100%;" class="form-control" rows="10" cols="40" name="message"></textarea><br>
+		<input class = "btn btn-primary" type="submit" name="submit" value="Send Email">
 	</form>
 </div>
