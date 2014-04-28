@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Joe Conradt</title>
+	<title><?php echo $CORE->getSetting('site_title');?></title>
 	<meta charset=utf-8 />
 	<link rel="stylesheet" type="text/css" href="<?php echo WWW . '/plugin/theme/bootstrap/css/style.css'; ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo WWW . '/core/lib/fontawesome/css/font-awesome.css'; ?>">

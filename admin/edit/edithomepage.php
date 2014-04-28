@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 	$CORE->tinymce('#homepagecontent');
 ?>
 <header>
-	<h2>Editing Article</h2>
+	<h2>Editing Homepage Content</h2>
 </header>
 <div class="content">
 	<form method="post" action="" id="homepageform">

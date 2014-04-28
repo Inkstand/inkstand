@@ -96,7 +96,7 @@ $CORE->require_capability("Admin");
 
 		        </ul>
           	</li>
-          	<li class="active"><a href="#" class="navtoggle" data-toggle="settingsnav">Setttings</a></li>
+          	<li class="active"><a href="index.php?path=/admin/edit/editsettings.php" class="navtoggle" data-toggle="settingsnav">Setttings</a></li>
           	<li>
           		<ul>
           			

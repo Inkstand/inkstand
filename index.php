@@ -53,7 +53,7 @@ if(isset($_SERVER['PATH_INFO'])) {
 
 		?>
 		<header>
-			<h2><?php echo 'Homepage' ?></h2>
+			<h2><?php echo $CORE->getSetting('site_title');?></h2>
 		</header>
 
 		<div class="content">

@@ -41,6 +41,10 @@ class Core
 			));
 		}
 	}
+	public function updateSetting($name, $value) {
+		$table = $this->getTableFormat("config");
+		DB::update($table, array('value' => $value), "name=%s", $name);
+	}
 
 	public function getPluginSetting($name, $plugin, $description = false) {
 		$table = $this->getTableFormat("config_plugin");
@@ -507,10 +511,12 @@ class Core
 	}
 
 	public function editHomepage($post) {
-		$table = $this->getTableFormat('config');
-		DB::update($table, array(
-			'value' => $post['content']
-		), "name=%s", 'custom_homepage_content');
+		$this->updateSetting('custom_homepage_content', $post['content']);
+	}
+
+	public function editgeneralsettings($post) {
+		$this->updateSetting('site_title', $post['sitetitle']);
+		$this->updateSetting('currenttheme', $post['theme']);
 	}
 }
 
