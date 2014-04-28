@@ -512,6 +512,7 @@ class Core
 
 	public function editHomepage($post) {
 		$this->updateSetting('custom_homepage_content', $post['content']);
+		$this->updateSetting('custom_homepage_layout', $post['layout']);
 	}
 
 	public function editgeneralsettings($post) {

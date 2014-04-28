@@ -2,6 +2,12 @@
 
 $CORE->require_capability("Admin");
 
+//get homepage library
+require_once DIR. '/components/homepage/homepage.lib.php';
+
+$homelib = new HomepageLibrary();
+
+
 if($_SERVER['REQUEST_METHOD'] == "POST") {
 	$CORE->editHomepage($_POST);
 }
@@ -21,14 +27,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 		Select a Layout: 
 		<select name = "layout">
 		<?php
-			/*$currentLayout = $lib->getArticleLayout($id);
+			$currentLayout = $homelib->getLayout();
+			$currenttheme = $CORE->getSetting("currenttheme");
+			require_once (DIR . "/plugin/theme/$currenttheme/config.php");
 			foreach ($theme_layouts as $layout) {
 				if ($layout == $currentLayout) {
 					echo "<option selected = 'selected' value = '$layout'>$layout</option>";
 				} else {
 					echo "<option value = '$layout'>$layout</option>";
 				}
-			}*/
+			}
 		?>
 		</select>
 		</span>
