@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
 		
 	</form>
-	<a href="#" onclick="document.getElementById('settingsform').submit();">Update</a>
-	<a href="">Cancel</a>
+	<a class="btn btn-primary" href="#" onclick="document.getElementById('settingsform').submit();">Update</a>
+	<a class="btn btn-default" href="">Cancel</a>
 </div>
 	
