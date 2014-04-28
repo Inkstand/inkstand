@@ -1,5 +1,24 @@
 <?php
 
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+	// this is for actions on checked pages in the list
+
+	$table = $CORE->getTableFormat('page');
+	$pageids = DB::query("SELECT id FROM $table");
+
+	foreach ($pageids as $pageid) {
+		if(isset($_POST['checkbox' . $pageid['id']])) {
+			$value = $_POST['checkbox' . $pageid['id']];
+
+			if($value === 'on') {
+				if($_POST['action'] === 'delete') {
+					DB::query("DELETE FROM $table WHERE id = %i", $pageid['id']);
+				}
+			}
+		}
+	}
+}
+
 require_once "page.lib.php";
 
 $lib = new PageLibrary();
@@ -18,12 +37,13 @@ echo "
 					<span class='glyphicon glyphicon-tasks'></span> Menus and pages
 				</a>
 			</div>
-
+			<form id='pagelistform' method='post'>
+			<input type='hidden' name='action' value=''>
 			<table class='table' style='border-bottom:1px solid #ddd;'>
 
 				<thead>
 					<tr>
-						<th style='width:5px'><input type='checkbox'></th>
+						<th style='width:5px'><input id='mastercheckbox' type='checkbox'></th>
 						<th>Name</th>
 						<th></th>
 						<th>Created by</th>
@@ -38,7 +58,7 @@ foreach ($pages as $page) {
 	
 	echo '<tr>';
 
-	echo "<td><input type='checkbox'></td>";
+	echo "<td><input type='checkbox' name='checkbox" . $page['id'] . "'></td>";
 	echo "<td><a href='" . $CORE->link("/index.php/page/viewpage/" . $page['id']) . "'>$page[title]</a></td>";
 	
 	// edit buttons
@@ -65,17 +85,17 @@ foreach ($pages as $page) {
 
 echo "			</tbody>
 			</table>
-
+			</form>
 			<div class='panel-body'>
 				<div class='btn-group'>
 					<button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'>
 						With selected... <span class='caret'></span>
 					</button>
-					<ul class='dropdown-menu' role='menu'>
-					    <li><a href='#'>Delete</a></li>
+					<ul class='dropdown-menu' id='selectionmenu' role='menu'>
+					    <li><a value='delete'>Move to trash</a></li>
 					    <li class='divider'></li>
-					    <li><a href='#'>Unpublish (hide)</a></li>
-					    <li><a href='#'>Publish (unhide)</a></li>
+					    <li><a value='hide'>Unpublish (hide)</a></li>
+					    <li><a value='unhide'>Publish (unhide)</a></li>
 					</ul>
 				</div>
 			</div>

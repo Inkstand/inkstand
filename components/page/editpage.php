@@ -7,12 +7,19 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$lib = new PageLibrary();
 
 	$page = array(
+		'id' => $_POST['id'],
 		'title' => $_POST['title'],
 		'description' => $_POST['description'],
 		'content' => $_POST['content']
 	);
 
-	$lib->editPage($page);
+	$success = $lib->editPage($page);
+
+	if($success) {
+		$lib->printSuccess('edit');
+	} else {
+		$lib->printFailure('edit');
+	}
 
 }
 
@@ -37,6 +44,7 @@ foreach ($page as &$pagedata) {
 	<div class="row">
 		<div class="col-md-8">
 			<h1>Edit page</h1>
+			<a class='btn btn-default' href="<?php echo $CORE->editlink('page', 'edit'); ?>"><span class='glyphicon glyphicon-arrow-left'></span> Back</a>
 			<hr>
 			<form method='post'>
 				<div class="form-group">
@@ -54,7 +62,10 @@ foreach ($page as &$pagedata) {
 					<textarea id='content' name='content'><?php echo $page["content"] ?></textarea>
 				</div>
 
+				<input type='hidden' name='id' value='<?php echo $id ?>'>
+
 				<input type='submit' class='btn btn-primary' value='Update page'>
+				<a class='btn btn-default' href="<?php echo $CORE->editlink('page', 'edit'); ?>">Cancel</a>
 
 			</form>
 		</div>

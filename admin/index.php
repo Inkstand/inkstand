@@ -49,10 +49,10 @@ $CORE->require_capability("Admin");
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
+            <li><a href="index.php">Dashboard</a></li>
+            <li><a href="index.php?path=/admin/edit/comingsoon.php">Settings</a></li>
+            <li><a href="index.php?path=/admin/edit/comingsoon.php">Profile</a></li>
+            <li><a href="index.php?path=/admin/edit/comingsoon.php">Help</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
