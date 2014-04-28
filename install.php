@@ -223,7 +223,16 @@ if (file_exists('config.php')) {
 	require_once('config.php');
 	header("Location: " . WWW);
 } else {
+
 	//config has not been created, so we must install the cms
+
+	$url  = @( $_SERVER["HTTPS"] != 'on' ) ? 'http://'.$_SERVER["SERVER_NAME"] :  'https://'.$_SERVER["SERVER_NAME"];
+	$url .= $_SERVER["REQUEST_URI"];
+
+	$index = strpos($url, '/install.php');
+
+	$url = substr($url, 0, $index);
+
 	?>
 	<link rel="stylesheet" href="plugin/theme/bootstrap/css/bootstrap.min.css">
 	<style>
@@ -262,13 +271,13 @@ if (file_exists('config.php')) {
 	<h1>Let's install your Inkstand</h1>
 	<form action = "install.php" method = "post">
 		<h2>Server Credentials</h2>
-		<span class="input-group-addon">Database Host</span> <input class="form-control" type = "text" name = "dbhost" /> <br>
+		<span class="input-group-addon">Database Host</span> <input class="form-control" type = "text" name = "dbhost" value="localhost" /> <br>
 		<span class="input-group-addon">Database Name</span> <input class="form-control" type = "text" name = "dbname" /> <br>
 		<span class="input-group-addon">Database User</span> <input class="form-control" type = "text" name = "dbuser" /> <br>
 		<span class="input-group-addon">Database Password</span> <input class="form-control" type = "text" name = "dbpass" /> <br>
 		<span class="input-group-addon">Database Port</span> <input class="form-control" type = "text" name = "dbport" /> <br>
-		<span class="input-group-addon">Database Prefix</span> <input class="form-control" type = "text" name = "dbpref" /> <br>
-		<span class="input-group-addon">Web Root (NO TRAILING SLASH)</span> <input class="form-control" type = "text" name = "webroot" /> <br><br>
+		<span class="input-group-addon">Database Prefix</span> <input class="form-control" type = "text" name = "dbpref" value="ink_" /> <br>
+		<span class="input-group-addon">Web Root (NO TRAILING SLASH)</span> <input class="form-control" type = "text" name = "webroot" value="<?php echo $url ?>"/> <br><br>
 
 		<h2>Admin Credentials</h2>
 		<span class="input-group-addon">Admin Username</span> <input class="form-control" type = "text" name = "cmsadmin" /> <br>
