@@ -1,5 +1,11 @@
 <?php
 
+// check if installed or not
+
+if(!file_exists('config.php')) {
+	header("Location: install.php");
+}
+
 require_once 'config.php';
 require_once DIR . '/core/route/route.class.php';
 require_once 'core/lib/addTinymce.php';
@@ -44,29 +50,7 @@ if(isset($_SERVER['PATH_INFO'])) {
 
 	$content = $CORE->getSetting("homepage");
 
-	if($content == "custom") {
-		//lets get content from the database
-		$content = $CORE->getSetting('custom_homepage_content');
-		$currenttheme = $CORE->getSetting("currenttheme");
-
-		require_once DIR . "/plugin/theme/$currenttheme/layout/header.php";
-
-		?>
-		<header>
-			<h2><?php echo 'Homepage' ?></h2>
-		</header>
-
-		<div class="content">
-			<?php echo $CORE->getSetting('custom_homepage_content'); ?>
-		</div>
-
-		<footer>
-
-		</footer>
-		<?php
-		require_once DIR . "/plugin/theme/$currenttheme/layout/footer.php";
-
-	} else if(file_exists(DIR . "/components/$content/index.view.php")) {
+	if(file_exists(DIR . "/components/$content/index.view.php")) {
 
 		require_once DIR . "/components/$content/$content.controller.php";
 
@@ -77,7 +61,11 @@ if(isset($_SERVER['PATH_INFO'])) {
 
 		$controller->component = $content;
 
-		$controller->viewdata->layout = "homepage";
+		if ($content == "homepage") {
+			$controller->viewdata->layout = $CORE->getSetting('custom_homepage_layout');
+		} else {
+			$controller->viewdata->layout = "Homepage";
+		}
 
 		$controller->index();
 

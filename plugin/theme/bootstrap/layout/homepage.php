@@ -8,7 +8,7 @@ require_once 'header.php';
 
 	<div class="module module3">
 		<header>
-			<h1>ModularCMS</h1>
+			<h1><?php echo $CORE->getSetting('site_title');?></h1>
 		</header>
 	</div>
 

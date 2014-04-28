@@ -41,6 +41,10 @@ class Core
 			));
 		}
 	}
+	public function updateSetting($name, $value) {
+		$table = $this->getTableFormat("config");
+		DB::update($table, array('value' => $value), "name=%s", $name);
+	}
 
 	public function getPluginSetting($name, $plugin, $description = false) {
 		$table = $this->getTableFormat("config_plugin");
@@ -132,7 +136,7 @@ class Core
 			plugins: [
 			"advlist autolink link image lists charmap print preview hr anchor pagebreak",
 			"searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
-			"table contextmenu directionality emoticons paste textcolor responsivefilemanager"
+			"table contextmenu directionality emoticons paste textcolor responsivefilemanager code"
 			],
 			toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
 			toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
@@ -507,10 +511,28 @@ class Core
 	}
 
 	public function editHomepage($post) {
-		$table = $this->getTableFormat('config');
-		DB::update($table, array(
-			'value' => $post['content']
-		), "name=%s", 'custom_homepage_content');
+		$this->updateSetting('custom_homepage_content', $post['content']);
+		$this->updateSetting('custom_homepage_layout', $post['layout']);
+	}
+
+	public function editgeneralsettings($post) {
+		$this->updateSetting('site_title', $post['sitetitle']);
+		$this->updateSetting('currenttheme', $post['theme']);
+	}
+
+	public function emailspamcheck($field) {
+		// Sanitize e-mail address
+		$field=filter_var($field, FILTER_SANITIZE_EMAIL);
+		// Validate e-mail address
+		if(filter_var($field, FILTER_VALIDATE_EMAIL)) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+
+	public function sendemail($to, $subject, $message, $from) {
+		mail($to, $subject, $message, "From: $from\n");
 	}
 }
 

@@ -67,7 +67,7 @@ $CORE->require_capability("Admin");
           <ul class="nav nav-sidebar">
           <li class="active"><a href="index.php">Dashboard</a></li>
           <li class="active"><a href="index.php?path=/admin/edit/edithomepage.php">Homepage</a></li>
-            <li class="active"><a href="#" class="navtoggle" data-toggle="componentnav">Components</a></li>
+          <li class="active"><a href="#" class="navtoggle" data-toggle="componentnav">Components</a></li>
             <li>
             	<ul class="nav collapse" id="componentnav">
 
@@ -96,7 +96,8 @@ $CORE->require_capability("Admin");
 
 		        </ul>
           	</li>
-          	<li class="active"><a href="#" class="navtoggle" data-toggle="settingsnav">Setttings</a></li>
+            <li class="active"><a href="index.php?path=/admin/edit/editmenu.php">Menu</a></li>
+          	<li class="active"><a href="index.php?path=/admin/edit/editsettings.php" class="navtoggle" data-toggle="settingsnav">Setttings</a></li>
           	<li>
           		<ul>
           			
