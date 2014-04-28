@@ -1,5 +1,11 @@
 <?php
 
+// check if installed or not
+
+if(!file_exists('config.php')) {
+	header("Location: install.php");
+}
+
 require_once 'config.php';
 require_once DIR . '/core/route/route.class.php';
 require_once 'core/lib/addTinymce.php';
