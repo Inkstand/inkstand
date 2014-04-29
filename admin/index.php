@@ -34,6 +34,10 @@ $CORE->require_capability("Admin");
   #logged_in_bar { display:none; }
   </style>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/dashboard.js"></script>
+
   <body>
 
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -296,13 +300,6 @@ $CORE->require_capability("Admin");
       </div>
     </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/dashboard.js"></script>
-  
 
 </body></html>
 

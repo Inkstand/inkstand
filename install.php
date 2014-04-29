@@ -244,7 +244,6 @@ if (file_exists('config.php')) {
 		}
 		#background {
 			background-image:url(core/resources/images/building.jpg);
-			background-position:100%;
 			width:100%;
 			height:100%;
 			position:fixed;
