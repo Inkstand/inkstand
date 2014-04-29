@@ -12,13 +12,6 @@ if(empty($article)) {
 
 <header>
 	<h2><?php echo $article['title'] ?></h2>
-	<?php if ($CORE->is_admin() == true) { ?>
-		<div class="header-menu">
-			<ul>
-				<li><a class="fa fa-cog fa-lg" href="<?php echo WWW . '/index.php/admin/edit/article/' . $article['id'] ?>"></a></li>
-			</ul>
-		</div>
-	<?php } ?>
 </header>
 
 <div class="content">

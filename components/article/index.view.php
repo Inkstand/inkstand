@@ -6,13 +6,6 @@ global $CORE;
 
 <header>
 	<h2>Articles</h2>
-	<?php if ($CORE->is_admin() == true) { ?>
-		<div class="header-menu">
-			<ul>
-				<li><a class = "glyphicon glyphicon-plus" href="<?php echo WWW . '/index.php/article/add' ?>"></a></li>
-			</ul>
-		</div>
-	<?php } ?>
 </header>
 
 <div class="content">

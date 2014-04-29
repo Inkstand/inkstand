@@ -40,7 +40,7 @@ class ArticleLibrary
 			'layout' => $post['layout']
 		));
 
-		header("Location: " . WWW . "/index.php/article");
+		header("Location: " . WWW . "/admin/index.php?path=/components/article/edit.php&");
  		exit;
 	}
 
@@ -49,7 +49,7 @@ class ArticleLibrary
 		$table = $CORE->getTableFormat("article");
 		DB::delete($table, "id=%i", $post['id']);
 
-		header("Location: " . WWW . "/index.php/article");
+		header("Location: " . WWW . "/admin/index.php?path=/components/article/edit.php&");
  		exit;
 	}
 
