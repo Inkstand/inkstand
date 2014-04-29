@@ -8,8 +8,28 @@ require_once 'header.php';
 	
 	#showcase
 	{
+		padding-top:35px;
 		background-image:url(<?php echo WWW ?>/plugin/theme/bootstrap/image/bg.gif);
-		height:300px;
+		overflow:hidden;
+	}
+	#showcase h1
+	{
+		text-shadow:3px 3px 0px rgba(33,33,33,0.3);
+		color:#fff;
+	}
+	#showcase p
+	{
+		color:#fff;
+		font-size:18px;
+	}
+	#showcase b
+	{
+		color:#1b4670;
+	}
+	#showcase > .row
+	{
+		max-width:1000px;
+		margin:auto;
 	}
 	#logo
 	{
@@ -28,10 +48,54 @@ require_once 'header.php';
 	{
 		margin-bottom:0;
 	}
+	@media (min-width: 768px) 
+	{
+		#bs-example-navbar-collapse-1 
+		{
+			padding-top:26px;
+		}
+	}
+	.navbar-toggle
+	{
+		margin-top:35px;
+	}
+	#circles 
+	{
+		background-image:url(<?php echo WWW ?>/plugin/theme/bootstrap/image/inkstand_features_circles.png);
+		background-size:100%;
+		background-repeat:no-repeat;
+		max-width:740px;
+		width:100%;
+		height:230px;
+		margin:20px auto;
+	}
+	#ipad
+	{
+		background-image:url(<?php echo WWW ?>/plugin/theme/bootstrap/image/inkstand_ipad.png);
+		width:350px;
+		height:250px;
+		margin:auto;
+	}
 
 </style>
 
 <div id="showcase">
+	
+	
+	<div class="row">
+		<div class="col-md-6">
+			<h1>the CMS you've been waiting for</h1>
+			<p><b>Inkstand</b> is the new way to deploy your website</p>
+			<p><b>Manage</b> your content - users - products</p>
+			<p>Blog, market, and create with user <b>friendly</b> tools</p>
+		</div>
+		<div class="col-md-6"><div id="ipad"></div></div>
+		<div class="col-md-12">
+			<hr>
+			<h1 style="text-align:center">easy to use, fast content delivery</h1>
+		</div>
+	</div>
+	<div id="circles"></div>
 
 </div>
 

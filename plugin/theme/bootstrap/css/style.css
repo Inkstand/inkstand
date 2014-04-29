@@ -333,7 +333,7 @@ h1.big span
 
 /* Custom logged in menu */
 #logged_in_bar {
-	background-color: gray;
+	background-color: #333;
 	text-align: right;
 	color: white;
 }
