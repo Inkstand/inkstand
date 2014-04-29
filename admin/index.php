@@ -53,6 +53,7 @@ $CORE->require_capability("Admin");
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="<?php echo WWW ?>">View site</a></li>
             <li><a href="index.php">Dashboard</a></li>
             <li><a href="index.php?path=/admin/edit/editsettings.php">Settings</a></li>
             <li><a href="index.php?path=/admin/edit/comingsoon.php">Profile</a></li>
