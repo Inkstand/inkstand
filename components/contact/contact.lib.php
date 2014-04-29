@@ -7,9 +7,11 @@ class ContactLibrary
 		$mailcheck = $CORE->emailspamcheck($post['from_email']);
 		if ($mailcheck) {
 			$from = $post['from_email'];
-			$subject = $post['subject'];
+			$subject = "Inkstand Contact Component ";
+			$subject .= $post['subject'];
 			$message = $post['message'];
-			$to = getEmailTo();
+			$message .= "\r\n" . $post['name'];
+			$to = $this->getEmailTo();
 			$CORE->sendemail($to, $subject, $message, $from);
 		} else {
 			echo "email was not sent due to spam mail entered";
