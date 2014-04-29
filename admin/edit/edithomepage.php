@@ -43,7 +43,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 		<br>
 		<br>
 	</form>
-	<a  href="#" onclick="document.getElementById('homepageform').submit();">Update</a>
-	<a  href="">Cancel</a>
+	<a class = "btn btn-primary" href="#" onclick="document.getElementById('homepageform').submit();">Update</a>
+	<a class = "btn btn-default"  href="">Cancel</a>
 </div>
 	
