@@ -84,10 +84,11 @@ if (isset($_POST[\'submit\']))
 $logged_in = $CORE->check_if_logged_in();
 
 if ($logged_in == true) {
-	echo \'<div id = \"logged_in_bar\">\';
+	echo "<div id = \"logged_in_bar\">";
 		echo "Well hello there, " . $CORE->get_username();
 		if ($CORE->is_admin()) {
-			echo \' (Admin)   <a href = \' . WWW . \'/login.php?submit=Logout>Logout</a>\';
+			echo " (Admin) &nbsp;&nbsp;&nbsp;&nbsp; <a href = " . WWW . "/admin>Administration</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href = " . WWW . "/login.php?submit=Logout>Logout</a>";
+
 		} else {
 		}	
 	echo \'</div>\';
@@ -97,7 +98,6 @@ if ($logged_in == true) {
 
 
 	fwrite($config_creation, $config_data);
-
 
 	//next, lets create the tables in the database
 	$newtable = "";
@@ -130,6 +130,7 @@ if ($logged_in == true) {
 	$newtable = $pref . "menu_items";
 	DB::query("CREATE TABLE $newtable(
 		id int(11) NOT NULL AUTO_INCREMENT,
+		name tinytext,
 		menuid int(11),
 		type varchar(255),
 		data text,
@@ -170,41 +171,32 @@ if ($logged_in == true) {
 	  'name' => 'Main menu'
 	));
 
-	$newtable = $pref . "config";
-	DB::insert($newtable, array(
-	  'name' => 'currenttheme',
-	  'description' => 'The current theme.',
-	  'value' => 'bootstrap'
-	));
-
-	$newtable = $pref . "config";
-	DB::insert($newtable, array(
-	  'name' => 'homepage',
-	  'description' => 'The contents of the homepage.',
-	  'value' => 'article'
-	));
-
-	$newtable = $pref . "config";
-	DB::insert($newtable, array(
-	  'name' => 'Mod_Rewrite',
-	  'description' => 'Takes out index.php from url',
-	  'value' => 0
-	));
+	//set config settings
+	require_once 'config.php';
+	$CORE->setSetting('currenttheme', 'bootstrap', 'The current theme');
+	$CORE->setSetting('homepage', 'article', 'The contents of the homepage.');
+	$CORE->setSetting('Mod_Rewrite', 0, 'Takes out index.php from url');
+	$CORE->setSetting('custom_homepage_content', 'Here is some basic content on your home page.', 'Home page content if component is not chosen for homepage.');
+	$CORE->setSetting('site_title', 'Inkstand', 'The overall title for the site');
+	$CORE->setSetting('custom_homepage_layout', 'homepage', 'What layout file the custom homepage should use');
 
 	$newtable = $pref . "menu_items";
 	DB::insert($newtable, array(
+      'name' => 'Blog link',
 	  'menuid' => 1,
 	  'data' => 'a:2:{s:4:"text";s:4:"Blog";s:3:"url";s:42:"http://localhost/modular/index.php/article";}',
 	  'type' => 'link'
 	));
 	$newtable = $pref . "menu_items";
 	DB::insert($newtable, array(
+	  'name' => 'About page',
 	  'menuid' => 1,
 	  'data' => 'a:3:{s:4:"text";s:5:"About";s:3:"url";s:23:"https://www.google.com/";s:6:"target";s:6:"_blank";}',
 	  'type' => 'link'
 	));
 	$newtable = $pref . "menu_items";
 	DB::insert($newtable, array(
+	  'name' => 'Google',
 	  'menuid' => 1,
 	  'data' => 'a:3:{s:4:"text";s:8:"Download";s:3:"url";s:23:"https://www.google.com/";s:6:"target";s:6:"_blank";}',
 	  'type' => 'link'
@@ -214,6 +206,7 @@ if ($logged_in == true) {
 	//use sql from components to create and populate tables
 	require_once('components/article/article.sql.php');
 	require_once('components/page/page.sql.php');
+	require_once('components/contact/contact.sql.php');
 
 }
 

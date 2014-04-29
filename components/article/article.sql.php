@@ -11,6 +11,8 @@ DB::query("CREATE TABLE IF NOT EXISTS $table (
   `image` TEXT,
   `authorid` INT,
   `layout` TEXT,
+  `datecreated` INT(11),
+  `datemodified` INT(11),
   PRIMARY KEY  (`id`)
 );");
 
