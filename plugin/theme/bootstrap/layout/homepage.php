@@ -4,12 +4,47 @@ require_once 'header.php';
 
 ?>
 
+<style type="text/css">
+	
+	#showcase
+	{
+		background-image:url(<?php echo WWW ?>/plugin/theme/bootstrap/image/bg.gif);
+		height:300px;
+	}
+	#logo
+	{
+		background-image:url(<?php echo WWW ?>/plugin/theme/bootstrap/image/inkstand_logo.png);
+		background-repeat:no-repeat;
+		background-position:center;
+		width:240px;
+		height:100px;
+		color:transparent;
+	}
+	#header
+	{
+
+	}
+	.navbar-default
+	{
+		margin-bottom:0;
+	}
+
+</style>
+
+<div id="showcase">
+
+</div>
+
 <div class="container">
 
 	<div class="module module3">
 		<header>
-			<h1><?php echo $CORE->getSetting('site_title');?></h1>
+			<!-- code for temporary content -->
+
 		</header>
+		<div id="content">
+			
+		</div>
 	</div>
 
 	<div class="module module2"> 

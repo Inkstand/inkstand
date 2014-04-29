@@ -7,16 +7,16 @@ ini_set('display_errors', true);
 $CONFIG = new stdClass();
 
 // database config etc
-$CONFIG->db_host = 'joeconradt.com';
-$CONFIG->db_name = 'portfolio';
-$CONFIG->db_user = 'portfolio';
-$CONFIG->db_pass = 'c7C4bpWLqyGKmeJs';
+$CONFIG->db_host = 'localhost';
+$CONFIG->db_name = 'inkstand';
+$CONFIG->db_user = 'root';
+$CONFIG->db_pass = '45roEjoE!';
 $CONFIG->db_enco = 'utf8';
 $CONFIG->db_port = null;
 $CONFIG->db_prfx = 'coco_'; // database prefix, no underscore!
 
 $CONFIG->dir = __dir__; // NO TRAILING SLASH!
-$CONFIG->www = 'http://localhost/modular'; // NO TRAILING SLASH!
+$CONFIG->www = 'http://inkstand.org'; // NO TRAILING SLASH!
 /*
 $CONFIG->dir = 'c:/xampp/htdocs/moduler'; // NO TRAILING SLASH!
 $CONFIG->www = 'http://joeconradt.com'; // NO TRAILING SLASH!

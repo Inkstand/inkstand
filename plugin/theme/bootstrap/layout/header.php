@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script type="text/javascript" src="<?php echo WWW . '/core/lib/jquery/jquery-2.1.0.min.js'; ?>"></script>
 	<link rel="stylesheet" href="<?php echo WWW ?>/plugin/theme/bootstrap/css/bootstrap.min.css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
