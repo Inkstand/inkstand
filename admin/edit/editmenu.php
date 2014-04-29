@@ -1,92 +1,84 @@
 <?php
 
-// TODO: get menu id or a way to choose which menu to edit
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+	// this is for actions on checked menu items in the list
 
+	$table = $CORE->getTableFormat('menu_items');
+	$menuitemids = DB::query("SELECT id FROM $table");
+
+	foreach ($menuitemids as $menuitemid) {
+		if(isset($_POST['checkbox' . $menuitemid['id']])) {
+			$value = $_POST['checkbox' . $menuitemid['id']];
+
+			if($value === 'on') {
+				if($_POST['action'] === 'delete') {
+					DB::query("DELETE FROM $table WHERE id = %i", $menuitemid['id']);
+				}
+			}
+		}
+	}
+}
+
+// TODO: get menu id 
 $menuid = 1;
-
-$table = $CORE->getTableFormat("menu");
-$menu = DB::queryFirstRow("SELECT * FROM $table WHERE id = %i", $menuid);
 
 $table = $CORE->getTableFormat("menu_items");
 $menuitems = DB::query("SELECT * FROM $table WHERE menuid = %i", $menuid);
 
-?>
+echo "<h1>Edit menu</h1>";
 
-<script src="<?php echo WWW ?>/admin/js/editmenu.js"></script>
-
-<h1>Edit menu</h1>
-
-<form role="form" method="post">
-
-	<ul class="list-group">
-	<?php
-
-	foreach ($menuitems as $menuitem) {
-		echo '<li class="list-group-item">';
-
-		if($menuitem['type'] == 'link') {
-
-			// get menu item data into array
-			$data = unserialize($menuitem['data']);
-
-			echo ucfirst('<span>' . $menuitem['type']) . '</span>: <b>' . $data['text'] . '</b>';
-			echo "<div class='btn-group' style='float:right'>
-					<a class='btn btn-primary expand' data-target='item" . $menuitem['id'] . "'><span class='glyphicon glyphicon-chevron-down'></span></a>
-					<a class='btn btn-danger delete'><span class='glyphicon glyphicon-remove'></span></a>
-				</div>
-			";
-
-			echo '</li>';
-
-			echo '<li id="item' . $menuitem['id'] . '" class="list-group-item options-collapse">';
-			echo "
-					<div class='form-group'>
-						<label>Text</label>
-						<input type='text' name='link_text_" . $menuitem['id'] . "' value='" . $data['text'] . "'>
-					</div>
-					<div class='form-group'>
-						<label>URL</label>
-						<input type='text' name='link_url_" . $menuitem['id'] . "' value='" . $data['url'] . "'>
-					</div>
-			";
-			echo '</li>';
-		}
-
-		
-		//echo '</li>'; DON'T FORGET THIS 
-	}
-
-	?>
-	</ul>
-
-</form>
-
-<div class="btn-group">
-	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-	Add new item... <span class="caret"></span>
-	</button>
-	<ul class="dropdown-menu add-new" role="menu">
-		<li><a id="link">Link</a></li>
-	</ul>
-</div>
-
-<div style='display:none'>
-	<div id="link-template">
-		<li class="list-group-item"><span>link</span>: <b>New item</b><div class="btn-group" style="float:right">
-				<a class="btn btn-primary expand" data-target="item1"><span class="glyphicon glyphicon-chevron-down"></span></a>
-				<a class="btn btn-danger delete"><span class="glyphicon glyphicon-remove"></span></a>
+echo "
+		<div class='panel panel-default'>
+			<div class='panel-body'>
+				<a class='btn btn-primary' href='index.php?path=/admin/edit/addmenuitem.php&menuid=$menuid'>
+					<span class='glyphicon glyphicon-edit'></span> New item
+				</a>
 			</div>
-		</li>
-		<li id="item1" class="list-group-item options-collapse" style="display: none;">
-				<div class="form-group">
-					<label>Text</label>
-					<input type="text" name="link_text_1" value="Blog">
-				</div>
-				<div class="form-group">
-					<label>URL</label>
-					<input type="text" name="link_url_1" value="http://localhost/modular/index.php/article">
-				</div>
-		</li>
-	</div>
+			<form id='listform' method='post'>
+			<input type='hidden' name='action' value=''>
+			<table class='table' style='border-bottom:1px solid #ddd;'>
 
-</div>
+				<thead>
+					<tr>
+						<th style='width:5px'><input id='mastercheckbox' type='checkbox'></th>
+						<th>Type</th>
+						<th></th>
+						<th>Name</th>
+					</tr>
+				</thead>
+				<tbody>
+";
+
+foreach ($menuitems as $menuitem) {
+	
+	echo '<tr>';
+
+	echo "<td><input type='checkbox' name='checkbox" . $menuitem['id'] . "'></td>";
+
+	echo '<td>' . ucfirst($menuitem['type']) . '</td>';
+
+	echo "<td><a class='' href='" . $CORE->editlink('page', 'editpage.php', 'id=' . $menuitem['id']) . "'><span class='glyphicon glyphicon-pencil'></span> Edit</a></td>";
+
+	echo '<td>' . $menuitem['name'] . '</td>';
+
+	echo '</tr>';
+
+}
+
+echo "			</tbody>
+			</table>
+			</form>
+			<div class='panel-body'>
+				<div class='btn-group'>
+					<button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'>
+						With selected... <span class='caret'></span>
+					</button>
+					<ul class='dropdown-menu' id='selectionmenu' role='menu'>
+					    <li><a value='delete'>Delete</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>";
+
+?>

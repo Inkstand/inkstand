@@ -37,7 +37,7 @@ echo "
 					<span class='glyphicon glyphicon-tasks'></span> Menus and pages
 				</a>
 			</div>
-			<form id='pagelistform' method='post'>
+			<form id='listform' method='post'>
 			<input type='hidden' name='action' value=''>
 			<table class='table' style='border-bottom:1px solid #ddd;'>
 

@@ -17,12 +17,12 @@ $(document).ready(function() {
 
 	// submit form from "with selection" dropdown
 	$("#selectionmenu a").click(function() {
-		console.log('hi');
+
 		var value = $(this).attr('value');
 
-		$('#pagelistform input[name=action]').attr('value', value);
+		$('#listform input[name=action]').attr('value', value);
 
-		$('#pagelistform').submit();
+		$('#listform').submit();
 
 	});
 });
