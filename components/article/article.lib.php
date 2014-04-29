@@ -25,7 +25,8 @@ class ArticleLibrary
 		DB::update($table, array(
 			'title' => $post['title'],
 			'content' => $post['content'],
-			'layout' => $post['layout']
+			'layout' => $post['layout'],
+			'datemodified' => time()
 		), "id=%i", $post['id']);
 
 	}
@@ -37,7 +38,9 @@ class ArticleLibrary
 		DB::insert($table, array(
 			'title' => $post['title'],
 			'content' => $post['content'],
-			'layout' => $post['layout']
+			'layout' => $post['layout'],
+			'datecreated' => time(),
+			'datemodified' => time()
 		));
 
 		header("Location: " . WWW . "/admin/index.php?path=/components/article/edit.php&");
