@@ -13,19 +13,18 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 	$CORE->tinymce('#homepagecontent');
 ?>
-<header>
-	<h2>Editing Homepage Content</h2>
-</header>
-<div class="content">
-	<form method="post" action="" id="homepageform">
-		<span>
-			<textarea id="homepagecontent" name="content">
-				<?php echo $CORE->getSetting('custom_homepage_content'); ?>
-			</textarea>
-		</span>
-		<span>
-		Select a Layout: 
-		<select name = "layout">
+
+<h2>Editing Homepage Content</h2>
+
+<form method="post" action="" id="homepageform">
+	<div class="form-group">
+		<textarea id="homepagecontent" name="content">
+			<?php echo $CORE->getSetting('custom_homepage_content'); ?>
+		</textarea>
+	</div>
+	<div class="form-group">
+		<label>Select a Layout:</label> 
+		<select name = "layout" class="form-control">
 		<?php
 			$currentLayout = $homelib->getLayout();
 			$currenttheme = $CORE->getSetting("currenttheme");
@@ -39,11 +38,31 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 			}
 		?>
 		</select>
-		</span>
-		<br>
-		<br>
-	</form>
-	<a class = "btn btn-primary" href="#" onclick="document.getElementById('homepageform').submit();">Update</a>
-	<a class = "btn btn-default"  href="">Cancel</a>
-</div>
-	
+	</div>
+	<div class="form-group">
+		<?php
+
+		$slideshow = $CORE->getSetting('homepage_slideshow');
+
+		$yes = '';
+		$no = '';
+
+		if($slideshow == 1) {
+			$yes = "selected='selected'";
+		} else {
+			$no = "selected='selected'";
+		}
+
+		?>
+		<label>Homepage slideshow</label>
+		<select name="homepage_slideshow" class="form-control">
+			<option <?php echo $yes ?>>Yes</option>
+			<option <?php echo $no ?>>No</option>
+		</select>
+	</div>
+</form>
+
+<a class = "btn btn-primary" href="#" onclick="document.getElementById('homepageform').submit();">Update</a>
+<a class = "btn btn-default"  href="">Cancel</a>
+
+

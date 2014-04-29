@@ -54,7 +54,7 @@ $CORE->require_capability("Admin");
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="index.php">Dashboard</a></li>
-            <li><a href="index.php?path=/admin/edit/comingsoon.php">Settings</a></li>
+            <li><a href="index.php?path=/admin/edit/editsettings.php">Settings</a></li>
             <li><a href="index.php?path=/admin/edit/comingsoon.php">Profile</a></li>
             <li><a href="index.php?path=/admin/edit/comingsoon.php">Help</a></li>
           </ul>
@@ -120,7 +120,7 @@ $CORE->require_capability("Admin");
         		
         		echo "<h1 class='page-header'>Dashboard</h1>";
 
-        		echo "<p>This is the administration dashboard where you'll see a bunch of shit.</p>";
+        		echo "<p>This is the administration dashboard where you'll see an overview of everything (coming soon).</p>";
 
           } else {
 
