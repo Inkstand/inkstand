@@ -12,6 +12,26 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 <div class="content">
 	<form method="post" action="" id="settingsform">
 		<span class="input-group-addon">Site Title</span> <input class="form-control" type = "text" name = "sitetitle" value = "<?php echo $CORE->getSetting('site_title'); ?>"/> <br>
+		<span class="input-group-addon">Select what component the homepage displays</span>
+			<select name = "homepage_displays" class="form-control">
+			<?php
+				$files = scandir(DIR . '/components');
+				$currenthome = $CORE->getSetting('homepage');
+	        	// loop through all the files and folders
+	        	foreach ($files as $file) {	
+	        		// if file, skip
+	        		if(!is_dir(DIR . '/components/' . $file) || $file == '.' || $file == '..') {
+	        			continue;
+	        		}
+	        		if ($currenthome == $file){
+						echo "<option selected = 'selected' value = '$file'>" . ucfirst($file) . "</option>";
+	        		} else {
+	        			echo "<option value = '$file'>" . ucfirst($file) . "</option>";
+	        		}
+	        	}
+			?>
+			</select>
+		</div>
 		<span class="input-group-addon">Theme Picker</span> <select class="form-control" name = "theme">
 			<?php
 				$currenttheme = $CORE->getSetting('currenttheme');;

@@ -517,6 +517,7 @@ class Core
 
 	public function editgeneralsettings($post) {
 		$this->updateSetting('site_title', $post['sitetitle']);
+		$this->updateSetting('homepage', $post['homepage_displays']);
 		$this->updateSetting('currenttheme', $post['theme']);
 	}
 
