@@ -3,3 +3,7 @@ config.php
 
 # ignore .htaccess
 .htaccess
+
+# ignore file manager stuff
+repository/*
+thumbs/*
