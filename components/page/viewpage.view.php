@@ -12,13 +12,6 @@ if(empty($page)) {
 
 <header>
 	<h2><?php echo $page['title'] ?></h2>
-	<?php if ($CORE->is_admin() == true) { ?>
-		<div class="header-menu">
-			<ul>
-				<li><a class="fa fa-cog fa-lg" href="<?php echo WWW . '/index.php/admin/edit/page/' . $page['id'] ?>"></a></li>
-			</ul>
-		</div>
-	<?php } ?>
 </header>
 
 <div class="content">

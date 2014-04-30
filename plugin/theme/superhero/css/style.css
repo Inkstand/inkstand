@@ -1,0 +1,24 @@
+.header-menu
+{
+	position:absolute;
+	top:-15px;
+	right:5%;
+}
+.header-menu ul
+{
+	list-style:none;
+	padding:0;
+}
+.header-menu a:hover
+{
+	text-decoration:none;
+}
+
+
+/* Custom logged in menu */
+#logged_in_bar {
+	background-color: #333;
+	text-align: right;
+	color: white;
+}
+

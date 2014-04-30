@@ -9,4 +9,9 @@ DB::query("CREATE TABLE IF NOT EXISTS $table (
   `value` text,
   PRIMARY KEY  (`id`)
 );");
+
+DB::insert($table, array(
+  'name' => 'email_to',
+  'value' => ''
+));
 ?>
