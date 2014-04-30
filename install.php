@@ -179,6 +179,7 @@ if ($logged_in == true) {
 	$CORE->setSetting('custom_homepage_content', 'Here is some basic content on your home page.', 'Home page content if component is not chosen for homepage.');
 	$CORE->setSetting('site_title', 'Inkstand', 'The overall title for the site');
 	$CORE->setSetting('custom_homepage_layout', 'homepage', 'What layout file the custom homepage should use');
+	$CORE->setSetting('custom_homepage_slideshow', 1, '');
 
 	$newtable = $pref . "menu_items";
 	DB::insert($newtable, array(
