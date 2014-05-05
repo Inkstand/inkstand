@@ -17,7 +17,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Send Email') {
 </header>
 
 <div class="content">
-	<form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
+	<form method="post" action="#">
 		<span class="input-group-addon">Your Name:</span> <input class="form-control" type="text" name="name"><br>
 		<span class="input-group-addon">Your Email:</span> <input class="form-control" type="text" name="from_email"><br>
 		<span class="input-group-addon">Subject:</span> <input class="form-control" type="text" name="subject"><br>

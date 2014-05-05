@@ -8,7 +8,7 @@ class AdminController extends Controller
 	public function __construct($args = null)
     {
     	// require admin permissions
-    	require_once '/../../config.php';
+    	//require_once '/../../config.php';
     	global $CORE;
     	$CORE->require_capability('Admin');
 
