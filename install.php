@@ -87,7 +87,7 @@ if ($logged_in == true) {
 	echo "<div id = \"logged_in_bar\">";
 		echo "Well hello there, " . $CORE->get_username();
 		if ($CORE->is_admin()) {
-			echo " (Admin) &nbsp;&nbsp;&nbsp;&nbsp; <a href = " . WWW . "/admin>Administration</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href = " . WWW . "/login.php?submit=Logout>Logout</a>";
+			echo " (Admin) &nbsp;&nbsp;&nbsp;&nbsp; <a href = " . WWW . "/admin/index.php>Administration</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href = " . WWW . "/login.php?submit=Logout>Logout</a>";
 
 		} else {
 		}	
