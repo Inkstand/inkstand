@@ -57,7 +57,7 @@ foreach ($menuitems as $menuitem) {
 
 	echo '<td>' . ucfirst($menuitem['type']) . '</td>';
 
-	echo "<td><a class='' href='" . $CORE->editlink('page', 'editpage.php', 'id=' . $menuitem['id']) . "'><span class='glyphicon glyphicon-pencil'></span> Edit</a></td>";
+	echo "<td><a class='' href='index.php?path=/admin/edit/editmenuitem.php&menuid=" . $menuitem['id'] . "'><span class='glyphicon glyphicon-pencil'></span> Edit</a></td>";
 
 	echo '<td>' . $menuitem['name'] . '</td>';
 

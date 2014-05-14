@@ -476,6 +476,13 @@ class Core
 			</nav>';
 	}
 
+	public function get_menu_item($id) {
+		$table = $this->getTableFormat("menu_items");
+		$menuitem = DB::queryFirstRow("SELECT * FROM $table WHERE id = %i", $id);
+		$menuitem['data'] = unserialize($menuitem['data']);
+		return $menuitem;
+	}
+
 
 	/*Gets logged in username*/
 	public function get_username() {
