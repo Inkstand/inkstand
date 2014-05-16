@@ -1,8 +1,9 @@
 <?php
 
-class Component()
+class Component
 {
-	public $name = "No name yet";
+	public $name = "page";
+	public $title = "No name yet";
 	public $description = "No description yet";
 	public $hidden = false;
 	public $editview;

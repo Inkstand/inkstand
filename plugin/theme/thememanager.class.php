@@ -21,8 +21,10 @@ class ThemeManager
 	public function inject_view() {
 
 		// get component name
-		$component = $this->controller->component;
+		$component = $this->controller->component->name;
 		$view = $this->view;
+
+		$viewdata = $this->controller->viewdata;
 
 		require_once DIR . "/components/$component/view/$view.php";
 	}

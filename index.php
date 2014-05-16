@@ -10,6 +10,7 @@ require_once 'config.php';
 require_once DIR . '/core/route/route_improved.class.php';
 require_once 'core/lib/addTinymce.php';
 require_once DIR . '/components/controller.php';
+require_once DIR . '/components/component.class.php';
 require_once DIR . '/plugin/theme/thememanager.class.php';
 
 // *** route ***
@@ -38,63 +39,13 @@ $pageURL = 'http';
 //                                         ^             ^
 // ----------------------------------------^-------------^
 
-$routepath = (isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : null);  
+$routepath = (isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : 'application/index');  
 
-if($routepath) {
+$route = new Route();
+$route->parse_route($routepath);
 
-	$route = new Route();
-	$route->parse_route($routepath);
+$controller = $route->get_controller();
 
-	$controller = $route->get_controller();
-
-	$route->invoke_action($controller, $route->action);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	die();
-
-} else { 
-
-	$content = $CORE->getSetting("homepage");
-
-	if(file_exists(DIR . "/components/$content/index.view.php")) {
-
-		require_once DIR . "/components/$content/$content.controller.php";
-
-		// create controller instance from string
-		$class = ucwords(strtolower($content)) . "Controller";
-
-		$controller = new $class(null);
-
-		$controller->component = $content;
-
-		if ($content == "homepage") {
-			$controller->viewdata->layout = $CORE->getSetting('custom_homepage_layout');
-		} else {
-			$controller->viewdata->layout = "Homepage";
-		}
-
-		$controller->index();
-
-	} else {
-		echo "Home page is broken :(";
-	}
-}
+$route->invoke_action($controller, $route->action);
 
 ?>

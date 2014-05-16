@@ -71,6 +71,7 @@ class Route
 
 		} else {
 			// TODO: error
+			echo "Action not found";
 		}
 	}
 }

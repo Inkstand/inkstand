@@ -8,6 +8,7 @@ class Controller
 
 	protected function __construct($route) {
 		$this->route = $route;
+		$this->viewdata = new stdClass();
 	}
 
 	protected function view($name = null) {

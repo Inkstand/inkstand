@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 }
 
-require_once "page.lib.php";
+require_once "controller/page.lib.php";
 
 $lib = new PageLibrary();
 
