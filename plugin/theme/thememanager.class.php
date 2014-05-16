@@ -5,14 +5,14 @@ class ThemeManager
 	public $controller;
 	public $view;
 
-	public function render_page($controller, $view) {
+	public function render_page($controller, $view, $themeoverride = null) {
 
 		global $CORE;
 
 		$this->controller = $controller;
 		$this->view = $view;
 
-		$currenttheme = $CORE->getSetting('currenttheme');
+		$currenttheme = (!is_null($themeoverride) ? $themeoverride : $CORE->getSetting('currenttheme'));
 		// TODO: get layout
 		$layout = 'default';
 		// inject layout

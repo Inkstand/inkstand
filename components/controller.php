@@ -24,12 +24,15 @@ class Controller
 			$name = $name[0];
 		}
 
+		// TODO: get admin theme in settings, using 'admin' for now
+		$themeoverride = ($name == 'edit' ? 'admin' : null);
+
 		//die("theme: " . THEME_MANAGER);
 		require_once DIR . '/plugin/theme/thememanager.class.php';
 
 		$thememanager = new ThemeManager();
 
-		$thememanager->render_page($this, $name);
+		$thememanager->render_page($this, $name, $themeoverride);
 
 	}
 }

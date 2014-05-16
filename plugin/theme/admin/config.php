@@ -1,6 +1,8 @@
 <?php
 
 //layouts
-$theme_layouts = array('default', 'admin');
+
+$theme_layouts = array('default');
+
 
 ?>

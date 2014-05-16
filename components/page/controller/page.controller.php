@@ -31,6 +31,11 @@ class PageController extends Controller
 
 		return parent::view();
 	}
+
+	public function edit_action()
+	{
+		return parent::view();
+	}
 }
 
 ?>
