@@ -4,11 +4,10 @@ class Controller
 {
 	public $component;
 	public $viewdata;
-	public $args;
+	public $route;
 
-	protected function __construct($args) {
-		$this->viewdata = new stdClass();
-		$this->args = $args;
+	protected function __construct($route) {
+		$this->route = $route;
 	}
 
 	protected function view($name = null) {

@@ -6,7 +6,7 @@ class Route
 	public $action;
 	public $args;
 
-	public function parseRoute($route) {
+	public function parse_route($route) {
 
 		// split the $route into bits for parsing
 		$bits = explode("/", $route);
@@ -35,6 +35,38 @@ class Route
 
 			$this->args = (isset($args) ? $args : null);
 		} 
+	}
+	public function get_controller() {
+
+		// check if controller exists
+
+		$controller = $this->controller;
+		$path = DIR . "/components/$controller/controller/$controller.controller.php";
+		
+		if(file_exists($path)) {
+
+			require_once $path;
+
+			// instantiate new controller class
+			$name = ucfirst($controller) . 'Controller';
+
+			// return controller and pass in this object for route referencing
+			return new $name($this);
+		}
+	}
+	public function invoke_action($controller, $action) {
+
+		$action = $action . '_action';
+
+		// check if action exists
+		if(method_exists($controller, $action)) {
+
+			// invoke action
+			$controller->$action();
+
+		} else {
+			// TODO: error
+		}
 	}
 }
 
