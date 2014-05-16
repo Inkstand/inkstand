@@ -7,7 +7,7 @@ if(!file_exists('config.php')) {
 }
 
 require_once 'config.php';
-require_once DIR . '/core/route/route.class.php';
+require_once DIR . '/core/route/route_improved.class.php';
 require_once 'core/lib/addTinymce.php';
 
 // *** route ***
@@ -32,19 +32,43 @@ $pageURL = 'http';
  }
 
 
-if(isset($_SERVER['PATH_INFO'])) {
-	$routepath = $_SERVER['PATH_INFO'];
+// path_info. Example: domain.com/index.php/course/index/3 
+//                                         ^             ^
+// ----------------------------------------^-------------^
+
+$routepath = (isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : null);  
+
+if($routepath) {
 
 	$route = new Route();
-	$route->directRoute($routepath);
+	$route->parseRoute($routepath);
 
+	print_r($route);
 	die();
 
-} else if ($custom_routepath != "") {
-	$route = new Route();
-	$route->directRoute($custom_routepath);
 
-	die();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 } else { 
 
