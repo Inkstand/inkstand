@@ -10,6 +10,7 @@ require_once 'config.php';
 require_once DIR . '/core/route/route_improved.class.php';
 require_once 'core/lib/addTinymce.php';
 require_once DIR . '/components/controller.php';
+require_once DIR . '/plugin/theme/thememanager.class.php';
 
 // *** route ***
 //echo WWW;
@@ -47,8 +48,6 @@ if($routepath) {
 	$controller = $route->get_controller();
 
 	$route->invoke_action($controller, $route->action);
-
-
 
 
 

@@ -56,6 +56,11 @@ class Route
 	}
 	public function invoke_action($controller, $action) {
 
+		// default to index action if empty
+		if(empty($action)) {
+			$action = 'index';
+		}
+
 		$action = $action . '_action';
 
 		// check if action exists

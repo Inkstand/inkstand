@@ -9,11 +9,7 @@ require_once 'header.php';
 
 	<div class="module module3"> 
 	
-	<?php
-
-	require_once DIR . "/components/$component/$name.view.php";
-
-	?>
+	<?php $this->inject_view() ?>
 
 	</div> 
 
