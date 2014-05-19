@@ -1,5 +1,3 @@
-<h1>Page administration</h1>
-
 <?php
 
 global $CORE;
@@ -38,6 +36,14 @@ foreach ($pages as $page) {
 	));
 }
 
+?>
+
+<h1>Page administration</h1>
+
+<?php
+
+$helper->start_div(null, "panel panel-default");
+
 
 $helper->start_a($CORE->link("/admin/edit/page/addpage"), null, null, 'btn btn-primary');
 $helper->start_tag('span', null, 'glyphicon glyphicon-edit');
@@ -52,6 +58,8 @@ echo " Filters";
 $helper->end_a();
 
 $helper->admin_table($titles, $data);
+
+$helper->end_div(); // panel panel-default
 
 
 ?>
