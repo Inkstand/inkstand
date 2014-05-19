@@ -11,13 +11,16 @@ class Route
 		// split the $route into bits for parsing
 		$bits = explode("/", $route);
 
-		// remove first if blank
-		if(empty($bits[0])) {
-			unset($bits[0]);
-
-			// reindex array
-			$bits = array_values($bits);
+		// make sure index.php and all empty bits are removed from route
+		for ($b=0; $b < count($bits); $b++) { 
+			if($bits[$b] == 'index.php' || empty($bits[$b])) {
+				// unset bit if empty or index.php
+				unset($bits[$b]);
+			}
 		}
+
+		// reorder bits
+		$bits = array_values($bits);
 
 		// make sure the controller bit is present 
 		if(!empty($bits[0])) {
@@ -72,6 +75,10 @@ class Route
 		} else {
 			// TODO: error
 			echo "Action not found";
+			echo "<br>";
+			echo "controller " . $controller;
+			echo "<br>";
+			echo "action " . $action;
 		}
 	}
 }

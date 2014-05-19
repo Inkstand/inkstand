@@ -1,5 +1,7 @@
 <?php
 
+require_once DIR . '/components/page/model/page.php';
+
 class PageController extends Controller
 {
 
@@ -19,7 +21,6 @@ class PageController extends Controller
 
 	public function viewpage_action() 
 	{
-		require_once 'page.lib.php';
 
 		$pageid = $this->route->args[0];
 
@@ -33,6 +34,11 @@ class PageController extends Controller
 	}
 
 	public function edit_action()
+	{
+		return parent::view();
+	}
+
+	public function addpage_action()
 	{
 		return parent::view();
 	}

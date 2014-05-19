@@ -34,6 +34,11 @@ class AdminController extends Controller
 
 		$route->invoke_action($controller, $route->action);
 	}
+
+	public function testhtml_action() 
+	{
+		return parent::view();
+	}
 }
 
 ?>
