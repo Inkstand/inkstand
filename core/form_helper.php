@@ -6,16 +6,20 @@ class FormHelper extends HtmlHelper
 {
 	$inputs = array();
 
-	public function add_input($name, $value, $value, $placeholder, $id, $class, $options)
+	public function add_input($name, $input_options = null, $options = null)
 	{
-		array_push(
-			'name' => $name, 
-			'value' => $value, 
-			'placeholder' => $placeholder, 
-			'id' => $id, 
-			'class' => $class, 
-			'options' => $options
-		);
+		// make sure options isn't null
+		if($options == null) {
+			$options = array();
+		}
+
+		// make sure input options isn't null
+		if($input_options == null) {
+			$input_options = array();
+		}
+
+		// add to list of inputs
+		array_push($inputs, array($name, $input_options, $options));
 	}
 
 	public function start_form($action = null, $method = null, $id = null, $class = null, $options = null)
@@ -47,7 +51,9 @@ class FormHelper extends HtmlHelper
 			$options['name'] = $input['name'];
 			$options['value'] = $input['value'];
 
-			$this->start_tag('input', )
+			$this
+
+			$this->start_tag('input', $input['id'], $input['class'], $options);
 		}
 	}
 }
