@@ -9,7 +9,7 @@ $lib = new ArticleLibrary();
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
 
-	$lib->editArticle($_POST);
+	$lib->edit_article($_POST);
 
 }
 
@@ -43,9 +43,9 @@ $CORE->tinymce('#article1');
 			$currenttheme = $CORE->get_setting("currenttheme");
 			require_once (DIR . "/plugin/theme/$currenttheme/config.php");
 
-			$currentLayout = $lib->getArticleLayout($id);
+			$current_layout = $lib->get_article_layout($id);
 			foreach ($theme_layouts as $layout) {
-				if ($layout == $currentLayout) {
+				if ($layout == $current_layout) {
 					echo "<option selected = 'selected' value = '$layout'>$layout</option>";
 				} else {
 					echo "<option value = '$layout'>$layout</option>";

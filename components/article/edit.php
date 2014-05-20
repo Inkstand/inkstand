@@ -23,14 +23,14 @@ require_once "article.lib.php";
 
 $lib = new ArticleLibrary();
 
-$articles = $lib->getArticleList();
+$articles = $lib->get_article_list();
 
 echo "<h1>Article administration</h1>";
 
 echo "
 		<div class='panel panel-default'>
 			<div class='panel-body'>
-				<a class='btn btn-primary' href='" . $CORE->edit_link('article', 'addarticle') . "'>
+				<a class='btn btn-primary' href='" . $CORE->edit_link('article', 'add_article') . "'>
 					<span class='glyphicon glyphicon-edit'></span> New article
 				</a>
 				<a class='btn btn-default href='#' title='Edit menus to link to your pages'>

@@ -11,7 +11,7 @@ $lib = new ArticleLibrary();
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
 
-	$lib->addArticle($_POST);
+	$lib->add_article($_POST);
 
 }
 
@@ -34,9 +34,9 @@ $CORE->tinymce('#article1');
 		Select a Layout: 
 		<select name = "layout">
 		<?php
-			$currentLayout = $lib->getArticleLayout($id);
+			$current_layout = $lib->get_article_layout($id);
 			foreach ($theme_layouts as $layout) {
-				if ($layout == $currentLayout) {
+				if ($layout == $current_layout) {
 					echo "<option selected = 'selected' value = '$layout'>$layout</option>";
 				} else {
 					echo "<option value = '$layout'>$layout</option>";

@@ -23,14 +23,14 @@ require_once "controller/page.lib.php";
 
 $lib = new PageLibrary();
 
-$pages = $lib->getListOfPages();
+$pages = $lib->get_list_of_pages();
 
 echo "<h1>Page administration</h1>";
 
 echo "
 		<div class='panel panel-default'>
 			<div class='panel-body'>
-				<a class='btn btn-primary' href='" . $CORE->edit_link('page', 'addpage') . "'>
+				<a class='btn btn-primary' href='" . $CORE->edit_link('page', 'add_page') . "'>
 					<span class='glyphicon glyphicon-edit'></span> New page
 				</a>
 				<a class='btn btn-default href='#' title='Edit menus to link to your pages'>
@@ -62,7 +62,7 @@ foreach ($pages as $page) {
 	echo "<td><a href='" . $CORE->link("/index.php/page/viewpage/" . $page['id']) . "'>$page[title]</a></td>";
 	
 	// edit buttons
-	echo "<td><a class='' href='" . $CORE->edit_link('page', 'editpage.php', 'id=' . $page['id']) . "'><span class='glyphicon glyphicon-pencil'></span> Edit</a></td>";
+	echo "<td><a class='' href='" . $CORE->edit_link('page', 'edit_page.php', 'id=' . $page['id']) . "'><span class='glyphicon glyphicon-pencil'></span> Edit</a></td>";
 
 	// get user created
 	$table = $CORE->get_table_format("users");

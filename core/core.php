@@ -107,7 +107,7 @@ class Core
 		return eval($plugin . "_strings[$name]");
 	}
 
-	public function pring_module($type, $id) {
+	public function print_module($type, $id) {
 		global $CONFIG, $CORE;
 
 		$MODULE = new stdClass();

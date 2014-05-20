@@ -26,7 +26,7 @@ class PageController extends Controller
 
 		$lib = new PageLibrary();
 
-		$page = $lib->getPage($pageid);
+		$page = $lib->get_page($pageid);
 
 		$this->viewdata->page = $page;
 
@@ -38,7 +38,7 @@ class PageController extends Controller
 		return parent::view();
 	}
 
-	public function addpage_action()
+	public function add_page_action()
 	{
 		return parent::view();
 	}

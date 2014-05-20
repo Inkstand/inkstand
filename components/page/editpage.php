@@ -13,12 +13,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		'content' => $_POST['content']
 	);
 
-	$success = $lib->editPage($page);
+	$success = $lib->edit_page($page);
 
 	if($success) {
-		$lib->printSuccess('edit');
+		$lib->print_success('edit');
 	} else {
-		$lib->printFailure('edit');
+		$lib->print_failure('edit');
 	}
 
 }

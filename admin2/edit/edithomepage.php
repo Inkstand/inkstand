@@ -26,11 +26,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 		<label>Select a Layout:</label> 
 		<select name = "layout" class="form-control">
 		<?php
-			$currentLayout = $homelib->getLayout();
+			$current_layout = $homelib->get_layout();
 			$currenttheme = $CORE->get_setting("currenttheme");
 			require_once (DIR . "/plugin/theme/$currenttheme/config.php");
 			foreach ($theme_layouts as $layout) {
-				if ($layout == $currentLayout) {
+				if ($layout == $current_layout) {
 					echo "<option selected = 'selected' value = '$layout'>$layout</option>";
 				} else {
 					echo "<option value = '$layout'>$layout</option>";

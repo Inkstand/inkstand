@@ -2,24 +2,24 @@
 
 class ArticleLibrary 
 {
-	function getArticleList() {
+	function get_article_list() {
 		global $CORE;
 		$table = $CORE->get_table_format("article");
 		return DB::query("SELECT * FROM $table");
 	}
 
-	function getArticle($articleid) {
+	function get_article($articleid) {
 		global $CORE;
 		$table = $CORE->get_table_format("article");
 		return DB::queryFirstRow("SELECT * FROM $table WHERE id = %i", $articleid);
 	}
 
-	function editArticle($post) {
+	function edit_article($post) {
 		global $CORE;
 		$table = $CORE->get_table_format("article");
 
 		if (isset($post['submit1']) && $post['submit1'] == "Delete Article") {
-			$this->deleteArticle($post);
+			$this->delete_article($post);
 		}
 
 		DB::update($table, array(
@@ -31,7 +31,7 @@ class ArticleLibrary
 
 	}
 
-	function addArticle($post) {
+	function add_article($post) {
 		global $CORE;
 		$table = $CORE->get_table_format("article");
 
@@ -47,7 +47,7 @@ class ArticleLibrary
  		exit;
 	}
 
-	function deleteArticle($post) {
+	function delete_article($post) {
 		global $CORE;
 		$table = $CORE->get_table_format("article");
 		DB::delete($table, "id=%i", $post['id']);
@@ -56,7 +56,7 @@ class ArticleLibrary
  		exit;
 	}
 
-	function getArticleLayout($articleid) {
+	function get_article_layout($articleid) {
 		global $CORE;
 		$table = $CORE->get_table_format("article");
 		$result = DB::queryFirstRow("SELECT layout FROM $table WHERE id = %i", $articleid);

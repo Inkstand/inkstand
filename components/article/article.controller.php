@@ -16,7 +16,7 @@ class ArticleController extends Controller
 
 		$lib = new ArticleLibrary();
 
-		$this->viewdata->articles = $lib->getArticleList();
+		$this->viewdata->articles = $lib->get_article_list();
 
 		return parent::view();
 	}
@@ -34,9 +34,9 @@ class ArticleController extends Controller
 			die();
 		}
 
-		$this->viewdata->article = $lib->getArticle($articleid); 
+		$this->viewdata->article = $lib->get_article($articleid); 
 
-		$this->viewdata->layout = $lib->getArticleLayout($articleid);
+		$this->viewdata->layout = $lib->get_article_layout($articleid);
 
 		return parent::view();
 	}

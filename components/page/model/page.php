@@ -2,7 +2,7 @@
 
 class Page 
 {
-	public function getPage($id) 
+	public function get_page($id) 
 	{
 		global $CORE;
 		$table = $CORE->get_table_format("page");
@@ -13,7 +13,7 @@ class Page
 		$table = $CORE->get_table_format("page");
 		return DB::query("SELECT * FROM $table");
 	}
-	public function addPage($page) 
+	public function add_page($page) 
 	{
 
 		// insert new page into the database
@@ -31,7 +31,7 @@ class Page
 			'usermodifiedid' => 1
 		));
 	}
-	public function editPage($page) 
+	public function edit_page($page) 
 	{
 
 		// update page record
@@ -48,13 +48,13 @@ class Page
 		), "id=%i", $page['id']);
 
 	}
-	public function printSuccess($action) 
+	public function print_success($action) 
 	{
 		if($action == 'edit') {
 			echo '<div class="alert alert-success"><b>Success!</b> Page edited successfully.</div>';
 		} 
 	}
-	public function printFailure($action) 
+	public function print_failure($action) 
 	{
 		if($action == 'edit') {
 			echo '<div class="alert alert-danger"><b>Error:</b> The page could not be edited.</div>';

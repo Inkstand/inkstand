@@ -2,7 +2,7 @@
 
 require_once DIR . '/core/form_helper.php';
 
-class AddpageForm extends FormHelper
+class add_pageForm extends FormHelper
 {
 	public function __construct() 
 	{

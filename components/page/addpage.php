@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		'content' => $_POST['content']
 	);
 
-	$lib->addPage($page);
+	$lib->add_page($page);
 
 }
 

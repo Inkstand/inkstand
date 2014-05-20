@@ -9,7 +9,7 @@ if(isset($_SERVER['PATH_INFO'])) {
 	$routepath = $_SERVER['PATH_INFO'];
 	
 	$route = new Route();
-	$route->directRoute($routepath);
+	$route->direct_route($routepath);
 
 	die();
 

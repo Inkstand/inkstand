@@ -2,7 +2,7 @@
 
 class Route
 {
-	public function directRoute($route) {
+	public function direct_route($route) {
 
 		// split the $route into bits for parsing
 		$bits = explode("/", $route);
@@ -26,7 +26,7 @@ class Route
 			$args = array_values($args);
 
 			// get the controller 
-			$controller = $this->getController($bits[0], $args);
+			$controller = $this->get_controller($bits[0], $args);
 			$controller->component = $bits[0];
 
 			// invoke the action if it exists, if not, invoke the index method
@@ -42,7 +42,7 @@ class Route
 		} 
 	}
 
-	protected function getController($name, $args = null) {
+	protected function get_controller($name, $args = null) {
 
 		// get the controller
 		require_once DIR . "/components/$name/$name.controller.php";

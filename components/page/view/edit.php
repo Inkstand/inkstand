@@ -45,13 +45,13 @@ foreach ($pages as $page) {
 $helper->start_div(null, "panel panel-default");
 
 
-$helper->start_a($CORE->link("/admin/edit/page/addpage"), null, null, 'btn btn-primary');
+$helper->start_a($CORE->link("/admin/edit/page/add_page"), null, null, 'btn btn-primary');
 $helper->start_tag('span', null, 'glyphicon glyphicon-edit');
 $helper->end_tag('span');
 echo " New page";
 $helper->end_a();
 
-$helper->start_a($CORE->link("/admin/edit/page/addpage"), null, null, 'btn btn-default');
+$helper->start_a($CORE->link("/admin/edit/page/add_page"), null, null, 'btn btn-default');
 $helper->start_tag('span', null, 'glyphicon glyphicon glyphicon-filter');
 $helper->end_tag('span');
 echo " Filters";

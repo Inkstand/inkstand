@@ -8,7 +8,7 @@ class Module {
 	protected function __construct($type) {
 		$this->type = $type;
 	}
-	protected function pring_module() {
+	protected function print_module() {
 		echo '<div class="module module' . $type . '">';
 		echo $this->html;
 		echo '</div>';
