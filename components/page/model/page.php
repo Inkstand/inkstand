@@ -5,12 +5,12 @@ class Page
 	public function getPage($id) 
 	{
 		global $CORE;
-		$table = $CORE->getTableFormat("page");
+		$table = $CORE->get_table_format("page");
 		return DB::queryFirstRow("SELECT * FROM $table WHERE id = %i", $id);
 	}
 	public function get_list_of_pages() {
 		global $CORE;
-		$table = $CORE->getTableFormat("page");
+		$table = $CORE->get_table_format("page");
 		return DB::query("SELECT * FROM $table");
 	}
 	public function addPage($page) 
@@ -19,7 +19,7 @@ class Page
 		// insert new page into the database
 
 		global $CORE;
-		$table = $CORE->getTableFormat("page");
+		$table = $CORE->get_table_format("page");
 
 		return DB::insert($table, array(
 			'title' => $page['title'],
@@ -37,7 +37,7 @@ class Page
 		// update page record
 
 		global $CORE;
-		$table = $CORE->getTableFormat("page");
+		$table = $CORE->get_table_format("page");
 
 		return DB::update($table, array(
 			'title' => $page['title'],
@@ -63,9 +63,9 @@ class Page
 	public function get_created_user($pageid) 
 	{
 		global $CORE;
-		$table = $CORE->getTableFormat("page");
+		$table = $CORE->get_table_format("page");
 		$userid = DB::queryFirstRow("SELECT usercreatedid FROM $table WHERE id = %i", $pageid);
-		$table = $CORE->getTableFormat("users");
+		$table = $CORE->get_table_format("users");
 		$user = DB::queryFirstRow("SELECT * FROM $table WHERE id = %i", $userid['usercreatedid']);
 		return $user;
 	}

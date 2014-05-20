@@ -3,7 +3,7 @@
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// this is for actions on checked pages in the list
 
-	$table = $CORE->getTableFormat('article');
+	$table = $CORE->get_table_format('article');
 	$articleids = DB::query("SELECT id FROM $table");
 
 	foreach ($articleids as $pageid) {
@@ -30,7 +30,7 @@ echo "<h1>Article administration</h1>";
 echo "
 		<div class='panel panel-default'>
 			<div class='panel-body'>
-				<a class='btn btn-primary' href='" . $CORE->editlink('article', 'addarticle') . "'>
+				<a class='btn btn-primary' href='" . $CORE->edit_link('article', 'addarticle') . "'>
 					<span class='glyphicon glyphicon-edit'></span> New article
 				</a>
 				<a class='btn btn-default href='#' title='Edit menus to link to your pages'>
@@ -62,20 +62,20 @@ foreach ($articles as $page) {
 	echo "<td><a href='" . $CORE->link("/index.php/article/read/" . $page['id']) . "'>$page[title]</a></td>";
 	
 	// edit buttons
-	echo "<td><a class='' href='" . $CORE->editlink('article', 'editinstance.php', 'id=' . $page['id']) . "'><span class='glyphicon glyphicon-pencil'></span> Edit</a></td>";
+	echo "<td><a class='' href='" . $CORE->edit_link('article', 'editinstance.php', 'id=' . $page['id']) . "'><span class='glyphicon glyphicon-pencil'></span> Edit</a></td>";
 
 	// get user created
-	$table = $CORE->getTableFormat("users");
+	$table = $CORE->get_table_format("users");
 	$user = DB::queryFirstRow("SELECT f_name, l_name FROM $table WHERE id = %i", $page['authorid']);
 
 	echo "<td>$user[f_name] $user[l_name]</td>";
 
 	// get date created
-	$datecreated = $CORE->getTime($page['datecreated'], "Y-m-d");
+	$datecreated = $CORE->get_time($page['datecreated'], "Y-m-d");
 
 	echo "<td>$datecreated</td>";
 
-	$datemodified = $CORE->getTime($page['datemodified'], "Y-m-d");
+	$datemodified = $CORE->get_time($page['datemodified'], "Y-m-d");
 
 	echo "<td>$datemodified</td>";
 

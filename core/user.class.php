@@ -9,7 +9,7 @@ class User
 		// TODO: get required fields for create
 
 		$userid = $this->attributes['id'];
-		$table = $CORE->getTableFormat("user");
+		$table = $CORE->get_table_format("user");
 
 		// see if id is specified, if not it's not possible to progress
 		if(!empty($userid)) {
@@ -27,7 +27,7 @@ class User
 		// TODO: get required fields for create
 
 		$userid = $this->attributes['id'];
-		$table = $CORE->getTableFormat("user");
+		$table = $CORE->get_table_format("user");
 
 		// see if id is specified, if not it's not possible to progress
 		if(empty($userid)) {
@@ -61,7 +61,7 @@ class User
 
 	public function populate($id) {
 		global $DB, $CORE;
-		$table = $CORE->getTableFormat("user");
+		$table = $CORE->get_table_format("user");
 		$userResult = DB::queryFirstRow("SELECT * FROM $table WHERE id=%i", $id);
 
 		foreach ($userResult as $attributeName => $attributeValue) {

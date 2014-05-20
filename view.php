@@ -7,10 +7,10 @@ $currenttheme = "foundation";
 // view id
 $id = $_GET['id'];
 
-$table = $CORE->getTableFormat("view");
+$table = $CORE->get_table_format("view");
 $view = DB::queryFirstRow("SELECT * FROM $table WHERE id = %i", $id);
 
-$table = $CORE->getTableFormat("module");
+$table = $CORE->get_table_format("module");
 $modules = DB::query("SELECT id, type FROM $table WHERE viewid = %i", $id);
 
 $VIEW = new stdClass();

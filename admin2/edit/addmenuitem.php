@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	$data = serialize($data);
 
-	$table = $CORE->getTableFormat("menu_items");
+	$table = $CORE->get_table_format("menu_items");
 	DB::insert($table, array(
 		'type' => 'link', // TODO
 		'name' => $_POST['name'],

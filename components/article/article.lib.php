@@ -4,19 +4,19 @@ class ArticleLibrary
 {
 	function getArticleList() {
 		global $CORE;
-		$table = $CORE->getTableFormat("article");
+		$table = $CORE->get_table_format("article");
 		return DB::query("SELECT * FROM $table");
 	}
 
 	function getArticle($articleid) {
 		global $CORE;
-		$table = $CORE->getTableFormat("article");
+		$table = $CORE->get_table_format("article");
 		return DB::queryFirstRow("SELECT * FROM $table WHERE id = %i", $articleid);
 	}
 
 	function editArticle($post) {
 		global $CORE;
-		$table = $CORE->getTableFormat("article");
+		$table = $CORE->get_table_format("article");
 
 		if (isset($post['submit1']) && $post['submit1'] == "Delete Article") {
 			$this->deleteArticle($post);
@@ -33,7 +33,7 @@ class ArticleLibrary
 
 	function addArticle($post) {
 		global $CORE;
-		$table = $CORE->getTableFormat("article");
+		$table = $CORE->get_table_format("article");
 
 		DB::insert($table, array(
 			'title' => $post['title'],
@@ -49,7 +49,7 @@ class ArticleLibrary
 
 	function deleteArticle($post) {
 		global $CORE;
-		$table = $CORE->getTableFormat("article");
+		$table = $CORE->get_table_format("article");
 		DB::delete($table, "id=%i", $post['id']);
 
 		header("Location: " . WWW . "/admin/index.php?path=/components/article/edit.php&");
@@ -58,7 +58,7 @@ class ArticleLibrary
 
 	function getArticleLayout($articleid) {
 		global $CORE;
-		$table = $CORE->getTableFormat("article");
+		$table = $CORE->get_table_format("article");
 		$result = DB::queryFirstRow("SELECT layout FROM $table WHERE id = %i", $articleid);
 		return $result['layout'];
 	}

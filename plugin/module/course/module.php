@@ -2,7 +2,7 @@
 
 $id = $MODULE->id;
 
-$table = $CORE->getTableFormat("course");
+$table = $CORE->get_table_format("course");
 $course = DB::queryFirstRow("SELECT * FROM $table WHERE id = %i", $id);
 
 ?>

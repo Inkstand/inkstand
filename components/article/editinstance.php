@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 
 $id = $_GET['id'];
-$table = $CORE->getTableFormat("article");
+$table = $CORE->get_table_format("article");
 $article = DB::queryFirstRow("SELECT * FROM $table WHERE id=%i", $id);
 
 $CORE->tinymce('#article1');
@@ -40,7 +40,7 @@ $CORE->tinymce('#article1');
 		Select a Layout: 
 		<select name = "layout">
 		<?php
-			$currenttheme = $CORE->getSetting("currenttheme");
+			$currenttheme = $CORE->get_setting("currenttheme");
 			require_once (DIR . "/plugin/theme/$currenttheme/config.php");
 
 			$currentLayout = $lib->getArticleLayout($id);

@@ -34,7 +34,7 @@ $CORE->tinymce('#article1');
 		Select a Layout: 
 		<select name = "layout">
 		<?php
-			$currenttheme = $CORE->getSetting("currenttheme");
+			$currenttheme = $CORE->get_setting("currenttheme");
 			require_once (DIR . "/plugin/theme/$currenttheme/config.php");
 
 			$currentLayout = $lib->getArticleLayout($id);

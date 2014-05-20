@@ -3,7 +3,7 @@
 $CORE->require_capability("Admin");
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
-	$CORE->editgeneralsettings($_POST);
+	$CORE->edit_general_settings($_POST);
 }
 ?>
 <header>
@@ -11,12 +11,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 </header>
 <div class="content">
 	<form method="post" action="" id="settingsform">
-		<span class="input-group-addon">Site Title</span> <input class="form-control" type = "text" name = "sitetitle" value = "<?php echo $CORE->getSetting('site_title'); ?>"/> <br>
+		<span class="input-group-addon">Site Title</span> <input class="form-control" type = "text" name = "sitetitle" value = "<?php echo $CORE->get_setting('site_title'); ?>"/> <br>
 		<span class="input-group-addon">Select what component the homepage displays</span>
 			<select name = "homepage_displays" class="form-control">
 			<?php
 				$files = scandir(DIR . '/components');
-				$currenthome = $CORE->getSetting('homepage');
+				$currenthome = $CORE->get_setting('homepage');
 	        	// loop through all the files and folders
 	        	foreach ($files as $file) {	
 	        		// if file, skip
@@ -34,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 		</div>
 		<span class="input-group-addon">Theme Picker</span> <select class="form-control" name = "theme">
 			<?php
-				$currenttheme = $CORE->getSetting('currenttheme');;
+				$currenttheme = $CORE->get_setting('currenttheme');;
 				if ($handle = opendir(DIR . '/plugin/theme')) {
 				    $blacklist = array('.', '..', 'theme.php');
 				    while (false !== ($file = readdir($handle))) {

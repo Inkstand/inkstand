@@ -4,12 +4,12 @@ class PageLibrary
 {
 	public function getPage($id) {
 		global $CORE;
-		$table = $CORE->getTableFormat("page");
+		$table = $CORE->get_table_format("page");
 		return DB::queryFirstRow("SELECT * FROM $table WHERE id = %i", $id);
 	}
 	public function getListOfPages() {
 		global $CORE;
-		$table = $CORE->getTableFormat("page");
+		$table = $CORE->get_table_format("page");
 		return DB::query("SELECT * FROM $table");
 	}
 	public function addPage($page) {
@@ -17,7 +17,7 @@ class PageLibrary
 		// insert new page into the database
 
 		global $CORE;
-		$table = $CORE->getTableFormat("page");
+		$table = $CORE->get_table_format("page");
 
 		return DB::insert($table, array(
 			'title' => $page['title'],
@@ -34,7 +34,7 @@ class PageLibrary
 		// update page record
 
 		global $CORE;
-		$table = $CORE->getTableFormat("page");
+		$table = $CORE->get_table_format("page");
 
 		return DB::update($table, array(
 			'title' => $page['title'],

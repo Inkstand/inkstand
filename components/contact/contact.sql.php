@@ -2,7 +2,7 @@
 
 require_once 'config.php';
 
-$table = $CORE->getTableFormat("contact");
+$table = $CORE->get_table_format("contact");
 DB::query("CREATE TABLE IF NOT EXISTS $table (
   `id` INT(7) NOT NULL AUTO_INCREMENT,
   `name` TEXT,

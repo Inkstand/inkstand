@@ -71,7 +71,7 @@ $CORE->require_capability("Admin");
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
           <li class="active"><a href="index.php">Dashboard</a></li>
-          <li class="active"><a href="index.php?path=/admin/edit/edithomepage.php">Homepage</a></li>
+          <li class="active"><a href="index.php?path=/admin/edit/edit_homepage.php">Homepage</a></li>
           <li class="active"><a href="#" class="navtoggle" data-toggle="componentnav">Components</a></li>
             <li>
             	<ul class="nav collapse" id="componentnav">
@@ -93,7 +93,7 @@ $CORE->require_capability("Admin");
 
             		// echo menu item
 
-            		echo "<li><a href='" . $CORE->editlink($file, "edit") . "'>" . ucfirst($file) . "</a></li>";
+            		echo "<li><a href='" . $CORE->edit_link($file, "edit") . "'>" . ucfirst($file) . "</a></li>";
 
             	}
 

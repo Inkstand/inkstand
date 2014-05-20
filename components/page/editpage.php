@@ -31,7 +31,7 @@ if(empty($id)) {
 	die("Missing page id");
 }
 
-$table = $CORE->getTableFormat("page");
+$table = $CORE->get_table_format("page");
 $page = DB::queryFirstRow("SELECT * FROM $table WHERE id = %i", $id);
 
 foreach ($page as &$pagedata) {
@@ -44,7 +44,7 @@ foreach ($page as &$pagedata) {
 	<div class="row">
 		<div class="col-md-8">
 			<h1>Edit page</h1>
-			<a class='btn btn-default' href="<?php echo $CORE->editlink('page', 'edit'); ?>"><span class='glyphicon glyphicon-arrow-left'></span> Back</a>
+			<a class='btn btn-default' href="<?php echo $CORE->edit_link('page', 'edit'); ?>"><span class='glyphicon glyphicon-arrow-left'></span> Back</a>
 			<hr>
 			<form method='post'>
 				<div class="form-group">
@@ -65,7 +65,7 @@ foreach ($page as &$pagedata) {
 				<input type='hidden' name='id' value='<?php echo $id ?>'>
 
 				<input type='submit' class='btn btn-primary' value='Update page'>
-				<a class='btn btn-default' href="<?php echo $CORE->editlink('page', 'edit'); ?>">Cancel</a>
+				<a class='btn btn-default' href="<?php echo $CORE->edit_link('page', 'edit'); ?>">Cancel</a>
 
 			</form>
 		</div>

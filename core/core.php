@@ -10,8 +10,8 @@ class Core
 	public $username = "";
 	public $userid = "";
 
-	public function getSetting($name, $description = false) {
-		$table = $this->getTableFormat("config");
+	public function get_setting($name, $description = false) {
+		$table = $this->get_table_format("config");
 		$result = DB::queryFirstRow("SELECT value, description FROM $table WHERE name=%s", $name);
 
 		if($result === NULL) {
@@ -25,8 +25,8 @@ class Core
 		}
 	}
 
-	public function setSetting($name, $value, $description = NULL) {
-		$table = $this->getTableFormat("config");
+	public function set_setting($name, $value, $description = NULL) {
+		$table = $this->get_table_format("config");
 
 		if($description === NULL) {
 			DB::insertUpdate($table, array(
@@ -41,13 +41,13 @@ class Core
 			));
 		}
 	}
-	public function updateSetting($name, $value) {
-		$table = $this->getTableFormat("config");
+	public function update_setting($name, $value) {
+		$table = $this->get_table_format("config");
 		DB::update($table, array('value' => $value), "name=%s", $name);
 	}
 
-	public function getPluginSetting($name, $plugin, $description = false) {
-		$table = $this->getTableFormat("config_plugin");
+	public function get_plugin_setting($name, $plugin, $description = false) {
+		$table = $this->get_table_format("config_plugin");
 		$result = DB::queryFirstRow("SELECT value, description FROM $table WHERE name=%s0 AND plugin=%s1", $name, $plugin);
 
 		if($result === NULL) {
@@ -61,8 +61,8 @@ class Core
 		}
 	}
 
-	public function setPluginSetting($name, $plugin, $value, $description = NULL) {
-		$table = $this->getTableFormat("config_plugin");
+	public function set_plugin_setting($name, $plugin, $value, $description = NULL) {
+		$table = $this->get_table_format("config_plugin");
 
 		if($description === NULL) {
 			DB::insertUpdate($table, array(
@@ -80,26 +80,26 @@ class Core
 		}
 	}
 
-	public function clearSetting($name) {
-		$this->setSetting($name, '', '');
+	public function clear_setting($name) {
+		$this->set_setting($name, '', '');
 	}
 
-	public function clearPluginSetting($name, $plugin) {
-		$this->setPluginSetting($name, $plugin, '', '');
+	public function clear_plugin_setting($name, $plugin) {
+		$this->set_plugin_setting($name, $plugin, '', '');
 	}
 
-	public function getTableFormat($tableName) {
+	public function get_table_format($tableName) {
 		global $CONFIG;
 		return $CONFIG->db_prfx . $tableName;
 	}
 
-	public function getString($name) {
+	public function get_string($name) {
 		require_once DIR . "/core/lang/en/strings.php";
 		return $strings[$name];
 	}
 
-	public function getPluginString($name, $plugin) {
-		$table = $this->getTableFormat("plugin");
+	public function get_plugin_string($name, $plugin) {
+		$table = $this->get_table_format("plugin");
 		$result = queryFirstRow("SELECT type FROM $table WHERE name=%s", $plugin);
 
 		require_once DIR . "/plugin/" . $result['type'] . "/" . $plugin . "/lang/en/strings.php";
@@ -107,7 +107,7 @@ class Core
 		return eval($plugin . "_strings[$name]");
 	}
 
-	public function printModule($type, $id) {
+	public function pring_module($type, $id) {
 		global $CONFIG, $CORE;
 
 		$MODULE = new stdClass();
@@ -116,7 +116,7 @@ class Core
 		
 		require DIR . "/plugin/module/" . $type . "/module.php";
 	}
-	public function shortenString($string, $length) {
+	public function shorten_string($string, $length) {
 		if(strlen($string) <= $length) {
 			return $string;
 		} else {
@@ -160,7 +160,7 @@ class Core
 			//echo $_SESSION['user'];
 
 			//lets verify the login user with the login table
-			$table = $this->getTableFormat("logins");
+			$table = $this->get_table_format("logins");
 			$login_results = DB::query("Select id, userid, user_ip, user_ip_2, last_action FROM $table");
 			$verified_login = false;
 			foreach ($login_results as $i)
@@ -185,7 +185,7 @@ class Core
 					  'id' => $i["id"],
 					  'last_action' => time()
 					));*/
-					$table = $this->getTableFormat("logins");
+					$table = $this->get_table_format("logins");
 					DB::update($table, array(
 					'last_action' => time()
 					), "id=%s", $i["id"]);
@@ -241,7 +241,7 @@ class Core
 
 		if ($form_filled)
 		{
-			$table = $this->getTableFormat("users");
+			$table = $this->get_table_format("users");
 			$results = DB::query("SELECT id, username, password FROM $table");
 			foreach ($results as $row) {
 				if ($row['username'] == $username)
@@ -262,7 +262,7 @@ class Core
 						}
 						
 						$current_time = time();
-						$table = $this->getTableFormat("logins");
+						$table = $this->get_table_format("logins");
 						DB::insert($table, array(
 						  'userid' => $userid,
 						  'user_ip' => $userip,
@@ -296,7 +296,7 @@ class Core
 
 	public function logout_user()
 	{
-		$table = $this->getTableFormat("logins");
+		$table = $this->get_table_format("logins");
 		$logged_in = $this->check_if_logged_in();
 		$userid;
 		if ($logged_in)
@@ -330,7 +330,7 @@ class Core
 	}
 
 	public function is_admin() {
-		$table = $this->getTableFormat("logins");
+		$table = $this->get_table_format("logins");
 		if (isset($_SESSION['user'])) {
 			//user is logged in (lets check all the credentials)
 			//echo $_SESSION['user'];
@@ -366,7 +366,7 @@ class Core
 					//echo "You are logged in";
 
 					//checking if user is admin
-					$table = $this->getTableFormat("users");
+					$table = $this->get_table_format("users");
 					$users = DB::query("SELECT id, admin FROM $table");
 					foreach ($users as $row) {
 						if ($row['id'] == $i['userid'])
@@ -419,7 +419,7 @@ class Core
 		// this will be a very versatile function, allowing the echoing of links, search boxes, dropdowns, etc. 
 		// Bootstrap!
 
-		$table = $this->getTableFormat("menu_items");
+		$table = $this->get_table_format("menu_items");
 		$menuitems = DB::query("SELECT * FROM $table WHERE menuid = %i", $menuid);
 
 		// echo some HTML
@@ -477,7 +477,7 @@ class Core
 	}
 
 	public function get_menu_item($id) {
-		$table = $this->getTableFormat("menu_items");
+		$table = $this->get_table_format("menu_items");
 		$menuitem = DB::queryFirstRow("SELECT * FROM $table WHERE id = %i", $id);
 		$menuitem['data'] = unserialize($menuitem['data']);
 		return $menuitem;
@@ -487,14 +487,14 @@ class Core
 	/*Gets logged in username*/
 	public function get_username() {
 		//$login_results = DB::query("Select id, userid, user_ip, user_ip_2, last_action FROM logins");
-		$table = $this->getTableFormat("users");
+		$table = $this->get_table_format("users");
 		$username = DB::queryFirstField("SELECT username FROM $table WHERE username=%i", $this->userid);
 		return $username;
 
 	}
 
 	public function link($rel) {
-		if ($this->getSetting("Mod_Rewrite") == 0) {
+		if ($this->get_setting("Mod_Rewrite") == 0) {
 			return WWW . $rel;
 		} 
 		return WWW . str_replace('index.php/', '', $rel);
@@ -502,7 +502,7 @@ class Core
 		
 	}
 
-	public function editlink($component, $file, $urlstring = '') {
+	public function edit_link($component, $file, $urlstring = '') {
 
 		if(!strpos($file, '.php')) {
 			$file .= '.php';
@@ -511,24 +511,24 @@ class Core
 		return "index.php?path=/components/$component/$file&$urlstring";
 	}
 
-	public function getTime($unixtimestamp, $format) {
+	public function get_time($unixtimestamp, $format) {
 
 		return gmdate($format, $unixtimestamp);
 
 	}
 
-	public function editHomepage($post) {
-		$this->updateSetting('custom_homepage_content', $post['content']);
-		$this->updateSetting('custom_homepage_layout', $post['layout']);
+	public function edit_homepage($post) {
+		$this->update_setting('custom_homepage_content', $post['content']);
+		$this->update_setting('custom_homepage_layout', $post['layout']);
 	}
 
-	public function editgeneralsettings($post) {
-		$this->updateSetting('site_title', $post['sitetitle']);
-		$this->updateSetting('homepage', $post['homepage_displays']);
-		$this->updateSetting('currenttheme', $post['theme']);
+	public function edit_general_settings($post) {
+		$this->update_setting('site_title', $post['sitetitle']);
+		$this->update_setting('homepage', $post['homepage_displays']);
+		$this->update_setting('currenttheme', $post['theme']);
 	}
 
-	public function emailspamcheck($field) {
+	public function email_spam_check($field) {
 		// Sanitize e-mail address
 		$field=filter_var($field, FILTER_SANITIZE_EMAIL);
 		// Validate e-mail address
@@ -539,7 +539,7 @@ class Core
 		}
 	}
 
-	public function sendemail($to, $subject, $message, $from) {
+	public function send_email($to, $subject, $message, $from) {
 		mail($to, $subject, $message, "From: $from\n");
 	}
 }

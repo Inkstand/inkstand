@@ -12,7 +12,7 @@ class ThemeManager
 		$this->controller = $controller;
 		$this->view = $view;
 
-		$currenttheme = (!is_null($themeoverride) ? $themeoverride : $CORE->getSetting('currenttheme'));
+		$currenttheme = (!is_null($themeoverride) ? $themeoverride : $CORE->get_setting('currenttheme'));
 		// TODO: get layout
 		$layout = 'default';
 		// inject layout

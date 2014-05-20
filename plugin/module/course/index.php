@@ -4,6 +4,6 @@ require_once '../../config.php';
 
 
 
-$CORE->printModule("coursehome", 1);
+$CORE->pring_module("coursehome", 1);
 
 ?>

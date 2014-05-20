@@ -17,7 +17,7 @@ global $CORE;
 		echo "<div class='display-item display-item2'>";
 
 		echo "<header>";
-		echo "<h4><a href='" . $CORE->link("/index.php/article/read/" . $article['id']) . "'>" . $CORE->shortenString($article['title'], 100) . "</a></h4>";
+		echo "<h4><a href='" . $CORE->link("/index.php/article/read/" . $article['id']) . "'>" . $CORE->shorten_string($article['title'], 100) . "</a></h4>";
 		echo "</header>";
 
 		echo "<div class='content'>";

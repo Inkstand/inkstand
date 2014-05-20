@@ -3,7 +3,7 @@
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// this is for actions on checked menu items in the list
 
-	$table = $CORE->getTableFormat('menu_items');
+	$table = $CORE->get_table_format('menu_items');
 	$menuitemids = DB::query("SELECT id FROM $table");
 
 	foreach ($menuitemids as $menuitemid) {
@@ -22,7 +22,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 // TODO: get menu id 
 $menuid = 1;
 
-$table = $CORE->getTableFormat("menu_items");
+$table = $CORE->get_table_format("menu_items");
 $menuitems = DB::query("SELECT * FROM $table WHERE menuid = %i", $menuid);
 
 echo "<h1>Edit menu</h1>";

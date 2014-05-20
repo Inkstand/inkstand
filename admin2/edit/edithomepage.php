@@ -9,7 +9,7 @@ $homelib = new HomepageLibrary();
 
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
-	$CORE->editHomepage($_POST);
+	$CORE->edit_homepage($_POST);
 }
 	$CORE->tinymce('#homepagecontent');
 ?>
@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 <form method="post" action="" id="homepageform">
 	<div class="form-group">
 		<textarea id="homepagecontent" name="content">
-			<?php echo $CORE->getSetting('custom_homepage_content'); ?>
+			<?php echo $CORE->get_setting('custom_homepage_content'); ?>
 		</textarea>
 	</div>
 	<div class="form-group">
@@ -27,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 		<select name = "layout" class="form-control">
 		<?php
 			$currentLayout = $homelib->getLayout();
-			$currenttheme = $CORE->getSetting("currenttheme");
+			$currenttheme = $CORE->get_setting("currenttheme");
 			require_once (DIR . "/plugin/theme/$currenttheme/config.php");
 			foreach ($theme_layouts as $layout) {
 				if ($layout == $currentLayout) {
@@ -43,7 +43,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 	<div class="form-group">
 		<?php
 
-		$slideshow = $CORE->getSetting('homepage_slideshow');
+		$slideshow = $CORE->get_setting('homepage_slideshow');
 
 		$yes = '';
 		$no = '';

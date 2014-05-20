@@ -173,13 +173,13 @@ if ($logged_in == true) {
 
 	//set config settings
 	require_once 'config.php';
-	$CORE->setSetting('currenttheme', 'bootstrap', 'The current theme');
-	$CORE->setSetting('homepage', 'article', 'The contents of the homepage.');
-	$CORE->setSetting('Mod_Rewrite', 0, 'Takes out index.php from url');
-	$CORE->setSetting('custom_homepage_content', 'Here is some basic content on your home page.', 'Home page content if component is not chosen for homepage.');
-	$CORE->setSetting('site_title', 'Inkstand', 'The overall title for the site');
-	$CORE->setSetting('custom_homepage_layout', 'homepage', 'What layout file the custom homepage should use');
-	$CORE->setSetting('custom_homepage_slideshow', 1, '');
+	$CORE->set_setting('currenttheme', 'bootstrap', 'The current theme');
+	$CORE->set_setting('homepage', 'article', 'The contents of the homepage.');
+	$CORE->set_setting('Mod_Rewrite', 0, 'Takes out index.php from url');
+	$CORE->set_setting('custom_homepage_content', 'Here is some basic content on your home page.', 'Home page content if component is not chosen for homepage.');
+	$CORE->set_setting('site_title', 'Inkstand', 'The overall title for the site');
+	$CORE->set_setting('custom_homepage_layout', 'homepage', 'What layout file the custom homepage should use');
+	$CORE->set_setting('custom_homepage_slideshow', 1, '');
 
 	$newtable = $pref . "menu_items";
 	DB::insert($newtable, array(

@@ -8,7 +8,7 @@
 		);
 
 		$data = serialize($data);
-		$table = $CORE->getTableFormat("menu_items");
+		$table = $CORE->get_table_format("menu_items");
 		/*DB::insertUpdate($table, array(
 		  'name' => $_POST['name'],
 		  'data' => $data

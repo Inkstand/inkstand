@@ -17,7 +17,7 @@ if(isset($_SERVER['PATH_INFO'])) {
 
 <?php
 
-$currenttheme = $CORE->getSetting("currenttheme");
+$currenttheme = $CORE->get_setting("currenttheme");
 
 require_once DIR . "/plugin/theme/$currenttheme/layout/header.php";
 

@@ -4,7 +4,7 @@ class ContactLibrary
 {
 	public function sendMessage($post) {
 		global $CORE;
-		$mailcheck = $CORE->emailspamcheck($post['from_email']);
+		$mailcheck = $CORE->email_spam_check($post['from_email']);
 		if ($mailcheck) {
 			$from = $post['from_email'];
 			$subject = "Inkstand Contact Component ";
@@ -12,7 +12,7 @@ class ContactLibrary
 			$message = $post['message'];
 			$message .= "\r\n" . $post['name'];
 			$to = $this->getEmailTo();
-			$CORE->sendemail($to, $subject, $message, $from);
+			$CORE->send_email($to, $subject, $message, $from);
 		} else {
 			echo "email was not sent due to spam mail entered";
 		}
@@ -20,13 +20,13 @@ class ContactLibrary
 
 	public function setEmailTo($post) {
 		global $CORE;
-		$table = $CORE->getTableFormat("contact");
+		$table = $CORE->get_table_format("contact");
 		DB::update($table, array('value' => $post['emailto']), "name=%s", 'email_to');
 	}
 
 	public function getEmailTo() {
 		global $CORE;
-		$table = $CORE->getTableFormat("contact");
+		$table = $CORE->get_table_format("contact");
 		return DB::queryFirstField("SELECT value FROM $table WHERE name=%s", 'email_to');
 	}
 	
