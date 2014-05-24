@@ -25,19 +25,60 @@ class Route
 		// make sure the controller bit is present 
 		if(!empty($bits[0])) {
 
-			// arguments. Example: domain.com/course/index/3 
-			// --------------------------------------------^
-			$args = array_values($bits);
-			unset($args[0]);
-			unset($args[1]);
-			$args = array_values($args);
+			$folders = scandir(DIR . '/components');
 
-			$this->controller = $bits[0];
+			// flag if a component cannot be matched
+			$applicationRoute = true;
 
-			$this->action = (isset($bits[1]) ? $bits[1] : null);
+			foreach ($folders as $folder) {
+			    if ($folder === '.' or $folder === '..') continue;
 
-			$this->args = (isset($args) ? $args : null);
-		} 
+			    // check to see if folder matches controller bit
+			    if($folder == $bits[0]) {
+			    	$applicationRoute = false;
+			    	break;
+			    }
+			}
+
+			if($applicationRoute) {
+
+				// this means the route is for the application component, 
+				// so the route looks something like this
+				// domain.com/cupcakes (note there is no cupcakes component,
+				// but maybe a cupcakes action on the application component?)
+
+				// arguments. Example: domain.com/cupcakes/tasty
+				// ----------------------------------------^---^
+
+				$args = array_values($bits);
+				unset($args[0]);
+				$args = array_values($args);
+
+				$this->controller = 'application';
+
+				$this->action = $bits[0];
+
+				$this->args = (isset($args) ? $args : null);
+
+			} else {
+
+				// arguments. Example: domain.com/course/index/3 
+				// --------------------------------------------^
+				$args = array_values($bits);
+				unset($args[0]);
+				unset($args[1]);
+				$args = array_values($args);
+
+				$this->controller = $bits[0];
+
+				$this->action = (isset($bits[1]) ? $bits[1] : null);
+
+				$this->args = (isset($args) ? $args : null);
+			}
+		} else {
+			// thorw error
+			die("Something went wrong with the route");
+		}
 	}
 	public function get_controller() {
 
@@ -76,7 +117,7 @@ class Route
 			// TODO: error
 			echo "Action not found";
 			echo "<br>";
-			echo "controller " . $controller;
+			echo "controller " . var_dump($controller);
 			echo "<br>";
 			echo "action " . $action;
 		}
