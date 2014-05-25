@@ -15,6 +15,8 @@ $CORE->require_capability("Admin");
 
     <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="<?php echo WWW ?>/plugin/theme/admin/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo WWW ?>/plugin/theme/admin/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?php echo WWW ?>/plugin/theme/admin/css/style.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
@@ -24,4 +26,7 @@ $CORE->require_capability("Admin");
 
 <body>
 
+<div id="admin-header">
+	<div class="logo"></div>
+</div>
 

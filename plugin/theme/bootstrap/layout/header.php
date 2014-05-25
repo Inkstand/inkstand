@@ -30,8 +30,22 @@
 	</script>
 
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	
+	<?php
+	$logged_in = $CORE->check_if_logged_in();
 
+	if ($logged_in == true) {
+		echo "<div id = \"logged_in_bar\">";
+			echo "Well hello there, " . $CORE->get_username();
+			if ($CORE->is_admin()) {
+				echo " (Admin) &nbsp;&nbsp;&nbsp;&nbsp; <a href = " . WWW . "/admin/index.php>Administration</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href = " . WWW . "/login.php?submit=Logout>Logout</a>";
 
+			} else {
+			}	
+		echo '</div>';
+	}
+
+	?>
 	<div id="header">
 		<?php $CORE->menu(1) ?>
 	</div>
