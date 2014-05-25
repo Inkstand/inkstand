@@ -36,6 +36,49 @@ body
 	width:25px;
 }
 
+#admin-sidebar .user-profile
+{
+	height:41px;
+	border-bottom:1px solid #000;
+}
+
+#admin-sidebar .user-profile img
+{
+	margin:4px;
+}
+
+#admin-sidebar .user-profile span:nth-child(2) a
+{
+	margin-top:9px;
+	display:inline-block;
+	color:#ccc;
+}
+
+#admin-sidebar ul
+{
+	border-top:1px solid #666;
+}
+
+#admin-sidebar > ul > li a
+{
+	padding-left:30px;
+}
+
+#admin-sidebar > ul > li i
+{
+	font-size:15px;
+}
+
+#admin-sidebar ul ul *
+{
+	color:#ccc;
+}
+
+#admin-sidebar ul ul a:hover
+{
+	color:#333;
+}
+
 #admin-content
 {
 	margin-left:270px;
@@ -51,7 +94,7 @@ body
 #admin-content .content-bar
 {
 	background-color:#555;
-	height:35px;
+	height:41px;
 }
 #admin-content .content-bar .breadcrumb
 {
