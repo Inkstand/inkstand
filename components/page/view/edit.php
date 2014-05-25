@@ -2,14 +2,19 @@
 
 global $CORE;
 
-require_once DIR . '/core/admin_helper.php';
+require_once DIR . '/core/helpers/admin_helper.php';
 require_once DIR . '/components/page/model/page.php';
+require_once DIR . '/core/helpers/pagination_helper.php';
 
 // new page 
 $pagelib = new Page();
 
+$pagination = new PaginationHelper();
+
+$range = $pagination->get_range();
+
 // get all pages
-$pages = $pagelib->get_list_of_pages();
+$pages = $pagelib->get_some_pages($range['start'], $range['length']);
 
 $helper = new AdminHelper();
 
@@ -60,6 +65,11 @@ $helper->end_a();
 $helper->admin_table($titles, $data);
 
 $helper->end_div(); // panel panel-default
+
+// get number of pages in db
+$numOfPages = count($pagelib->get_list_of_pages());
+
+$pagination->start_pagination_bar($numOfPages);
 
 
 ?>

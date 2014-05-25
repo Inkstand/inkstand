@@ -13,6 +13,11 @@ class Page
 		$table = $CORE->get_table_format("page");
 		return DB::query("SELECT * FROM $table");
 	}
+	public function get_some_pages($start, $length) {
+		global $CORE;
+		$table = $CORE->get_table_format('page');
+		return DB::query("SELECT * FROM $table LIMIT %i0, %i1", $start, $length);
+	}
 	public function add_page($page) 
 	{
 

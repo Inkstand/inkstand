@@ -1,6 +1,6 @@
 <?php
 
-require_once DIR . '/core/html_helper.php';
+require_once DIR . '/core/helpers/html_helper.php';
 
 class AdminHelper extends HtmlHelper
 {

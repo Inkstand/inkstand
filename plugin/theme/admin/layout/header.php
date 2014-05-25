@@ -24,7 +24,4 @@ $CORE->require_capability("Admin");
 
 <body>
 
-	<div id="header">
-		<?php $CORE->menu(1) ?>
-	</div>
 

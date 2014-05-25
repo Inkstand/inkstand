@@ -16,6 +16,11 @@ class ApplicationController extends Controller
 
 		return parent::view();
 	}
+
+	public function login_action()
+	{
+		return parent::view();
+	}
 }
 
 ?>
