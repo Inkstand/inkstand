@@ -1,6 +1,6 @@
 <?php
 
-require_once DIR . '/core/admin_helper.php';
+require_once DIR . '/core/helpers/admin_helper.php';
 
 $helper = new AdminHelper();
 

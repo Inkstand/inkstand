@@ -2,8 +2,6 @@
 
 global $CORE;
 
-require_once DIR. '/components/contact/contact.lib.php';
-
 $lib = new ContactLibrary();
 
 if (isset($_POST['submit']) && $_POST['submit'] == 'Send Email') {

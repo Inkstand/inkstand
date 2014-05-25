@@ -1,5 +1,4 @@
 <?php
-require_once DIR. '/components/contact/contact.lib.php';
 
 $lib = new ContactLibrary();
 

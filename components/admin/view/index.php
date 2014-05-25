@@ -1,3 +1,3 @@
 <div>
-	<p>This is the new homepage, coming from /application/view/index.php :)</p>
+	<p>This is the new homepage, coming from /admin/view/index.php :)</p>
 </div>

@@ -15,7 +15,7 @@ class AdminController extends Controller
 	{
 		// use route class to route to edit pages on components
 
-		
+		return parent::view();
 		
 	}
 
